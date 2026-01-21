@@ -6,9 +6,34 @@
     <title>EM Consultant AI Toolkit | West Midlands</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Light mode (default) */
+            --color-bg: #faf9f7;
+            --color-bg-elevated: #ffffff;
+            --color-bg-card: #ffffff;
+            --color-bg-card-hover: #f5f4f2;
+            --color-surface: #f0efed;
+            --color-primary: #1e40af;
+            --color-primary-light: #3b82f6;
+            --color-primary-glow: rgba(59, 130, 246, 0.15);
+            --color-accent: #059669;
+            --color-accent-light: #10b981;
+            --color-warning: #d97706;
+            --color-danger: #dc2626;
+            --color-text: #1a1a1a;
+            --color-text-secondary: #4a4a4a;
+            --color-text-muted: #737373;
+            --color-border: #e5e5e5;
+            --color-border-light: #d4d4d4;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.06), 0 4px 10px rgba(0,0,0,0.04);
+            --shadow-glow: 0 0 40px var(--color-primary-glow);
+        }
+
+        [data-theme="dark"] {
             --color-bg: #0a0f1a;
             --color-bg-elevated: #111827;
             --color-bg-card: #1a2234;
@@ -26,16 +51,9 @@
             --color-text-muted: #64748b;
             --color-border: #334155;
             --color-border-light: #475569;
-            --font-display: 'Fraunces', Georgia, serif;
-            --font-body: 'DM Sans', system-ui, sans-serif;
-            --radius-sm: 6px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 28px;
-            --shadow-glow: 0 0 40px var(--color-primary-glow);
-            --transition-fast: 0.15s ease;
-            --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.4);
         }
 
         * {
@@ -49,34 +67,19 @@
         }
 
         body {
-            font-family: var(--font-body);
+            font-family: 'Outfit', system-ui, sans-serif;
             background-color: var(--color-bg);
             color: var(--color-text);
             line-height: 1.7;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Noise texture overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        /* Selection styling */
         ::selection {
             background: var(--color-primary);
             color: white;
         }
 
-        /* Scrollbar styling */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -94,6 +97,95 @@
             background: var(--color-border-light);
         }
 
+        /* Header & Theme Toggle */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: var(--color-bg-elevated);
+            border-bottom: 1px solid var(--color-border);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .site-logo svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            color: var(--color-text);
+        }
+
+        .theme-toggle:hover {
+            background: var(--color-bg-card-hover);
+            border-color: var(--color-primary);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .sun-icon, .moon-icon {
+            transition: opacity 0.2s ease, transform 0.3s ease;
+        }
+
+        [data-theme="dark"] .sun-icon {
+            opacity: 0;
+            transform: rotate(180deg) scale(0);
+            position: absolute;
+        }
+
+        [data-theme="dark"] .moon-icon {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .moon-icon {
+            opacity: 0;
+            transform: rotate(-180deg) scale(0);
+            position: absolute;
+        }
+
+        :not([data-theme="dark"]) .sun-icon {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -101,7 +193,7 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
-            padding: 2rem;
+            padding: 6rem 2rem 2rem;
             overflow: hidden;
         }
 
@@ -112,24 +204,9 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(16, 185, 129, 0.08), transparent),
-                radial-gradient(ellipse 50% 30% at 20% 80%, rgba(139, 92, 246, 0.06), transparent);
+                radial-gradient(ellipse 80% 50% at 50% -20%, var(--color-primary-glow), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(16, 185, 129, 0.08), transparent);
             z-index: 0;
-        }
-
-        .hero-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            z-index: 0;
-            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
         }
 
         .hero-content {
@@ -144,11 +221,11 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.5rem 1.25rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
             border-radius: 100px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: var(--color-primary-light);
             margin-bottom: 2rem;
@@ -170,8 +247,8 @@
         }
 
         .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: clamp(2.8rem, 7vw, 5rem);
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -180,7 +257,7 @@
         }
 
         .hero h1 span {
-            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -203,14 +280,8 @@
         }
 
         @keyframes fadeSlideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .btn {
@@ -218,25 +289,26 @@
             align-items: center;
             gap: 0.5rem;
             padding: 1rem 2rem;
-            font-family: var(--font-body);
+            font-family: 'Outfit', sans-serif;
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
-            border-radius: var(--radius-md);
+            border-radius: 12px;
             cursor: pointer;
-            transition: all var(--transition-medium);
+            transition: all 0.2s ease;
             border: none;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #2563eb 100%);
+            background: var(--color-primary);
             color: white;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: var(--shadow-md);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+            box-shadow: var(--shadow-lg);
+            filter: brightness(1.1);
         }
 
         .btn-secondary {
@@ -285,7 +357,7 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -294,25 +366,23 @@
             text-align: center;
             padding: 2rem;
             background: var(--color-bg-card);
-            border-radius: var(--radius-lg);
+            border-radius: 16px;
             border: 1px solid var(--color-border);
-            transition: all var(--transition-medium);
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
         }
 
         .stat-card:hover {
             transform: translateY(-4px);
             border-color: var(--color-primary);
-            box-shadow: var(--shadow-glow);
+            box-shadow: var(--shadow-lg);
         }
 
         .stat-number {
-            font-family: var(--font-display);
-            font-size: 3rem;
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 2.75rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--color-primary);
             line-height: 1;
             margin-bottom: 0.5rem;
         }
@@ -342,7 +412,7 @@
         }
 
         .section-header h2 {
-            font-family: var(--font-display);
+            font-family: 'Crimson Pro', Georgia, serif;
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
@@ -350,93 +420,94 @@
 
         .section-header p {
             color: var(--color-text-secondary);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        /* Navigation Pills */
-        .nav-pills {
+        /* Category Sections */
+        .category-section {
+            margin-bottom: 5rem;
+            padding-top: 2rem;
+        }
+
+        .category-header {
             display: flex;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-            padding: 0.5rem;
-            background: var(--color-bg-elevated);
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--color-border);
-            max-width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .nav-pill {
-            padding: 0.75rem 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--color-text-secondary);
-            background: transparent;
-            border: none;
-            border-radius: var(--radius-lg);
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            white-space: nowrap;
-        }
-
-        .nav-pill:hover {
-            color: var(--color-text);
-            background: var(--color-surface);
-        }
-
-        .nav-pill.active {
             color: white;
-            background: var(--color-primary);
+        }
+
+        .category-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .category-icon.clinical { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+        .category-icon.admin { background: linear-gradient(135deg, #10b981, #14b8a6); }
+        .category-icon.education { background: linear-gradient(135deg, #f59e0b, #f97316); }
+        .category-icon.governance { background: linear-gradient(135deg, #ef4444, #ec4899); }
+
+        .category-title {
+            flex: 1;
+        }
+
+        .category-title h3 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .category-title p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
         }
 
         /* Card Grid */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 1.5rem;
         }
 
         .card {
             background: var(--color-bg-card);
-            border-radius: var(--radius-lg);
+            border-radius: 16px;
             border: 1px solid var(--color-border);
             overflow: hidden;
             cursor: pointer;
-            transition: all var(--transition-medium);
+            transition: all 0.2s ease;
             display: flex;
             flex-direction: column;
+            box-shadow: var(--shadow-sm);
         }
 
         .card:hover {
             transform: translateY(-4px);
             border-color: var(--color-primary);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), var(--shadow-glow);
+            box-shadow: var(--shadow-lg);
         }
 
         .card-accent {
             height: 4px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
         }
 
-        .card.clinical .card-accent {
-            background: linear-gradient(90deg, #3b82f6, #6366f1);
-        }
-
-        .card.admin .card-accent {
-            background: linear-gradient(90deg, #10b981, #14b8a6);
-        }
-
-        .card.education .card-accent {
-            background: linear-gradient(90deg, #f59e0b, #f97316);
-        }
-
-        .card.governance .card-accent {
-            background: linear-gradient(90deg, #ef4444, #ec4899);
-        }
+        .card.clinical .card-accent { background: linear-gradient(90deg, #3b82f6, #6366f1); }
+        .card.admin .card-accent { background: linear-gradient(90deg, #10b981, #14b8a6); }
+        .card.education .card-accent { background: linear-gradient(90deg, #f59e0b, #f97316); }
+        .card.governance .card-accent { background: linear-gradient(90deg, #ef4444, #ec4899); }
 
         .card-body {
             padding: 1.5rem;
@@ -450,39 +521,27 @@
             align-items: center;
             gap: 0.4rem;
             padding: 0.35rem 0.75rem;
-            background: rgba(59, 130, 246, 0.1);
             border-radius: 100px;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--color-primary-light);
             margin-bottom: 1rem;
             width: fit-content;
         }
 
-        .card.clinical .card-category {
-            background: rgba(59, 130, 246, 0.1);
-            color: #60a5fa;
-        }
+        .card.clinical .card-category { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .card.admin .card-category { background: rgba(16, 185, 129, 0.1); color: #059669; }
+        .card.education .card-category { background: rgba(245, 158, 11, 0.1); color: #d97706; }
+        .card.governance .card-category { background: rgba(239, 68, 68, 0.1); color: #dc2626; }
 
-        .card.admin .card-category {
-            background: rgba(16, 185, 129, 0.1);
-            color: #34d399;
-        }
+        [data-theme="dark"] .card.clinical .card-category { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+        [data-theme="dark"] .card.admin .card-category { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+        [data-theme="dark"] .card.education .card-category { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+        [data-theme="dark"] .card.governance .card-category { background: rgba(239, 68, 68, 0.15); color: #f87171; }
 
-        .card.education .card-category {
-            background: rgba(245, 158, 11, 0.1);
-            color: #fbbf24;
-        }
-
-        .card.governance .card-category {
-            background: rgba(239, 68, 68, 0.1);
-            color: #f87171;
-        }
-
-        .card h3 {
-            font-family: var(--font-display);
+        .card h4 {
+            font-family: 'Crimson Pro', Georgia, serif;
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
@@ -522,45 +581,182 @@
         .card-action {
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--color-primary-light);
+            color: var(--color-primary);
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            transition: gap var(--transition-fast);
+            transition: gap 0.2s ease;
         }
 
         .card:hover .card-action {
             gap: 0.6rem;
         }
 
+        /* AI Platform Sections */
+        .platforms-section {
+            background: var(--color-bg-elevated);
+            border-top: 1px solid var(--color-border);
+            padding: 5rem 2rem;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .platform-card {
+            background: var(--color-bg-card);
+            border-radius: 20px;
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .platform-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .platform-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .platform-logo.claude { background: linear-gradient(135deg, #d4a574, #c4956c); }
+        .platform-logo.chatgpt { background: linear-gradient(135deg, #10a37f, #1a7f5a); }
+        .platform-logo.gemini { background: linear-gradient(135deg, #4285f4, #ea4335, #fbbc04, #34a853); }
+        .platform-logo.perplexity { background: linear-gradient(135deg, #20808d, #1a6570); }
+        .platform-logo.copilot { background: linear-gradient(135deg, #0078d4, #005a9e); }
+        .platform-logo.notebooklm { background: linear-gradient(135deg, #ea4335, #4285f4); }
+        .platform-logo.comet { background: linear-gradient(135deg, #20808d, #14b8a6); }
+
+        .platform-info h3 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .platform-info span {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .platform-body {
+            padding: 1.5rem;
+        }
+
+        .platform-description {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .platform-strengths {
+            margin-bottom: 1.5rem;
+        }
+
+        .platform-strengths h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .strength-list {
+            list-style: none;
+        }
+
+        .strength-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .strength-list li:last-child {
+            border-bottom: none;
+        }
+
+        .strength-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .platform-use-cases {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .platform-use-cases h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-warning);
+            margin-bottom: 0.75rem;
+        }
+
+        .use-case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .use-case-tag {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+        }
+
         /* WMEBEM Banner */
         .wmebem-banner {
-            background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-surface) 100%);
-            border-radius: var(--radius-xl);
+            background: var(--color-bg-card);
+            border-radius: 20px;
             border: 1px solid var(--color-border);
             padding: 3rem;
-            margin: 4rem 0;
+            margin: 4rem auto;
+            max-width: 1200px;
             display: grid;
             grid-template-columns: 1fr auto;
             gap: 2rem;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .wmebem-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent 70%);
-            pointer-events: none;
+            box-shadow: var(--shadow-md);
         }
 
         .wmebem-content h3 {
-            font-family: var(--font-display);
+            font-family: 'Crimson Pro', Georgia, serif;
             font-size: 1.75rem;
             font-weight: 700;
             margin-bottom: 0.75rem;
@@ -599,7 +795,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(8px);
             z-index: 2000;
             display: flex;
@@ -608,7 +804,7 @@
             padding: 2rem;
             opacity: 0;
             visibility: hidden;
-            transition: all var(--transition-medium);
+            transition: all 0.2s ease;
         }
 
         .modal-overlay.active {
@@ -618,14 +814,15 @@
 
         .modal {
             background: var(--color-bg-elevated);
-            border-radius: var(--radius-xl);
+            border-radius: 20px;
             border: 1px solid var(--color-border);
             max-width: 800px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             transform: scale(0.95) translateY(20px);
-            transition: transform var(--transition-medium);
+            transition: transform 0.2s ease;
+            box-shadow: var(--shadow-lg);
         }
 
         .modal-overlay.active .modal {
@@ -646,7 +843,7 @@
         }
 
         .modal-header h2 {
-            font-family: var(--font-display);
+            font-family: 'Crimson Pro', Georgia, serif;
             font-size: 1.5rem;
             font-weight: 700;
         }
@@ -659,10 +856,10 @@
             justify-content: center;
             background: var(--color-surface);
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
+            border-radius: 10px;
             cursor: pointer;
             color: var(--color-text-secondary);
-            transition: all var(--transition-fast);
+            transition: all 0.2s ease;
             flex-shrink: 0;
         }
 
@@ -686,7 +883,7 @@
         .modal-section h3 {
             font-size: 1rem;
             font-weight: 600;
-            color: var(--color-primary-light);
+            color: var(--color-primary);
             margin-bottom: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -720,46 +917,46 @@
         }
 
         .evidence-box {
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(16, 185, 129, 0.08);
             border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: var(--radius-md);
+            border-radius: 12px;
             padding: 1.25rem;
             margin-top: 1rem;
         }
 
         .evidence-box strong {
-            color: var(--color-accent-light);
+            color: var(--color-accent);
             display: block;
             margin-bottom: 0.5rem;
         }
 
         .warning-box {
-            background: rgba(239, 68, 68, 0.1);
+            background: rgba(239, 68, 68, 0.08);
             border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: var(--radius-md);
+            border-radius: 12px;
             padding: 1.25rem;
             margin-top: 1rem;
         }
 
         .warning-box strong {
-            color: #f87171;
+            color: var(--color-danger);
             display: block;
             margin-bottom: 0.5rem;
         }
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
             margin-top: 1rem;
         }
 
         .tool-tag {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
             text-align: center;
         }
 
@@ -767,12 +964,12 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: var(--radius-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
             padding: 0.75rem 1.25rem;
             font-weight: 600;
-            color: var(--color-primary-light);
+            color: var(--color-primary);
             margin-top: 1rem;
         }
 
@@ -781,7 +978,6 @@
             background: var(--color-bg-elevated);
             border-top: 1px solid var(--color-border);
             padding: 4rem 2rem;
-            margin-top: 4rem;
         }
 
         .footer-content {
@@ -793,7 +989,7 @@
         }
 
         .footer-brand h4 {
-            font-family: var(--font-display);
+            font-family: 'Crimson Pro', Georgia, serif;
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 1rem;
@@ -826,11 +1022,11 @@
             color: var(--color-text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
-            transition: color var(--transition-fast);
+            transition: color 0.2s ease;
         }
 
         .footer-links a:hover {
-            color: var(--color-primary-light);
+            color: var(--color-primary);
         }
 
         .footer-bottom {
@@ -851,8 +1047,54 @@
         }
 
         .footer-bottom a {
-            color: var(--color-primary-light);
+            color: var(--color-primary);
             text-decoration: none;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 100;
+        }
+
+        .quick-action-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all 0.2s ease;
+        }
+
+        .quick-action-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quick-action-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .quick-action-btn.secondary {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+        }
+
+        .quick-action-btn.secondary:hover {
+            border-color: var(--color-primary);
         }
 
         /* Responsive */
@@ -860,12 +1102,14 @@
             .footer-content {
                 grid-template-columns: 1fr 1fr;
             }
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
             .hero {
-                min-height: auto;
-                padding: 4rem 1.5rem;
+                padding: 5rem 1.5rem 2rem;
             }
 
             .card-grid {
@@ -875,16 +1119,11 @@
             .wmebem-banner {
                 grid-template-columns: 1fr;
                 text-align: center;
+                padding: 2rem;
             }
 
             .wmebem-features {
                 justify-content: center;
-            }
-
-            .nav-pills {
-                overflow-x: auto;
-                justify-content: flex-start;
-                max-width: 100%;
             }
 
             .footer-content {
@@ -900,73 +1139,58 @@
             .modal {
                 margin: 1rem;
             }
+
+            .site-header {
+                padding: 0.75rem 1rem;
+            }
+
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* Animations */
+        /* Fade in animation */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Quick Actions Bar */
-        .quick-actions {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            z-index: 100;
-        }
-
-        .quick-action-btn {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
-            transition: all var(--transition-medium);
-        }
-
-        .quick-action-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
-        }
-
-        .quick-action-btn svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .quick-action-btn.secondary {
-            background: var(--color-bg-card);
-            border: 1px solid var(--color-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .quick-action-btn.secondary:hover {
-            border-color: var(--color-primary);
-            box-shadow: var(--shadow-glow);
-        }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="site-header">
+        <a href="#" class="site-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+            <span>EM AI Toolkit</span>
+        </a>
+        <div class="header-actions">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <a href="https://wmebem.com" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                Visit WMEBEM
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+        </div>
+    </header>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg"></div>
-        <div class="hero-grid"></div>
         <div class="hero-content">
             <div class="hero-badge">
                 <span>West Midlands EM Education</span>
@@ -974,13 +1198,13 @@
             <h1>AI Toolkit for <span>Emergency Medicine</span> Consultants</h1>
             <p class="hero-subtitle">Evidence-based guidance on implementing AI to reduce diagnostic errors, accelerate treatment decisions, and reclaim administrative time. Built by EM consultants, for EM consultants.</p>
             <div class="hero-cta">
-                <a href="#tools" class="btn btn-primary">
-                    Explore AI Tools
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <a href="#applications" class="btn btn-primary">
+                    Explore Applications
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
-                <a href="https://wmebem.com" target="_blank" class="btn btn-secondary">
-                    Visit WMEBEM
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                <a href="#platforms" class="btn btn-secondary">
+                    AI Platforms Guide
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
                 </a>
             </div>
         </div>
@@ -1016,55 +1240,347 @@
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="main-content" id="tools">
+    <!-- Main Applications Section -->
+    <main class="main-content" id="applications">
         <div class="section-header fade-in">
             <h2>AI Applications for Emergency Medicine</h2>
-            <p>Evidence-based tools categorised by use case. Click any card for detailed implementation guidance, evidence summaries, and practical tips.</p>
+            <p>Evidence-based tools organised by clinical use case. Click any card for detailed implementation guidance, evidence summaries, and practical tips.</p>
         </div>
 
-        <nav class="nav-pills fade-in">
-            <button class="nav-pill active" data-filter="all">All Tools</button>
-            <button class="nav-pill" data-filter="clinical">Clinical AI</button>
-            <button class="nav-pill" data-filter="admin">Administrative</button>
-            <button class="nav-pill" data-filter="education">Education</button>
-            <button class="nav-pill" data-filter="governance">Safety &amp; Governance</button>
-        </nav>
+        <!-- Clinical AI Section -->
+        <section class="category-section fade-in" id="clinical">
+            <div class="category-header">
+                <div class="category-icon clinical">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <div class="category-title">
+                    <h3>Clinical Decision Support</h3>
+                    <p>AI tools that assist with diagnosis, imaging interpretation, and clinical documentation</p>
+                </div>
+            </div>
+            <div class="card-grid" id="clinicalGrid"></div>
+        </section>
 
-        <div class="card-grid" id="cardGrid">
-            <!-- Cards will be generated by JavaScript -->
+        <!-- Administrative AI Section -->
+        <section class="category-section fade-in" id="admin">
+            <div class="category-header">
+                <div class="category-icon admin">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </div>
+                <div class="category-title">
+                    <h3>Administrative & Workflow</h3>
+                    <p>Reduce documentation burden, automate routine tasks, and streamline departmental processes</p>
+                </div>
+            </div>
+            <div class="card-grid" id="adminGrid"></div>
+        </section>
+
+        <!-- Education AI Section -->
+        <section class="category-section fade-in" id="education">
+            <div class="category-header">
+                <div class="category-icon education">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <div class="category-title">
+                    <h3>Education & Training</h3>
+                    <p>AI-powered tools for simulation, assessment, and continuous professional development</p>
+                </div>
+            </div>
+            <div class="card-grid" id="educationGrid"></div>
+        </section>
+
+        <!-- Governance Section -->
+        <section class="category-section fade-in" id="governance">
+            <div class="category-header">
+                <div class="category-icon governance">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="category-title">
+                    <h3>Safety & Governance</h3>
+                    <p>Essential guidance on regulatory compliance, professional responsibility, and safe AI implementation</p>
+                </div>
+            </div>
+            <div class="card-grid" id="governanceGrid"></div>
+        </section>
+    </main>
+
+    <!-- AI Platforms Section -->
+    <section class="platforms-section" id="platforms">
+        <div class="section-header fade-in" style="max-width: 1400px; margin: 0 auto 3rem;">
+            <h2>AI Platform Guide for Consultants</h2>
+            <p>Each AI platform has distinct strengths. This guide helps you choose the right tool for specific clinical, administrative, and educational tasks.</p>
         </div>
 
-        <!-- WMEBEM Banner -->
-        <div class="wmebem-banner fade-in">
-            <div class="wmebem-content">
-                <h3>Explore AI-Created Clinical Tools</h3>
-                <p>Visit WMEBEM.com for 42+ AI-generated educational applications including simulation tools, clinical calculators, and decision support systems—all created in minutes.</p>
-                <div class="wmebem-features">
-                    <div class="wmebem-feature">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-                        <span>ZOLL Defibrillator Simulator</span>
+        <div class="platform-grid">
+            <!-- Claude -->
+            <div class="platform-card fade-in">
+                <div class="platform-header">
+                    <div class="platform-logo claude">C</div>
+                    <div class="platform-info">
+                        <h3>Claude</h3>
+                        <span>by Anthropic</span>
                     </div>
-                    <div class="wmebem-feature">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-                        <span>Blood Gas Analyser</span>
+                </div>
+                <div class="platform-body">
+                    <p class="platform-description">Claude Opus 4.5 excels at complex reasoning, long-document analysis, and nuanced writing. Its 200K token context window can process entire clinical guidelines, meeting transcripts, or research papers in one go.</p>
+                    <div class="platform-strengths">
+                        <h4>Key Strengths for EM</h4>
+                        <ul class="strength-list">
+                            <li>Best-in-class for long document synthesis and analysis</li>
+                            <li>Superior at nuanced clinical writing and case summaries</li>
+                            <li>Excellent code generation for educational tools and apps</li>
+                            <li>Strong safety guardrails with Constitutional AI approach</li>
+                            <li>Deep Research mode for evidence synthesis</li>
+                        </ul>
                     </div>
-                    <div class="wmebem-feature">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-                        <span>Triage Training Tools</span>
-                    </div>
-                    <div class="wmebem-feature">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-                        <span>QIP Generators</span>
+                    <div class="platform-use-cases">
+                        <h4>Recommended Uses</h4>
+                        <div class="use-case-tags">
+                            <span class="use-case-tag">Business cases</span>
+                            <span class="use-case-tag">Guideline synthesis</span>
+                            <span class="use-case-tag">QIP reports</span>
+                            <span class="use-case-tag">Teaching materials</span>
+                            <span class="use-case-tag">Protocol drafting</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <a href="https://wmebem.com" target="_blank" class="btn btn-primary">
-                Visit WMEBEM.com
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-            </a>
+
+            <!-- ChatGPT -->
+            <div class="platform-card fade-in">
+                <div class="platform-header">
+                    <div class="platform-logo chatgpt">G</div>
+                    <div class="platform-info">
+                        <h3>ChatGPT</h3>
+                        <span>by OpenAI</span>
+                    </div>
+                </div>
+                <div class="platform-body">
+                    <p class="platform-description">GPT-5.2 offers the broadest feature set including image generation with DALL-E, voice conversations, and extensive plugin ecosystem. Its 400K token context and multimodal capabilities make it highly versatile.</p>
+                    <div class="platform-strengths">
+                        <h4>Key Strengths for EM</h4>
+                        <ul class="strength-list">
+                            <li>Image generation for educational posters and infographics</li>
+                            <li>Voice mode for hands-free interaction during procedures</li>
+                            <li>Largest plugin ecosystem for workflow integration</li>
+                            <li>Strong at mathematical and logical reasoning</li>
+                            <li>Web browsing for real-time guideline updates</li>
+                        </ul>
+                    </div>
+                    <div class="platform-use-cases">
+                        <h4>Recommended Uses</h4>
+                        <div class="use-case-tags">
+                            <span class="use-case-tag">Visual content</span>
+                            <span class="use-case-tag">Data analysis</span>
+                            <span class="use-case-tag">Quick calculations</span>
+                            <span class="use-case-tag">Voice assistants</span>
+                            <span class="use-case-tag">Creative projects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gemini -->
+            <div class="platform-card fade-in">
+                <div class="platform-header">
+                    <div class="platform-logo gemini">G</div>
+                    <div class="platform-info">
+                        <h3>Gemini</h3>
+                        <span>by Google</span>
+                    </div>
+                </div>
+                <div class="platform-body">
+                    <p class="platform-description">Gemini 3 offers state-of-the-art multimodal reasoning and deep Google Workspace integration. Its 1 million token context window and native integration with Gmail, Drive, and Calendar make it ideal for NHS workflows.</p>
+                    <div class="platform-strengths">
+                        <h4>Key Strengths for EM</h4>
+                        <ul class="strength-list">
+                            <li>Native Google Workspace integration (Gmail, Drive, Docs)</li>
+                            <li>1 million token context—process entire project folders</li>
+                            <li>Excellent multimodal understanding of images and video</li>
+                            <li>Deep Research for comprehensive report generation</li>
+                            <li>Veo 3 for AI video generation</li>
+                        </ul>
+                    </div>
+                    <div class="platform-use-cases">
+                        <h4>Recommended Uses</h4>
+                        <div class="use-case-tags">
+                            <span class="use-case-tag">Email management</span>
+                            <span class="use-case-tag">Meeting summaries</span>
+                            <span class="use-case-tag">Document analysis</span>
+                            <span class="use-case-tag">Research synthesis</span>
+                            <span class="use-case-tag">Calendar coordination</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Perplexity -->
+            <div class="platform-card fade-in">
+                <div class="platform-header">
+                    <div class="platform-logo perplexity">P</div>
+                    <div class="platform-info">
+                        <h3>Perplexity</h3>
+                        <span>AI Search Engine</span>
+                    </div>
+                </div>
+                <div class="platform-body">
+                    <p class="platform-description">Perplexity combines real-time web search with AI synthesis, providing cited answers that link directly to sources. Its Deep Research mode generates comprehensive reports with full citation trails—essential for evidence-based medicine.</p>
+                    <div class="platform-strengths">
+                        <h4>Key Strengths for EM</h4>
+                        <ul class="strength-list">
+                            <li>Real-time web search with inline citations</li>
+                            <li>Deep Research generates multi-source reports in minutes</li>
+                            <li>93.9% accuracy on SimpleQA factuality benchmark</li>
+                            <li>Excellent for rapid literature review</li>
+                            <li>Finance and shopping tools for procurement research</li>
+                        </ul>
+                    </div>
+                    <div class="platform-use-cases">
+                        <h4>Recommended Uses</h4>
+                        <div class="use-case-tags">
+                            <span class="use-case-tag">Evidence searches</span>
+                            <span class="use-case-tag">Guideline updates</span>
+                            <span class="use-case-tag">Drug information</span>
+                            <span class="use-case-tag">Equipment research</span>
+                            <span class="use-case-tag">Fact-checking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Microsoft Copilot -->
+            <div class="platform-card fade-in">
+                <div class="platform-header">
+                    <div class="platform-logo copilot">M</div>
+                    <div class="platform-info">
+                        <h3>Microsoft Copilot</h3>
+                        <span>for Microsoft 365</span>
+                    </div>
+                </div>
+                <div class="platform-body">
+                    <p class="platform-description">Copilot Chat is free for NHS.net users and integrates directly into Word, Excel, PowerPoint, and Outlook. The NHS Copilot Trial showed 43 minutes saved daily per clinician—equivalent to 5 weeks annually.</p>
+                    <div class="platform-strengths">
+                        <h4>Key Strengths for EM</h4>
+                        <ul class="strength-list">
+                            <li>Free Copilot Chat for all NHS.net users</li>
+                            <li>Native integration with Microsoft 365 apps</li>
+                            <li>Meeting transcription and summary in Teams</li>
+                            <li>Excel data analysis and formula generation</li>
+                            <li>PowerPoint presentation creation from prompts</li>
+                        </ul>
+                    </div>
+                    <div class="platform-use-cases">
+                        <h4>Recommended Uses</h4>
+                        <div class="use-case-tags">
+                            <span class="use-case-tag">Meeting notes</span>
+                            <span class="use-case-tag">Email drafting</span>
+                            <span class="use-case-tag">Spreadsheet analysis</span>
+                            <span class="use-case-tag">Presentations</span>
+                            <span class="use-case-tag">Document editing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NotebookLM -->
+            <div class="platform-card fade-in">
+                <div class="platform-header">
+                    <div class="platform-logo notebooklm">N</div>
+                    <div class="platform-info">
+                        <h3>NotebookLM</h3>
+                        <span>by Google</span>
+                    </div>
+                </div>
+                <div class="platform-body">
+                    <p class="platform-description">NotebookLM transforms uploaded documents into interactive knowledge bases. Upload guidelines, papers, and notes, then query them conversationally. The Audio Overview feature creates podcast-style summaries—perfect for learning on the go.</p>
+                    <div class="platform-strengths">
+                        <h4>Key Strengths for EM</h4>
+                        <ul class="strength-list">
+                            <li>Upload up to 50 sources per notebook</li>
+                            <li>Audio Overviews create podcast-style summaries</li>
+                            <li>Automatic flashcard and quiz generation</li>
+                            <li>Mind maps for visual topic exploration</li>
+                            <li>Data Tables export to Google Sheets</li>
+                        </ul>
+                    </div>
+                    <div class="platform-use-cases">
+                        <h4>Recommended Uses</h4>
+                        <div class="use-case-tags">
+                            <span class="use-case-tag">FRCEM revision</span>
+                            <span class="use-case-tag">Guideline synthesis</span>
+                            <span class="use-case-tag">Research organisation</span>
+                            <span class="use-case-tag">Teaching prep</span>
+                            <span class="use-case-tag">Audio learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comet Browser -->
+            <div class="platform-card fade-in">
+                <div class="platform-header">
+                    <div class="platform-logo comet">C</div>
+                    <div class="platform-info">
+                        <h3>Comet Browser</h3>
+                        <span>by Perplexity</span>
+                    </div>
+                </div>
+                <div class="platform-body">
+                    <p class="platform-description">Comet is a free AI-native browser that integrates Perplexity search into every page. The Comet Assistant can summarise articles, compare products across tabs, draft emails, and automate multi-step web tasks—all without leaving your browser.</p>
+                    <div class="platform-strengths">
+                        <h4>Key Strengths for EM</h4>
+                        <ul class="strength-list">
+                            <li>Free with full AI capabilities—no subscription needed</li>
+                            <li>Built-in ad blocking and privacy controls</li>
+                            <li>Summarise any webpage with one click</li>
+                            <li>Compare information across multiple open tabs</li>
+                            <li>Chrome extension compatibility</li>
+                        </ul>
+                    </div>
+                    <div class="platform-use-cases">
+                        <h4>Recommended Uses</h4>
+                        <div class="use-case-tags">
+                            <span class="use-case-tag">Research browsing</span>
+                            <span class="use-case-tag">Article summaries</span>
+                            <span class="use-case-tag">Product comparison</span>
+                            <span class="use-case-tag">Form filling</span>
+                            <span class="use-case-tag">Tab synthesis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <!-- WMEBEM Banner -->
+    <div class="wmebem-banner fade-in" style="margin: 4rem 2rem;">
+        <div class="wmebem-content">
+            <h3>Explore AI-Created Clinical Tools</h3>
+            <p>Visit WMEBEM.com for 42+ AI-generated educational applications including simulation tools, clinical calculators, and decision support systems—all created in minutes.</p>
+            <div class="wmebem-features">
+                <div class="wmebem-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+                    <span>ZOLL Defibrillator Simulator</span>
+                </div>
+                <div class="wmebem-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+                    <span>Blood Gas Analyser</span>
+                </div>
+                <div class="wmebem-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+                    <span>Triage Training Tools</span>
+                </div>
+                <div class="wmebem-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+                    <span>QIP Generators</span>
+                </div>
+            </div>
+        </div>
+        <a href="https://wmebem.com" target="_blank" class="btn btn-primary">
+            Visit WMEBEM.com
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1080,10 +1596,10 @@
             <div class="footer-links">
                 <h5>Clinical AI</h5>
                 <ul>
-                    <li><a href="#" onclick="openModalById(1)">Fracture Detection</a></li>
-                    <li><a href="#" onclick="openModalById(2)">Stroke AI</a></li>
-                    <li><a href="#" onclick="openModalById(3)">Chest X-ray AI</a></li>
-                    <li><a href="#" onclick="openModalById(4)">AI Documentation</a></li>
+                    <li><a href="#" onclick="openModalById(1); return false;">Fracture Detection</a></li>
+                    <li><a href="#" onclick="openModalById(2); return false;">Stroke AI</a></li>
+                    <li><a href="#" onclick="openModalById(3); return false;">Chest X-ray AI</a></li>
+                    <li><a href="#" onclick="openModalById(4); return false;">AI Documentation</a></li>
                 </ul>
             </div>
             <div class="footer-links">
@@ -1134,6 +1650,26 @@
     </div>
 
     <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else if (prefersDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+
         // AI Tools Data
         const aiTools = [
             {
@@ -1173,7 +1709,7 @@
                         "Perfusion imaging for penumbra assessment"
                     ],
                     evidence: "Five-year Lancet Digital Health study: hospitals using Brainomix 360 Stroke doubled thrombectomy rates from 2.3% to 4.6%. Every 20-minute delay reduces full recovery probability by ~1%.",
-                    warning: "AI accelerates decision-making but clinical judgment remains paramount. Integration with ISDN pathways essential. Requires 24/7 connectivity and IT support.",
+                    warning: "AI accelerates decision-making but clinical judgement remains paramount. Integration with ISDN pathways essential. Requires 24/7 connectivity and IT support.",
                     tools: ["Brainomix e-Stroke", "RapidAI iSchemaView"],
                     timeSaved: "Accelerated door-to-treatment decisions"
                 }
@@ -1260,7 +1796,7 @@
                     ],
                     evidence: "The IR(ME)R nurse-led requesting document in this presentation demonstrates AI's ability to synthesise complex regulatory requirements with clinical evidence into practical implementation guidance.",
                     warning: "Guidelines International Network (2024) principles: human oversight essential, AI use must be transparent, all recommendations require clinical validation. Senior clinical sign-off mandatory.",
-                    tools: ["Claude", "ChatGPT", "Perplexity", "Elicit"],
+                    tools: ["Claude", "ChatGPT", "Perplexity", "NotebookLM"],
                     timeSaved: "Significant reduction in synthesis time"
                 }
             },
@@ -1342,11 +1878,11 @@
                         "Elicit - AI research assistant, 81.4% data extraction accuracy",
                         "Consensus - 200M+ peer-reviewed papers, rapid yes/no answers",
                         "Semantic Scholar - AI-enhanced citation analysis",
-                        "Research Rabbit - Citation mapping and discovery"
+                        "Perplexity Deep Research - Comprehensive multi-source reports"
                     ],
                     evidence: "SAGE Journals study: Elicit achieves 81.4% data extraction accuracy compared to 86.7% for human reviewers. Useful for preliminary searches and semi-automated systematic review support.",
                     warning: "AI tools should supplement, not replace, systematic search methodology. All key findings require primary source verification. Not suitable for definitive systematic reviews without human validation.",
-                    tools: ["Elicit", "Consensus", "Semantic Scholar", "Research Rabbit"],
+                    tools: ["Elicit", "Consensus", "Perplexity", "NotebookLM"],
                     timeSaved: "Accelerated literature synthesis"
                 }
             },
@@ -1388,7 +1924,7 @@
                     ],
                     evidence: "Hong Kong study: ChatGPT-4o showed potential for EM primary exam questions but 'lacks depth for complex assessments'. GPT-4 urology study: 50% of AI MCQs had acceptable discriminatory value.",
                     warning: "Human review essential—AI questions lack clinical nuance for high-stakes exams. Creating one high-quality MCQ traditionally requires ~24 hours and costs $1,500-$2,500; AI reduces this but doesn't eliminate review need.",
-                    tools: ["ChatGPT-4", "Claude", "Quizlet AI"],
+                    tools: ["ChatGPT", "Claude", "NotebookLM Quizzes"],
                     timeSaved: "Significant reduction in initial drafting"
                 }
             },
@@ -1430,8 +1966,8 @@
                         "Clinical reasoning explanations",
                         "Free tier available for evaluation"
                     ],
-                    evidence: "59,000+ clinicians registered globally including users at Harvard, Stanford, and Johns Hopkins. Positioned as assistant requiring clinical judgment, not standalone diagnostic tool.",
-                    warning: "Glass AI is NOT an MHRA-registered medical device. It explicitly positions as an 'assistant' requiring clinical judgment. Not approved for clinical use in NHS without appropriate governance. Enterprise version required for clinical deployment.",
+                    evidence: "59,000+ clinicians registered globally including users at Harvard, Stanford, and Johns Hopkins. Positioned as assistant requiring clinical judgement, not standalone diagnostic tool.",
+                    warning: "Glass AI is NOT an MHRA-registered medical device. It explicitly positions as an 'assistant' requiring clinical judgement. Not approved for clinical use in NHS without appropriate governance. Enterprise version required for clinical deployment.",
                     tools: ["Glass AI", "Isabel Healthcare", "DXplain"],
                     timeSaved: "Rapid differential generation"
                 }
@@ -1453,7 +1989,7 @@
                         "Safety concerns must be reported appropriately"
                     ],
                     evidence: "GMC November 2024: 29% of UK doctors have used AI in past 12 months, 52% optimistic about healthcare applications. However, doctors must 'feel confident to override AI recommendations when appropriate'.",
-                    warning: "Professional responsibility cannot be delegated to AI systems. Informed consent required for AI involvement in care. Documentation of AI use recommended. Maintain skills to practice without AI.",
+                    warning: "Professional responsibility cannot be delegated to AI systems. Informed consent required for AI involvement in care. Documentation of AI use recommended. Maintain skills to practise without AI.",
                     tools: ["GMC Learning Materials", "Good Medical Practice 2024"],
                     timeSaved: "N/A - Governance requirement"
                 }
@@ -1526,42 +2062,42 @@
             }
         ];
 
-        // Render cards
-        function renderCards(filter = 'all') {
-            const grid = document.getElementById('cardGrid');
-            grid.innerHTML = '';
-
-            const filteredTools = filter === 'all' 
-                ? aiTools 
-                : aiTools.filter(tool => tool.category === filter);
-
-            filteredTools.forEach((tool, index) => {
-                const card = document.createElement('div');
-                card.className = `card ${tool.category} fade-in`;
-                card.style.animationDelay = `${index * 0.05}s`;
-                card.innerHTML = `
-                    <div class="card-accent"></div>
-                    <div class="card-body">
-                        <span class="card-category">${tool.badge}</span>
-                        <h3>${tool.title}</h3>
-                        <p>${tool.description}</p>
-                        <div class="card-meta">
-                            <div class="card-evidence">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-                                ${tool.evidence}
+        // Render cards by category
+        function renderCardsByCategory() {
+            const categories = ['clinical', 'admin', 'education', 'governance'];
+            
+            categories.forEach(cat => {
+                const grid = document.getElementById(cat + 'Grid');
+                if (!grid) return;
+                
+                const tools = aiTools.filter(tool => tool.category === cat);
+                grid.innerHTML = '';
+                
+                tools.forEach((tool, index) => {
+                    const card = document.createElement('div');
+                    card.className = `card ${tool.category}`;
+                    card.style.animationDelay = `${index * 0.1}s`;
+                    card.innerHTML = `
+                        <div class="card-accent"></div>
+                        <div class="card-body">
+                            <span class="card-category">${tool.badge}</span>
+                            <h4>${tool.title}</h4>
+                            <p>${tool.description}</p>
+                            <div class="card-meta">
+                                <div class="card-evidence">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+                                    ${tool.evidence}
+                                </div>
+                                <span class="card-action">
+                                    Learn more
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </span>
                             </div>
-                            <span class="card-action">
-                                Learn more
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </span>
                         </div>
-                    </div>
-                `;
-                card.onclick = () => openModal(tool);
-                grid.appendChild(card);
-
-                // Trigger animation
-                setTimeout(() => card.classList.add('visible'), 50);
+                    `;
+                    card.onclick = () => openModal(tool);
+                    grid.appendChild(card);
+                });
             });
         }
 
@@ -1649,15 +2185,6 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // Navigation pills
-        document.querySelectorAll('.nav-pill').forEach(pill => {
-            pill.addEventListener('click', () => {
-                document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
-                renderCards(pill.dataset.filter);
-            });
-        });
-
         // Fade in on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -1675,7 +2202,7 @@
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
         // Initial render
-        renderCards();
+        renderCardsByCategory();
     </script>
 </body>
 </html>
