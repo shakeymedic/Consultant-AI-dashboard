@@ -373,15 +373,21 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .pres-grid-2, .pres-platform-grid, .pres-steps, .pres-action-cards { grid-template-columns: 1fr; }
+            .agentic-intro { grid-template-columns: 1fr !important; }
+            .agentic-warnings { grid-template-columns: 1fr !important; }
+            .portfolio-example > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 768px) {
             .hero { padding: 7rem 1.5rem 2rem; }
             .pres-slide { padding: 7rem 1.5rem 2rem; }
             .platform-grid { grid-template-columns: 1fr; }
             .start-here-grid { grid-template-columns: 1fr; }
+            .prompt-grid { grid-template-columns: 1fr; }
             .site-header { padding: 0.75rem 1rem; }
             .mode-tabs { top: 60px; }
             .section-nav { display: none; }
+            .portfolio-example > div:last-child { grid-template-columns: 1fr !important; }
+            .agentic-workflow > div { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -610,6 +616,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="pres-card" style="margin-top: 1.5rem; border: 2px solid var(--color-accent);">
+                    <h3>🤖 Emerging: Agentic Browsers (Comet, Claude Computer Use, Operator)</h3>
+                    <p>AI that controls your browser — navigating Kaizen, filling portfolio forms, automating repetitive tasks. Example workflow: Record FEG meeting → Copilot summarises → Agentic browser fills Kaizen form → You review & submit. <strong>No patient data.</strong></p>
+                </div>
             </div>
         </section>
 
@@ -693,8 +703,8 @@
                 <p class="hero-subtitle">Evidence-based guidance with verified statistics from the comprehensive NHS AI resource guide. All claims fact-checked with source URLs.</p>
                 <div class="hero-cta">
                     <a href="#use-today" class="btn btn-primary">Practical Prompts <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    <a href="#start-here" class="btn btn-secondary">Quick Start Guide</a>
-                    <a href="#limitations" class="btn btn-secondary">AI Limitations</a>
+                    <a href="#agentic" class="btn btn-secondary">Agentic Browsers</a>
+                    <a href="#start-here" class="btn btn-secondary">Quick Start</a>
                 </div>
             </div>
         </section>
@@ -1357,6 +1367,49 @@
                                 <span>Examples:</span> HSJ Awards, BMJ Awards, RCEM prizes, Trust awards
                             </div>
                         </div>
+
+                        <div class="prompt-card fade-in" style="border: 2px solid var(--color-accent);">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">🤖</span>
+                                <h4>Agentic Browser: FEG Form</h4>
+                            </div>
+                            <p class="prompt-description">Use with Comet or similar agentic browser to auto-fill portfolio forms.</p>
+                            <div class="prompt-box">
+                                <div class="prompt-label">Agentic browser prompt:</div>
+                                <code>Log into Kaizen at [URL]. Find trainee [NAME]. Create a new FEG entry dated [DATE]. Use this Teams meeting summary to populate the form fields - put discussion points in 'Topics Discussed', learning objectives in 'Learning Outcomes', and agreed actions in 'Action Plan': [PASTE COPILOT SUMMARY]</code>
+                            </div>
+                            <div class="prompt-examples">
+                                <span>Workflow:</span> Teams meeting → Copilot summary → Comet fills Kaizen → You review & submit
+                            </div>
+                        </div>
+
+                        <div class="prompt-card fade-in" style="border: 2px solid var(--color-accent);">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">🤖</span>
+                                <h4>Agentic Browser: CBD Entry</h4>
+                            </div>
+                            <p class="prompt-description">Auto-populate Case-Based Discussion from your reflection notes.</p>
+                            <div class="prompt-box">
+                                <div class="prompt-label">Agentic browser prompt:</div>
+                                <code>Log into Kaizen. Navigate to my portfolio. Create a new CBD entry. Case date: [DATE]. Assessor: [NAME]. Use these reflection notes to populate the clinical presentation, clinical reasoning, and learning points fields: [PASTE YOUR NOTES]. Leave the assessor feedback section blank.</code>
+                            </div>
+                            <div class="prompt-warning">⚠️ Never include patient-identifiable information in your notes. Use anonymised clinical details only.</div>
+                        </div>
+
+                        <div class="prompt-card fade-in" style="border: 2px solid var(--color-accent);">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">🤖</span>
+                                <h4>Agentic Browser: Portfolio Export</h4>
+                            </div>
+                            <p class="prompt-description">Extract and compile portfolio evidence for ARCP preparation.</p>
+                            <div class="prompt-box">
+                                <div class="prompt-label">Agentic browser prompt:</div>
+                                <code>Log into Kaizen. Go to my portfolio summary. Extract a list of all completed assessments from [START DATE] to [END DATE]. For each one, note: type, date, assessor name, outcome, and any development points. Format as a table I can paste into Word.</code>
+                            </div>
+                            <div class="prompt-examples">
+                                <span>Use for:</span> ARCP preparation, ES report writing, training progress reviews
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1449,6 +1502,272 @@
                             <div class="prompt-examples">
                                 <span>Examples:</span> Service change proposal, Performance concerns, New initiative launch, Resource request
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agentic Browsers Section -->
+        <section class="agentic-section" id="agentic" style="padding: 5rem 2rem; background: var(--color-bg-elevated); border-top: 1px solid var(--color-border);">
+            <div class="section-header fade-in">
+                <h2>Agentic Browsers: AI That Controls Your Computer</h2>
+                <p>The next evolution in AI productivity — browsers that can navigate websites, fill forms, and automate repetitive tasks for you.</p>
+            </div>
+            <div style="max-width: 1400px; margin: 0 auto;">
+                <!-- What Are Agentic Browsers -->
+                <div class="agentic-intro fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+                    <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 20px; padding: 2rem;">
+                        <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.5rem; margin-bottom: 1rem;">🤖 What Are Agentic Browsers?</h3>
+                        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Unlike traditional AI chatbots that only generate text, <strong>agentic browsers</strong> can actually interact with websites on your behalf — clicking buttons, filling forms, navigating pages, and completing multi-step workflows.</p>
+                        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Think of them as a highly capable assistant who can see your screen and operate your browser while you watch (or do something else).</p>
+                        <div style="background: var(--color-surface); border-radius: 12px; padding: 1rem; margin-top: 1rem;">
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin: 0;"><strong>Key difference:</strong> ChatGPT tells you <em>how</em> to do something. An agentic browser <em>does it for you</em>.</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 20px; padding: 2rem;">
+                        <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.5rem; margin-bottom: 1rem;">🌐 Comet Browser</h3>
+                        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;"><strong>Comet</strong> is an agentic browser built specifically for professionals. It can navigate complex web applications, fill multi-page forms, extract data from websites, and automate repetitive browser tasks.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="background: var(--color-surface); padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.8rem;">Form filling</span>
+                            <span style="background: var(--color-surface); padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.8rem;">Data extraction</span>
+                            <span style="background: var(--color-surface); padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.8rem;">Multi-step workflows</span>
+                            <span style="background: var(--color-surface); padding: 0.35rem 0.75rem; border-radius: 8px; font-size: 0.8rem;">Cross-site automation</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted);">Other agentic tools: Claude Computer Use, OpenAI Operator, Microsoft Copilot Vision, Google Project Mariner</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Automation Example -->
+                <div class="portfolio-example fade-in" style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); border-radius: 24px; padding: 2.5rem; color: white; margin-bottom: 3rem;">
+                    <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 2rem; margin-bottom: 0.5rem;">Portfolio Automation: The FEG Example</h3>
+                    <p style="opacity: 0.95; font-size: 1.1rem; margin-bottom: 2rem;">How to turn a 30-minute portfolio task into a 5-minute workflow using Copilot + Agentic Browser</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(10px);">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">1️⃣</div>
+                            <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Record the Meeting</h4>
+                            <p style="font-size: 0.9rem; opacity: 0.9;">Have your FEG/educational supervision meeting on Teams. NHS Copilot automatically transcribes and summarises it.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(10px);">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">2️⃣</div>
+                            <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Get the Summary</h4>
+                            <p style="font-size: 0.9rem; opacity: 0.9;">Copilot generates meeting notes: learning objectives discussed, progress against curriculum, agreed actions, PDP items.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(10px);">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">3️⃣</div>
+                            <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Agentic Browser Fills Kaizen</h4>
+                            <p style="font-size: 0.9rem; opacity: 0.9;">Give Comet the summary and instruct it to log into Kaizen, navigate to the FEG form, and populate all the required fields.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(10px);">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">4️⃣</div>
+                            <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Review & Submit</h4>
+                            <p style="font-size: 0.9rem; opacity: 0.9;">You review what the agent has filled in, make any edits, then submit. Done in minutes instead of 30+ minutes of typing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Use Cases Grid -->
+                <h3 class="fade-in" style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.75rem; margin-bottom: 1.5rem; text-align: center;">What Can Agentic Browsers Do for EM Consultants?</h3>
+                <div class="agentic-grid fade-in" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                    <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem;">📋</span>
+                            <h4 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; margin: 0;">Portfolio Documentation</h4>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Automate form-filling for Kaizen, Horus, or other portfolio platforms. Generate WPBAs, CBDs, and DOPs from your notes.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ FEG forms from meeting summaries</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ Reflective entries from case notes</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary);">→ MSF request distribution</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem;">📊</span>
+                            <h4 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; margin: 0;">Data Extraction</h4>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Pull data from multiple web sources and compile into reports or spreadsheets.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ Extract portfolio evidence summaries</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ Compile training logs from multiple systems</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary);">→ Gather rota data for analysis</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem;">📝</span>
+                            <h4 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; margin: 0;">Form Automation</h4>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Fill complex multi-page forms across NHS systems and external platforms.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ Study leave applications</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ Course registrations</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary);">→ Expense claims</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem;">🔄</span>
+                            <h4 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; margin: 0;">Cross-Platform Workflows</h4>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Chain actions across multiple websites in a single automated workflow.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ Teams summary → Kaizen entry</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ RCEM guidance → Local SOP draft</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary);">→ Datix themes → QIP structure</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem;">🎓</span>
+                            <h4 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; margin: 0;">Training Administration</h4>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Manage trainee-related admin tasks across multiple platforms.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ Bulk WPBA completion</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ Educational supervisor reports</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary);">→ ARCP preparation compilation</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem;">🔍</span>
+                            <h4 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; margin: 0;">Research & Evidence</h4>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Automate evidence gathering and literature management.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ PubMed searches with export</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border);">→ Guideline downloads and organisation</li>
+                            <li style="padding: 0.4rem 0; font-size: 0.85rem; color: var(--color-text-secondary);">→ CPD log population</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step by Step Example -->
+                <div class="agentic-workflow fade-in" style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 20px; padding: 2rem; margin-bottom: 3rem;">
+                    <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.5rem; margin-bottom: 1.5rem;">Step-by-Step: FEG from Teams Meeting to Kaizen</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h4 style="color: var(--color-primary); font-size: 1rem; margin-bottom: 1rem;">Part 1: Record & Summarise (NHS Copilot)</h4>
+                            <ol style="padding-left: 1.25rem; color: var(--color-text-secondary); font-size: 0.9rem;">
+                                <li style="margin-bottom: 0.75rem;">Schedule your FEG meeting in Teams with your trainee</li>
+                                <li style="margin-bottom: 0.75rem;">Start the meeting and enable transcription/recording</li>
+                                <li style="margin-bottom: 0.75rem;">Have your educational supervision discussion as normal</li>
+                                <li style="margin-bottom: 0.75rem;">After the meeting, Copilot generates a summary with:
+                                    <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                        <li>Key discussion points</li>
+                                        <li>Learning objectives covered</li>
+                                        <li>Agreed actions and PDP items</li>
+                                        <li>Follow-up dates</li>
+                                    </ul>
+                                </li>
+                                <li>Copy the summary or export as text</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--color-accent); font-size: 1rem; margin-bottom: 1rem;">Part 2: Form Filling (Comet/Agentic Browser)</h4>
+                            <ol style="padding-left: 1.25rem; color: var(--color-text-secondary); font-size: 0.9rem;">
+                                <li style="margin-bottom: 0.75rem;">Open Comet browser and paste your Copilot summary</li>
+                                <li style="margin-bottom: 0.75rem;">Give the instruction: <em>"Log into Kaizen at [URL], navigate to [trainee's name], open a new FEG form, and populate the fields using this meeting summary"</em></li>
+                                <li style="margin-bottom: 0.75rem;">Watch as Comet:
+                                    <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                        <li>Logs in with your credentials</li>
+                                        <li>Navigates to the correct trainee</li>
+                                        <li>Opens the FEG form</li>
+                                        <li>Maps summary content to form fields</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">Review each field the agent has populated</li>
+                                <li>Make any manual edits, then submit</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.08); border-radius: 12px; padding: 1rem; margin-top: 1.5rem; border-left: 4px solid var(--color-accent);">
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--color-text-secondary);"><strong style="color: var(--color-accent);">Time saved:</strong> What typically takes 30-45 minutes of typing and form navigation can be reduced to 5-10 minutes of review and submission.</p>
+                    </div>
+                </div>
+
+                <!-- Prompts for Agentic Browsers -->
+                <div class="agentic-prompts fade-in" style="background: var(--color-surface); border-radius: 20px; padding: 2rem; margin-bottom: 3rem;">
+                    <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.5rem; margin-bottom: 1.5rem;">Example Prompts for Agentic Browsers</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
+                        <div style="background: var(--color-bg-card); border-radius: 12px; padding: 1.25rem; border-left: 4px solid var(--color-primary);">
+                            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem;">📋 FEG Form Completion</h4>
+                            <code style="display: block; font-size: 0.8rem; color: var(--color-text-secondary); white-space: pre-wrap; line-height: 1.5;">"Log into Kaizen at [URL]. Find trainee [NAME]. Create a new FEG entry. Use this meeting summary to populate the discussion points, learning objectives, and action plan fields: [PASTE SUMMARY]"</code>
+                        </div>
+                        <div style="background: var(--color-bg-card); border-radius: 12px; padding: 1.25rem; border-left: 4px solid var(--color-primary);">
+                            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem;">📊 Portfolio Evidence Export</h4>
+                            <code style="display: block; font-size: 0.8rem; color: var(--color-text-secondary); white-space: pre-wrap; line-height: 1.5;">"Log into Kaizen. Navigate to my portfolio. Export a summary of all WPBAs completed in the last 6 months. Include: date, type, assessor, and outcome. Format as a table."</code>
+                        </div>
+                        <div style="background: var(--color-bg-card); border-radius: 12px; padding: 1.25rem; border-left: 4px solid var(--color-primary);">
+                            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem;">📝 CBD from Case Notes</h4>
+                            <code style="display: block; font-size: 0.8rem; color: var(--color-text-secondary); white-space: pre-wrap; line-height: 1.5;">"Log into Kaizen. Create a new CBD entry. The case involved [BRIEF DESCRIPTION]. Use these reflection notes to populate the clinical reasoning and learning points sections: [PASTE NOTES]"</code>
+                        </div>
+                        <div style="background: var(--color-bg-card); border-radius: 12px; padding: 1.25rem; border-left: 4px solid var(--color-primary);">
+                            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem;">📅 Study Leave Application</h4>
+                            <code style="display: block; font-size: 0.8rem; color: var(--color-text-secondary); white-space: pre-wrap; line-height: 1.5;">"Go to [STUDY LEAVE SYSTEM URL]. Fill in a new application for [COURSE NAME] on [DATE] at [LOCATION]. Course cost £[X], travel estimated £[Y]. Learning objective: [DESCRIPTION]. Submit for approval."</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warnings and Considerations -->
+                <div class="agentic-warnings fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div style="background: rgba(239, 68, 68, 0.08); border: 2px solid var(--color-danger); border-radius: 16px; padding: 1.5rem;">
+                        <h4 style="color: var(--color-danger); font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">⚠️ Important Considerations</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--color-text-secondary); font-size: 0.9rem;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">• <strong>Always review</strong> before submitting — agents can make mistakes</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">• <strong>Never use with patient data</strong> — these are consumer tools</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">• <strong>Credentials security</strong> — understand how the tool handles your logins</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">• <strong>Trust policies</strong> — check your organisation's stance on automation tools</li>
+                            <li style="padding: 0.5rem 0;">• <strong>Audit trail</strong> — ensure actions are still attributable to you</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.08); border: 2px solid var(--color-accent); border-radius: 16px; padding: 1.5rem;">
+                        <h4 style="color: var(--color-accent); font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">✅ Best Use Cases</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--color-text-secondary); font-size: 0.9rem;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">• Portfolio documentation (Kaizen, Horus)</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">• Training administration</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">• Study leave and expense forms</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">• CPD logging and evidence compilation</li>
+                            <li style="padding: 0.5rem 0;">• Course registrations and bookings</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 1rem; margin-bottom: 0;">These are personal administrative tasks with no patient data involved.</p>
+                    </div>
+                </div>
+
+                <!-- Available Tools -->
+                <div class="agentic-tools fade-in" style="margin-top: 3rem;">
+                    <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Agentic Browser Tools Available Now</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; text-align: center;">
+                            <div style="width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, #6366f1, #8b5cf6); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-weight: 800; font-size: 1.25rem;">C</div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Comet Browser</h4>
+                            <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.75rem;">Purpose-built agentic browser. Natural language commands. Good for complex multi-step workflows.</p>
+                            <a href="https://www.cometbrowser.com" target="_blank" style="font-size: 0.85rem; color: var(--color-primary); text-decoration: none;">cometbrowser.com →</a>
+                        </div>
+                        <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; text-align: center;">
+                            <div style="width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, #d4a574, #c4956c); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-weight: 800; font-size: 1.25rem;">C</div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Claude Computer Use</h4>
+                            <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.75rem;">Anthropic's computer control feature. Can see screen and control mouse/keyboard. Currently in beta.</p>
+                            <a href="https://www.anthropic.com" target="_blank" style="font-size: 0.85rem; color: var(--color-primary); text-decoration: none;">anthropic.com →</a>
+                        </div>
+                        <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; text-align: center;">
+                            <div style="width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, #10a37f, #1a7f5a); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-weight: 800; font-size: 1.25rem;">O</div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">OpenAI Operator</h4>
+                            <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.75rem;">OpenAI's agent for web tasks. Can browse, fill forms, and complete online tasks autonomously.</p>
+                            <a href="https://www.openai.com" target="_blank" style="font-size: 0.85rem; color: var(--color-primary); text-decoration: none;">openai.com →</a>
+                        </div>
+                        <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; text-align: center;">
+                            <div style="width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, #4285f4, #ea4335); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-weight: 800; font-size: 1.25rem;">M</div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Google Mariner</h4>
+                            <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.75rem;">Google's Project Mariner. Chrome extension for web automation. Currently limited access.</p>
+                            <a href="https://deepmind.google/technologies/project-mariner/" target="_blank" style="font-size: 0.85rem; color: var(--color-primary); text-decoration: none;">deepmind.google →</a>
                         </div>
                     </div>
                 </div>
@@ -1578,6 +1897,11 @@
                             <h5>Rota Analysis</h5>
                             <p>Analyse staffing patterns, identify gaps, check WTR compliance.</p>
                             <span class="app-card-tag">Use Now</span>
+                        </div>
+                        <div class="app-card" onclick="openModal('agenticbrowsers')">
+                            <h5>Agentic Browser Automation</h5>
+                            <p>AI browsers that fill forms, navigate Kaizen, complete portfolio entries from your notes.</p>
+                            <span class="app-card-tag">Emerging Tech</span>
                         </div>
                     </div>
                 </div>
@@ -2410,6 +2734,16 @@
                     <div class="modal-section"><h4>Overview</h4><p>AI can analyse staffing patterns to identify gaps, check Working Time Regulations compliance, and suggest improvements.</p></div>
                     <div class="modal-section"><h4>What AI Can Do</h4><p>Identify coverage gaps by time/day. Check WTR compliance (rest periods, max hours). Analyse skill mix. Compare staffing to activity patterns. Suggest optimisations.</p></div>
                     <div class="modal-section"><h4>How to Use</h4><p>Describe your rota pattern (shifts, staff numbers, grade mix) or paste a simplified rota structure. Include your department's attendance patterns if available.</p></div>
+                `
+            },
+            agenticbrowsers: {
+                title: 'Agentic Browser Automation',
+                content: `
+                    <div class="modal-section"><h4>Overview</h4><p>Agentic browsers are AI tools that can actually control your browser — navigating websites, filling forms, and completing multi-step workflows on your behalf.</p></div>
+                    <div class="modal-section"><h4>Portfolio Use Case</h4><p>Record a FEG meeting with Copilot → Get summary → Use Comet browser to log into Kaizen, navigate to the trainee, and populate the FEG form fields with the meeting content.</p></div>
+                    <div class="modal-section"><h4>Key Tools</h4><p><strong>Comet Browser:</strong> Purpose-built agentic browser for professionals. <strong>Claude Computer Use:</strong> Anthropic's screen control feature. <strong>OpenAI Operator:</strong> Web task automation agent.</p></div>
+                    <div class="modal-section"><h4>Best For</h4><p>Portfolio documentation (Kaizen, Horus), study leave applications, expense claims, CPD logging, course registrations — any repetitive form-filling that doesn't involve patient data.</p></div>
+                    <div class="modal-warning"><p><strong>⚠️ Important:</strong> Never use with patient data. Always review before submitting. Check your Trust's policy on automation tools. These are consumer tools without NHS governance compliance.</p></div>
                 `
             },
             simulation: {
