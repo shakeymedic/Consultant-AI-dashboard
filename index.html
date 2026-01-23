@@ -205,11 +205,11 @@
                         </div>
                     </div>
                     <div class="pres-platform-card">
-                        <div class="pres-platform-logo notebooklm">N</div>
+                        <div class="pres-platform-logo iatrox">I</div>
                         <div class="pres-platform-info">
-                            <h4>NotebookLM</h4>
-                            <div class="subtitle">Grounded Responses Only</div>
-                            <p>Upload guidelines, get answers ONLY from those sources. Eliminates hallucination.</p>
+                            <h4>IatroX</h4>
+                            <div class="subtitle">UK Clinical Search</div>
+                            <p>UK-centric alternative to OpenEvidence. Grounded in NICE/BNF/CKS. Free for NHS staff.</p>
                         </div>
                     </div>
                     <div class="pres-platform-card">
@@ -217,7 +217,7 @@
                         <div class="pres-platform-info">
                             <h4>OpenEvidence</h4>
                             <div class="subtitle">Evidence Synthesis</div>
-                            <p>Cites sources. US-centric. <strong>Warning: Requires US verification.</strong> Use 'IatroX' for UK equivalent.</p>
+                            <p>Pulls from NEJM/JAMA. Highly accurate but US-centric. <strong>Requires US license verification.</strong></p>
                         </div>
                     </div>
                     <div class="pres-platform-card">
@@ -448,7 +448,9 @@
                     <button class="prompt-cat-tab" onclick="showPromptCategory('management')">Management</button>
                     <button class="prompt-cat-tab" onclick="showPromptCategory('education')">Education</button>
                     <button class="prompt-cat-tab" onclick="showPromptCategory('career')">Career & Training</button>
+                    <button class="prompt-cat-tab" onclick="showPromptCategory('communication')">Communication</button>
                 </div>
+
                 <div class="prompt-category active" id="prompts-sops">
                     <div class="prompt-grid">
                         <div class="prompt-card fade-in">
@@ -461,12 +463,108 @@
                             <p class="prompt-description">Modernise or adapt existing protocols to current evidence.</p>
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>I have an existing guideline for [TOPIC]. Please review and suggest updates based on: 1) Current NICE guidance, 2) Recent RCEM standards, 3) Best practice from Royal Colleges. Highlight what should change and why. Here is the current guideline: [PASTE TEXT]</code></div>
                         </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📊</span><h4>Create a Clinical Pathway</h4></div>
+                            <p class="prompt-description">Design patient pathways with decision points.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a clinical pathway flowchart for [CONDITION] in the ED. Include: Triage criteria, Initial assessment steps, Investigation ordering criteria, Treatment decision points, Admission vs discharge criteria, Safety netting.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📝</span><h4>Patient Information Leaflet</h4></div>
+                            <p class="prompt-description">Create accessible patient-facing materials.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a patient information leaflet about [CONDITION] for patients discharged from ED. Use plain English (reading age 11), include: What it is, Warning signs to return, Self-care advice, Contact numbers.</code></div>
+                        </div>
                     </div>
                 </div>
-                 <div class="prompt-category" id="prompts-audit"><div class="prompt-grid"><p>Select category to view prompts.</p></div></div>
-                 <div class="prompt-category" id="prompts-management"><div class="prompt-grid"><p>Select category to view prompts.</p></div></div>
-                 <div class="prompt-category" id="prompts-education"><div class="prompt-grid"><p>Select category to view prompts.</p></div></div>
-                 <div class="prompt-category" id="prompts-career"><div class="prompt-grid"><p>Select category to view prompts.</p></div></div>
+
+                <div class="prompt-category" id="prompts-audit">
+                    <div class="prompt-grid">
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📈</span><h4>Analyse Audit Data</h4></div>
+                            <p class="prompt-description">Get AI to interpret your anonymised audit results.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>I have audit data from [AUDIT TOPIC]. Please analyse and provide: 1) Summary statistics, 2) Comparison to standards (specify: RCEM/NICE targets), 3) Key findings, 4) Areas of good practice, 5) Recommended actions. Here is the anonymised data: [PASTE DATA]</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🎯</span><h4>Design an Audit</h4></div>
+                            <p class="prompt-description">Create audit methodology aligned to RCEM standards.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Design a clinical audit for [TOPIC]. Include: Audit title, Background, Aims, Standards (with NICE refs), Methodology, Sample size calculation, Data collection tool fields, Analysis plan.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📋</span><h4>Write Audit Report</h4></div>
+                            <p class="prompt-description">Structure your findings into a formal report.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a clinical audit report based on these findings: [PASTE FINDINGS]. Structure as: Executive summary, Background, Methodology, Results, Discussion, Recommendations, Action plan.</code></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prompt-category" id="prompts-management">
+                    <div class="prompt-grid">
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">💼</span><h4>Business Case (Five Case)</h4></div>
+                            <p class="prompt-description">Structure NHS business cases properly.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Draft an NHS business case for [PROPOSAL] using the Green Book Five Case Model. Include: Strategic Case, Economic Case, Commercial Case, Financial Case, Management Case.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📝</span><h4>Job Description</h4></div>
+                            <p class="prompt-description">Create role descriptions for new posts.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a job description for a [ROLE TITLE] in an NHS ED. Include: Job title, Band, Reporting structure, Job summary, Key responsibilities, Person specification (essential/desirable). Align to Agenda for Change.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">⚡</span><h4>Service Improvement Proposal</h4></div>
+                            <p class="prompt-description">Structure proposals for operational changes.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a service improvement proposal for [CHANGE]. Include: Current state/problem, Proposed change, Evidence base, Expected benefits, Implementation plan, Risks and mitigations.</code></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prompt-category" id="prompts-education">
+                    <div class="prompt-grid">
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🎓</span><h4>Teaching Presentation</h4></div>
+                            <p class="prompt-description">Create structured teaching sessions.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a 30-minute teaching presentation on [TOPIC] for [AUDIENCE]. Include: Learning objectives, Key content points, Clinical cases, Interactive elements, Summary, MCQ questions.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🎭</span><h4>Simulation Scenario</h4></div>
+                            <p class="prompt-description">Generate realistic training scenarios.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a simulation scenario for [TOPIC] at [LEVEL]. Include: Overview, Learning objectives, Patient details, Initial presentation, Vital signs progression, Investigation results, Expected interventions, Debriefing points.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">❓</span><h4>MCQ Bank</h4></div>
+                            <p class="prompt-description">Create assessment questions with rationales.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create 10 single best answer MCQs on [TOPIC] for FRCEM. Each question needs: Clinical stem, 5 options, Correct answer, Detailed explanation of why correct answer is right and distractors are wrong.</code></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prompt-category" id="prompts-career">
+                    <div class="prompt-grid">
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📄</span><h4>CV Review</h4></div>
+                            <p class="prompt-description">Get feedback on your medical CV.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Review my CV for a [ROLE] position. Suggest improvements for: Structure, Achievement-focused language, Quantifying impact, Gaps to address. Here is my CV: [PASTE TEXT]</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🎯</span><h4>Appraisal Preparation</h4></div>
+                            <p class="prompt-description">Prepare for annual appraisal.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me prepare for medical appraisal. Help me reflect on: 1) Supporting information to gather, 2) Presenting CPD, 3) Structuring QI work, 4) Significant events, 5) PDP objectives.</code></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prompt-category" id="prompts-communication">
+                    <div class="prompt-grid">
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📧</span><h4>Professional Emails</h4></div>
+                            <p class="prompt-description">Draft effective professional communications.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Draft a professional email to [RECIPIENT] regarding [TOPIC]. It should be concise, include context, make a specific request, and maintain professional tone. Key points: [LIST]</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">😤</span><h4>Complaint Response</h4></div>
+                            <p class="prompt-description">Structure empathetic complaint responses.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me structure a response to a patient complaint about [GENERAL TOPIC]. Do not include patient details. Structure: Acknowledge concerns, Explain review (without admitting liability), Describe learning, Offer next steps.</code></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -484,6 +582,16 @@
                      <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 20px; padding: 2rem;">
                         <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.5rem; margin-bottom: 1rem;">🌐 Comet Browser</h3>
                         <p style="color: var(--color-text-secondary);">An agentic browser for professionals. Automates form filling, data extraction, and repetitive web tasks.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-example fade-in" style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); border-radius: 24px; padding: 2.5rem; color: white; margin-bottom: 3rem;">
+                    <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 2rem; margin-bottom: 0.5rem;">Portfolio Automation: The FEG Example</h3>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem;">
+                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem;"><h4>1. Record</h4><p>Record FEG meeting on Teams.</p></div>
+                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem;"><h4>2. Summarise</h4><p>Copilot generates meeting summary.</p></div>
+                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem;"><h4>3. Automate</h4><p>Agentic browser fills Kaizen form.</p></div>
+                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem;"><h4>4. Submit</h4><p>You review and sign off.</p></div>
                     </div>
                 </div>
             </div>
@@ -506,10 +614,43 @@
                             <p>9.5% sensitivity improvement. NICE HTG739.</p>
                             <span class="app-card-tag">Live in 50+ Trusts</span>
                         </div>
+                        <div class="app-card" onclick="openModal('stroke')">
+                            <h5>Stroke Imaging AI</h5>
+                            <p>107 stroke units using Brainomix. 2x thrombectomy rates.</p>
+                            <span class="app-card-tag">Live</span>
+                        </div>
                         <div class="app-card" onclick="openModal('scribes')">
                             <h5>AI Clinical Scribes</h5>
                             <p>TORTUS, Heidi, Dragon. Save ~47 mins/shift.</p>
                             <span class="app-card-tag">Pilot Stage</span>
+                        </div>
+                        <div class="app-card" onclick="openModal('sepsis')">
+                            <h5>Sepsis Digital Alerts</h5>
+                            <p>70% reduction in progression. Nationally mandated.</p>
+                            <span class="app-card-tag">Mandated</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-category fade-in">
+                    <div class="app-category-header">
+                        <div class="app-category-icon admin">📋</div>
+                        <h3 class="app-category-title">Administrative Applications</h3>
+                    </div>
+                    <div class="app-grid">
+                        <div class="app-card" onclick="openModal('meetings')">
+                            <h5>Meeting Summarisation</h5>
+                            <p>NHS Copilot. 43 min/day saved.</p>
+                            <span class="app-card-tag">Free for NHS.net</span>
+                        </div>
+                        <div class="app-card" onclick="openModal('businesscase')">
+                            <h5>Business Case Drafting</h5>
+                            <p>Five Case Model structure drafting.</p>
+                            <span class="app-card-tag">Use Now</span>
+                        </div>
+                        <div class="app-card" onclick="openModal('sops')">
+                            <h5>SOPs & Guidelines</h5>
+                            <p>Generate or update clinical protocols.</p>
+                            <span class="app-card-tag">Use Now</span>
                         </div>
                     </div>
                 </div>
@@ -526,6 +667,7 @@
                     <tbody>
                         <tr><td><strong>Stroke Imaging AI</strong></td><td>2× thrombectomy rates</td><td><span class="status-badge live">Live</span></td></tr>
                         <tr><td><strong>AI Scribes</strong></td><td>47 min/shift saved</td><td><span class="status-badge pilot">Pilot</span></td></tr>
+                        <tr><td><strong>Fracture AI</strong></td><td>9.5% sensitivity gain</td><td><span class="status-badge live">Live</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -542,20 +684,20 @@
                         <div class="platform-logo openevidence">O</div>
                         <div class="platform-info">
                             <h3>OpenEvidence</h3>
-                            <span>Verified Evidence Synthesis</span>
+                            <span>Evidence Synthesis</span>
                         </div>
                     </div>
                     <div class="platform-body">
-                        <p class="platform-description">A "super-fast librarian" that synthesizes answers strictly from peer-reviewed medical literature. Zero hallucination policy (claims). Scores 100% on USMLE.</p>
+                        <p class="platform-description">A "super-fast librarian" that synthesizes answers strictly from peer-reviewed medical literature (NEJM, JAMA). Zero hallucination policy (claims). Scores 100% on USMLE.</p>
                         <div class="platform-compliance">
                             <h4>ℹ️ Status</h4>
                             <div class="compliance-tags">
-                                <span class="compliance-tag">Free for US HCPs</span>
+                                <span class="compliance-tag">Free for Verified HCPs</span>
                                 <span class="compliance-tag">US-Centric</span>
                             </div>
                         </div>
                         <div class="platform-warning">
-                            <p><strong>⚠️ Warning for UK:</strong> Free access currently requires <strong>US medical license verification</strong>. Content is US-centric (FDA, US meds). For UK specific equivalent, see <strong>IatroX</strong>.</p>
+                            <p><strong>⚠️ Warning for UK:</strong> Free access currently requires <strong>US medical license verification</strong> (NPI). Content is US-centric (FDA, US meds). For UK equivalent, see <strong>IatroX</strong>.</p>
                         </div>
                     </div>
                 </div>
@@ -565,16 +707,16 @@
                         <div class="platform-logo iatrox">I</div>
                         <div class="platform-info">
                             <h3>IatroX</h3>
-                            <span>UK-Centric Clinical Search</span>
+                            <span>UK Clinical Search</span>
                         </div>
                     </div>
                     <div class="platform-body">
-                        <p class="platform-description">The UK alternative to OpenEvidence. RAG-based AI grounded in NICE guidelines, CKS, and UK formularies. Free for NHS staff.</p>
+                        <p class="platform-description">The UK alternative to OpenEvidence. RAG-based AI grounded in NICE guidelines, CKS, and UK formularies. Includes brainstorming and quiz modes.</p>
                         <div class="platform-compliance">
                             <h4>✓ Status</h4>
                             <div class="compliance-tags">
                                 <span class="compliance-tag">UK/NICE Grounded</span>
-                                <span class="compliance-tag">Free Tier</span>
+                                <span class="compliance-tag">Free</span>
                             </div>
                         </div>
                         <div class="platform-use-cases">
@@ -650,7 +792,7 @@
                     <div class="scenario-box">
                         <h3>When AI Gets It Wrong</h3>
                         <p>You ask AI about a drug interaction. It confidently provides a fake PubMed citation.</p>
-                        <div class="scenario-step"><h4>✅ Always Verify</h4><p>Click every citation. Use tools like NotebookLM or IatroX/OpenEvidence that cite sources.</p></div>
+                        <div class="scenario-step"><h4>✅ Always Verify</h4><p>Click every citation. Use tools like NotebookLM or IatroX that cite sources.</p></div>
                     </div>
                 </div>
             </div>
