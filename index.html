@@ -205,19 +205,19 @@
                         </div>
                     </div>
                     <div class="pres-platform-card">
-                        <div class="pres-platform-logo iatrox">I</div>
+                        <div class="pres-platform-logo notebooklm">N</div>
                         <div class="pres-platform-info">
-                            <h4>IatroX</h4>
-                            <div class="subtitle">UK Clinical Search</div>
-                            <p>UK-centric alternative to OpenEvidence. Grounded in NICE/BNF/CKS. Free for NHS staff.</p>
+                            <h4>NotebookLM</h4>
+                            <div class="subtitle">Grounded Responses Only</div>
+                            <p>Upload guidelines, get answers ONLY from those sources. Eliminates hallucination.</p>
                         </div>
                     </div>
                     <div class="pres-platform-card">
                         <div class="pres-platform-logo openevidence">O</div>
                         <div class="pres-platform-info">
-                            <h4>OpenEvidence</h4>
+                            <h4>OpenEvidence / IatroX</h4>
                             <div class="subtitle">Evidence Synthesis</div>
-                            <p>Pulls from NEJM/JAMA. Highly accurate but US-centric. <strong>Requires US license verification.</strong></p>
+                            <p>OpenEvidence (US-centric). <strong>IatroX</strong> is the UK alternative grounded in NICE/CKS. Both cite sources.</p>
                         </div>
                     </div>
                     <div class="pres-platform-card">
@@ -473,6 +473,16 @@
                             <p class="prompt-description">Create accessible patient-facing materials.</p>
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a patient information leaflet about [CONDITION] for patients discharged from ED. Use plain English (reading age 11), include: What it is, Warning signs to return, Self-care advice, Contact numbers.</code></div>
                         </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">⚠️</span><h4>Risk Assessment</h4></div>
+                            <p class="prompt-description">Generate risk assessments for new processes/equipment.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a risk assessment for [PROCESS] in an NHS ED. Use a 5x5 matrix. Include: Hazards, Who is harmed, Current controls, Risk rating, Additional controls, Residual risk.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🏥</span><h4>Departmental Policy</h4></div>
+                            <p class="prompt-description">Draft formal policies with governance structure.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Draft a policy for [TOPIC] in an NHS ED. Include: Policy statement, Scope, Roles, Procedure, Monitoring, Training, Equality impact, Version control.</code></div>
+                        </div>
                     </div>
                 </div>
 
@@ -489,9 +499,24 @@
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Design a clinical audit for [TOPIC]. Include: Audit title, Background, Aims, Standards (with NICE refs), Methodology, Sample size calculation, Data collection tool fields, Analysis plan.</code></div>
                         </div>
                         <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📊</span><h4>Create Data Collection Tool</h4></div>
+                            <p class="prompt-description">Generate structured proformas for data collection.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a data collection proforma for auditing [TOPIC]. Include fields for: Demographics (anonymised), Clinical variables, Process measures, Outcome measures. Format as a table for Excel.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📉</span><h4>Interpret Run Charts</h4></div>
+                            <p class="prompt-description">Help interpret quality improvement data.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>I have [METRIC] data over time. Help me interpret using SPC principles: 1) Special cause variation? 2) Trends? 3) Suggested actions? Data: [PASTE DATA]</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
                             <div class="prompt-card-header"><span class="prompt-icon">📋</span><h4>Write Audit Report</h4></div>
                             <p class="prompt-description">Structure your findings into a formal report.</p>
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a clinical audit report based on these findings: [PASTE FINDINGS]. Structure as: Executive summary, Background, Methodology, Results, Discussion, Recommendations, Action plan.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🔍</span><h4>Incident Theme Analysis</h4></div>
+                            <p class="prompt-description">Identify patterns across multiple incidents (PSIRF).</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Analyse these anonymised incident descriptions for themes. Identify: 1) Contributing factors, 2) System issues, 3) Recurring themes, 4) Learning points. [PASTE ANONYMISED TEXT]</code></div>
                         </div>
                     </div>
                 </div>
@@ -504,14 +529,39 @@
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Draft an NHS business case for [PROPOSAL] using the Green Book Five Case Model. Include: Strategic Case, Economic Case, Commercial Case, Financial Case, Management Case.</code></div>
                         </div>
                         <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📅</span><h4>Rota Analysis</h4></div>
+                            <p class="prompt-description">Analyse staffing patterns and identify gaps.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Analyse this rota data for [STAFF GROUP]. Identify: 1) Coverage gaps, 2) WTR compliance issues, 3) Skill mix concerns. Here is the pattern: [PASTE]</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
                             <div class="prompt-card-header"><span class="prompt-icon">📝</span><h4>Job Description</h4></div>
                             <p class="prompt-description">Create role descriptions for new posts.</p>
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a job description for a [ROLE TITLE] in an NHS ED. Include: Job title, Band, Reporting structure, Job summary, Key responsibilities, Person specification (essential/desirable). Align to Agenda for Change.</code></div>
                         </div>
                         <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🎤</span><h4>Interview Questions</h4></div>
+                            <p class="prompt-description">Generate competency-based interview questions.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create interview questions for [ROLE]. Include: Clinical scenarios, Leadership, Teaching, Values-based questions. Provide scoring guidance.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📊</span><h4>Workforce Planning</h4></div>
+                            <p class="prompt-description">Build the case for staffing changes.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a workforce planning paper for [DEPT]. Include: Current establishment, Activity data, Gap analysis against RCEM standards, Risk assessment, Options, Recommendations.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📈</span><h4>Performance Report</h4></div>
+                            <p class="prompt-description">Structure monthly/quarterly performance updates.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a monthly performance report template. Include: Executive summary, Key metrics (4hr, 12hr), Activity trends, Quality indicators, Workforce, Finance, Risks.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
                             <div class="prompt-card-header"><span class="prompt-icon">⚡</span><h4>Service Improvement Proposal</h4></div>
                             <p class="prompt-description">Structure proposals for operational changes.</p>
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a service improvement proposal for [CHANGE]. Include: Current state/problem, Proposed change, Evidence base, Expected benefits, Implementation plan, Risks and mitigations.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🔴</span><h4>Risk Register Entry</h4></div>
+                            <p class="prompt-description">Document risks in standard format.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a risk register entry for [RISK]. Include: ID, Description (cause-event-consequence), Owner, Current controls, Risk score (5x5), Mitigation actions.</code></div>
                         </div>
                     </div>
                 </div>
@@ -533,6 +583,21 @@
                             <p class="prompt-description">Create assessment questions with rationales.</p>
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create 10 single best answer MCQs on [TOPIC] for FRCEM. Each question needs: Clinical stem, 5 options, Correct answer, Detailed explanation of why correct answer is right and distractors are wrong.</code></div>
                         </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📚</span><h4>Guideline Summary</h4></div>
+                            <p class="prompt-description">Create digestible summaries of complex guidelines.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Summarise [GUIDELINE] for ED staff. Include: Key recommendations, What's new, Red flags, Algorithm, Common pitfalls. Cite specific recommendations.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🗣️</span><h4>OSCE Station</h4></div>
+                            <p class="prompt-description">Design practical assessment stations.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create an OSCE station for [SKILL]. Include: Candidate instructions, Actor brief, Mark scheme with criteria, Global rating scale, Time, Equipment needed.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📖</span><h4>Case-Based Discussion</h4></div>
+                            <p class="prompt-description">Structure educational case discussions.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a CBD template for [CASE]. Include: Anonymised summary, Discussion questions (reasoning, evidence, ethics), Model answers, Teaching points.</code></div>
+                        </div>
                     </div>
                 </div>
 
@@ -544,9 +609,29 @@
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Review my CV for a [ROLE] position. Suggest improvements for: Structure, Achievement-focused language, Quantifying impact, Gaps to address. Here is my CV: [PASTE TEXT]</code></div>
                         </div>
                         <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">✍️</span><h4>Supporting Statement</h4></div>
+                            <p class="prompt-description">Structure application supporting statements.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me structure a supporting statement for [POSITION]. Criteria: [LIST]. Help me identify STAR examples for each. My experience: [SUMMARY]</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
                             <div class="prompt-card-header"><span class="prompt-icon">🎯</span><h4>Appraisal Preparation</h4></div>
                             <p class="prompt-description">Prepare for annual appraisal.</p>
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me prepare for medical appraisal. Help me reflect on: 1) Supporting information to gather, 2) Presenting CPD, 3) Structuring QI work, 4) Significant events, 5) PDP objectives.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📝</span><h4>Reference Writing</h4></div>
+                            <p class="prompt-description">Structure professional references.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me write a reference for [NAME] for [ROLE]. Cover: Clinical competence, Professionalism, Teamwork, Leadership. Key strengths observed: [LIST].</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🎓</span><h4>Training Application</h4></div>
+                            <p class="prompt-description">Prepare for specialty training applications.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me prepare for [SPECIALTY] application. Self-assessment criteria: [LIST]. Help me identify evidence and score myself.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🏆</span><h4>Award Application</h4></div>
+                            <p class="prompt-description">Structure nominations and applications.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me write a nomination for [AWARD]. Criteria: [LIST]. Structure a narrative that demonstrates impact, innovation, and evidence.</code></div>
                         </div>
                     </div>
                 </div>
@@ -562,6 +647,26 @@
                             <div class="prompt-card-header"><span class="prompt-icon">😤</span><h4>Complaint Response</h4></div>
                             <p class="prompt-description">Structure empathetic complaint responses.</p>
                             <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me structure a response to a patient complaint about [GENERAL TOPIC]. Do not include patient details. Structure: Acknowledge concerns, Explain review (without admitting liability), Describe learning, Offer next steps.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📊</span><h4>Board Paper</h4></div>
+                            <p class="prompt-description">Format papers for governance committees.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Format this as an NHS Board paper: [CONTENT]. Sections: Executive summary, Purpose, Background, Position, Proposal, Finance, Risk, Recommendation.</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📢</span><h4>Staff Communication</h4></div>
+                            <p class="prompt-description">Craft clear messages for departmental updates.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a staff update about [CHANGE]. Explain 'why', what staff need to do, timeline, and support available. Tone: [TONE].</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">📰</span><h4>Newsletter</h4></div>
+                            <p class="prompt-description">Create engaging departmental updates.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a departmental newsletter. Sections: Welcome, Key updates, Staff achievements, Learning from incidents, Events. Items to include: [LIST].</code></div>
+                        </div>
+                        <div class="prompt-card fade-in">
+                            <div class="prompt-card-header"><span class="prompt-icon">🤝</span><h4>Stakeholder Brief</h4></div>
+                            <p class="prompt-description">Summarise complex issues for different audiences.</p>
+                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a brief on [TOPIC] for [AUDIENCE]. Key messages, Background, Status, Ask, Timeline. Keep to one page.</code></div>
                         </div>
                     </div>
                 </div>
@@ -688,16 +793,9 @@
                         </div>
                     </div>
                     <div class="platform-body">
-                        <p class="platform-description">A "super-fast librarian" that synthesizes answers strictly from peer-reviewed medical literature (NEJM, JAMA). Zero hallucination policy (claims). Scores 100% on USMLE.</p>
-                        <div class="platform-compliance">
-                            <h4>ℹ️ Status</h4>
-                            <div class="compliance-tags">
-                                <span class="compliance-tag">Free for Verified HCPs</span>
-                                <span class="compliance-tag">US-Centric</span>
-                            </div>
-                        </div>
+                        <p class="platform-description">"Super-fast librarian" synthesizing answers from peer-reviewed lit (NEJM, JAMA). Zero hallucination policy. <strong>Requires US license.</strong></p>
                         <div class="platform-warning">
-                            <p><strong>⚠️ Warning for UK:</strong> Free access currently requires <strong>US medical license verification</strong> (NPI). Content is US-centric (FDA, US meds). For UK equivalent, see <strong>IatroX</strong>.</p>
+                            <p><strong>⚠️ Warning for UK:</strong> US-centric (FDA). Use <strong>IatroX</strong> for UK/NICE grounded equivalent.</p>
                         </div>
                     </div>
                 </div>
@@ -711,14 +809,7 @@
                         </div>
                     </div>
                     <div class="platform-body">
-                        <p class="platform-description">The UK alternative to OpenEvidence. RAG-based AI grounded in NICE guidelines, CKS, and UK formularies. Includes brainstorming and quiz modes.</p>
-                        <div class="platform-compliance">
-                            <h4>✓ Status</h4>
-                            <div class="compliance-tags">
-                                <span class="compliance-tag">UK/NICE Grounded</span>
-                                <span class="compliance-tag">Free</span>
-                            </div>
-                        </div>
+                        <p class="platform-description">UK alternative to OpenEvidence. RAG-based AI grounded in NICE guidelines, CKS, and UK formularies. Free for NHS staff.</p>
                         <div class="platform-use-cases">
                             <h4>Best For</h4>
                             <div class="use-case-tags">
