@@ -375,3 +375,50 @@ footer { background: var(--color-bg-elevated); border-top: 1px solid var(--color
     .portfolio-example > div:last-child { grid-template-columns: 1fr !important; }
     .agentic-workflow > div { grid-template-columns: 1fr !important; }
 }
+
+/* NEW STYLES: Walkthrough Section */
+.walkthrough-section { background: var(--color-bg-elevated); padding: 5rem 2rem; }
+.walkthrough-tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+.walkthrough-tab { padding: 0.75rem 2rem; border-radius: 100px; border: 1px solid var(--color-border); background: var(--color-bg-card); font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; color: var(--color-text-secondary); }
+.walkthrough-tab:hover { border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-2px); }
+.walkthrough-tab.active { background: var(--color-primary); color: white; border-color: var(--color-primary); box-shadow: var(--shadow-md); }
+
+.walkthrough-card { display: none; background: var(--color-bg-card); border-radius: 24px; border: 1px solid var(--color-border); padding: 3rem; box-shadow: var(--shadow-lg); animation: slideUp 0.3s ease-out; }
+.walkthrough-card.active { display: block; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.walk-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem; }
+.walk-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; font-weight: 800; flex-shrink: 0; }
+.walk-icon.copilot { background: linear-gradient(135deg, #0078d4, #005a9e); }
+.walk-icon.notebooklm { background: linear-gradient(135deg, #ea4335, #4285f4); }
+.walk-icon.claude { background: linear-gradient(135deg, #d4a574, #c4956c); }
+.walk-header h3 { font-family: 'Crimson Pro', serif; font-size: 2rem; margin-bottom: 0.5rem; }
+.walk-header p { color: var(--color-text-secondary); font-size: 1.1rem; }
+
+.walk-steps { display: flex; flex-direction: column; gap: 2rem; }
+.walk-step { display: flex; gap: 1.5rem; }
+.step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--color-surface); color: var(--color-primary); font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--color-border); }
+.step-details h4 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--color-text); }
+.step-details p { color: var(--color-text-secondary); margin-bottom: 1rem; line-height: 1.6; }
+
+/* Code Block */
+.code-block { background: var(--color-surface); border-left: 4px solid var(--color-primary); padding: 1rem; border-radius: 8px; font-family: 'Monaco', monospace; font-size: 0.9rem; color: var(--color-text); white-space: pre-wrap; word-break: break-word; }
+
+/* Second Brain Section */
+.second-brain-section { background: var(--color-bg); padding: 5rem 2rem; }
+.brain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.brain-card { background: var(--color-bg-card); border-radius: 20px; border: 1px solid var(--color-border); padding: 2rem; transition: transform 0.2s ease; }
+.brain-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.brain-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.brain-icon { font-size: 1.75rem; }
+.brain-card h3 { font-family: 'Crimson Pro', serif; font-size: 1.5rem; margin: 0; }
+.brain-source { font-size: 0.85rem; color: var(--color-primary); font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.brain-source a { color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor; }
+.brain-example { background: var(--color-surface); border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem; font-size: 0.9rem; border: 1px solid var(--color-border); }
+.brain-example strong { display: block; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; }
+
+@media (max-width: 768px) {
+    .walkthrough-card { padding: 1.5rem; }
+    .walk-step { flex-direction: column; gap: 0.5rem; }
+    .step-num { width: 32px; height: 32px; font-size: 0.9rem; }
+}
