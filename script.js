@@ -28,12 +28,23 @@ function showScenario(id) {
     document.querySelectorAll('.scenario-tab').forEach(tab => tab.classList.remove('active'));
     document.querySelectorAll('.scenario-panel').forEach(panel => panel.classList.remove('active'));
     
-    // Find button with specific onclick handler (simplified selector)
     const btn = Array.from(document.querySelectorAll('.scenario-tab')).find(b => b.getAttribute('onclick').includes(id));
     if(btn) btn.classList.add('active');
     
     const panel = document.getElementById('scenario-' + id);
     if(panel) panel.classList.add('active');
+}
+
+// NEW: Walkthrough Tabs
+function showWalkthrough(id) {
+    document.querySelectorAll('.walkthrough-tab').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.walkthrough-card').forEach(card => card.classList.remove('active'));
+    
+    const btn = Array.from(document.querySelectorAll('.walkthrough-tab')).find(b => b.getAttribute('onclick').includes(id));
+    if(btn) btn.classList.add('active');
+
+    const card = document.getElementById('walk-' + id);
+    if(card) card.classList.add('active');
 }
 
 // Prompt Category Tabs
@@ -74,10 +85,8 @@ document.addEventListener('keydown', function(e) {
 
 function handlePresentationNav(e) {
     const slides = Array.from(document.querySelectorAll('.pres-slide'));
-    // Find current visible slide based on scroll position
     let currentIndex = 0;
     
-    // Simple heuristic: find slide closest to top of screen
     let minDiff = Infinity;
     slides.forEach((slide, index) => {
         const rect = slide.getBoundingClientRect();
@@ -102,10 +111,9 @@ function handlePresentationNav(e) {
 }
 
 function handleWebsiteNav(e) {
-    // Define main sections in order
-    const sectionIds = ['hero', 'stats', 'limitations', 'start-here', 'use-today', 'agentic', 'applications', 'implementations', 'platforms', 'scenarios', 'resources'];
+    // UPDATED section IDs to include new sections
+    const sectionIds = ['hero', 'stats', 'walkthroughs', 'second-brain', 'limitations', 'start-here', 'use-today', 'agentic', 'applications', 'implementations', 'platforms', 'scenarios', 'resources'];
     
-    // Find current section
     let currentIdIndex = -1;
     let minDiff = Infinity;
     
@@ -113,8 +121,6 @@ function handleWebsiteNav(e) {
         const el = document.getElementById(id);
         if(el) {
             const rect = el.getBoundingClientRect();
-            // We want the section currently taking up most of the top of the viewport
-            // Or the one we just scrolled past
             if (Math.abs(rect.top) < minDiff) {
                 minDiff = Math.abs(rect.top);
                 currentIdIndex = index;
@@ -146,7 +152,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
-// Modal Data
+// Modal Data - FULL LIST RESTORED
 const modalData = {
     fracture: {
         title: 'AI Fracture Detection',
