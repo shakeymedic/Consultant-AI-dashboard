@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCopyableCode();
     initPresentationMode();
     initPromptTabs();
+    initSmoothScroll();
 });
 
 // ===== THEME TOGGLE =====
@@ -19,6 +20,21 @@ function toggleTheme() {
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+}
+
+// ===== MOBILE MENU =====
+function toggleMobileMenu() {
+    const nav = document.getElementById('siteNav');
+    const btn = document.querySelector('.mobile-menu-btn');
+    nav.classList.toggle('open');
+    btn.classList.toggle('open');
+}
+
+function closeMobileMenu() {
+    const nav = document.getElementById('siteNav');
+    const btn = document.querySelector('.mobile-menu-btn');
+    if (nav) nav.classList.remove('open');
+    if (btn) btn.classList.remove('open');
 }
 
 // ===== PROGRESS BAR =====
@@ -61,7 +77,16 @@ function initCopyableCode() {
                     this.classList.remove('copied');
                 }, 2000);
             } catch (err) {
-                console.error('Failed to copy:', err);
+                const textArea = document.createElement('textarea');
+                textArea.value = this.textContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                this.classList.add('copied');
+                setTimeout(() => {
+                    this.classList.remove('copied');
+                }, 2000);
             }
         });
     });
@@ -75,7 +100,6 @@ function initPresentationMode() {
     const slides = document.querySelectorAll('.pres-slide');
     totalSlides = slides.length;
     
-    // Keyboard navigation
     document.addEventListener('keydown', function(e) {
         if (!document.body.classList.contains('presentation-mode')) return;
         
@@ -90,11 +114,10 @@ function initPresentationMode() {
         }
     });
     
-    // Touch navigation for mobile
     let touchStartX = 0;
     document.addEventListener('touchstart', function(e) {
         touchStartX = e.changedTouches[0].screenX;
-    });
+    }, { passive: true });
     
     document.addEventListener('touchend', function(e) {
         if (!document.body.classList.contains('presentation-mode')) return;
@@ -109,11 +132,13 @@ function initPresentationMode() {
                 prevSlide();
             }
         }
-    });
+    }, { passive: true });
 }
 
 function setMode(mode) {
     const tabs = document.querySelectorAll('.mode-tab');
+    const keyboardHint = document.getElementById('keyboardHint');
+    
     tabs.forEach(tab => {
         tab.classList.toggle('active', tab.dataset.mode === mode);
     });
@@ -121,10 +146,10 @@ function setMode(mode) {
     if (mode === 'presentation') {
         document.body.classList.add('presentation-mode');
         showSlide(0);
-        document.querySelector('.keyboard-hint').classList.add('visible');
+        if (keyboardHint) keyboardHint.classList.add('visible');
     } else {
         document.body.classList.remove('presentation-mode');
-        document.querySelector('.keyboard-hint').classList.remove('visible');
+        if (keyboardHint) keyboardHint.classList.remove('visible');
     }
 }
 
@@ -140,7 +165,6 @@ function showSlide(index) {
         slide.classList.toggle('active', i === index);
     });
     
-    // Scroll to top of slide
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -158,24 +182,6 @@ function prevSlide() {
 
 // ===== PROMPT TABS =====
 function initPromptTabs() {
-    // Show first category by default
-    showPromptCategory('sops');
-}
-
-function showPromptCategory(category) {
-    // Update tabs
-    document.querySelectorAll('.prompt-tab').forEach(tab => {
-        tab.classList.toggle('active', tab.textContent.toLowerCase().includes(category.replace('prompts-', '').substring(0, 4)));
-    });
-    
-    // Update categories
-    document.querySelectorAll('.prompt-category').forEach(cat => {
-        cat.classList.toggle('active', cat.id === 'prompts-' + category);
-    });
-}
-
-// Update the onclick handlers for prompt tabs
-document.addEventListener('DOMContentLoaded', function() {
     const tabMappings = {
         'SOPs & Guidelines': 'sops',
         'Management': 'management',
@@ -188,51 +194,58 @@ document.addEventListener('DOMContentLoaded', function() {
         tab.addEventListener('click', function() {
             const text = this.textContent.trim();
             const category = tabMappings[text];
+            
             if (category) {
-                // Update active states
                 document.querySelectorAll('.prompt-tab').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Show category
                 document.querySelectorAll('.prompt-category').forEach(cat => {
                     cat.classList.toggle('active', cat.id === 'prompts-' + category);
                 });
             }
         });
     });
-});
+    
+    const firstTab = document.querySelector('.prompt-tab');
+    const firstCategory = document.getElementById('prompts-sops');
+    if (firstTab) firstTab.classList.add('active');
+    if (firstCategory) firstCategory.classList.add('active');
+}
 
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            // If in presentation mode, switch to website mode first
-            if (document.body.classList.contains('presentation-mode')) {
-                setMode('website');
-            }
+// ===== SMOOTH SCROLL =====
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
             
-            setTimeout(() => {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 100);
-        }
+            if (target) {
+                closeMobileMenu();
+                
+                if (document.body.classList.contains('presentation-mode')) {
+                    setMode('website');
+                }
+                
+                setTimeout(() => {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+        });
     });
-});
+}
 
 // ===== PRINT HANDLING =====
 window.addEventListener('beforeprint', function() {
-    // Show all slides for printing
     document.querySelectorAll('.pres-slide').forEach(slide => {
         slide.style.display = 'block';
     });
 });
 
 window.addEventListener('afterprint', function() {
-    // Restore slide display
     if (document.body.classList.contains('presentation-mode')) {
         showSlide(currentSlide);
     }
