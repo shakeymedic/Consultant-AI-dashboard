@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EM Consultant AI Toolkit | West Midlands</title>
+    <title>AI Toolkit for Medical Consultants | West Midlands</title>
+    <meta name="description" content="Practical guidance on using AI to reduce administrative burden for NHS medical consultants — safely and within governance.">
+    <meta name="keywords" content="NHS AI, Medical AI, Copilot, Clinical AI, Healthcare AI, Medical Consultants">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -15,14 +17,21 @@
     <header class="site-header">
         <a href="#" class="site-logo">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            <span>EM AI Toolkit</span>
+            <span>Medical AI Toolkit</span>
         </a>
+        <nav class="site-nav">
+            <a href="#copilot-guide">Copilot</a>
+            <a href="#data-protection">Data Protection</a>
+            <a href="#agentic">Agentic AI</a>
+            <a href="#tools">Tools</a>
+            <a href="#prompts">Prompts</a>
+        </nav>
         <div class="header-actions">
             <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
                 <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
-            <a href="https://wmebem.com" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+            <a href="https://wmebem.com" target="_blank" class="btn btn-primary btn-sm">
                 WMEBEM
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
             </a>
@@ -40,1095 +49,2054 @@
         </button>
     </div>
 
-    <div class="keyboard-hint visible" style="opacity: 0.7;">
+    <div class="keyboard-hint visible">
         <span>Use <kbd>←</kbd> <kbd>→</kbd> to navigate</span>
+        <span class="hint-separator">•</span>
+        <span>Click code blocks to copy</span>
     </div>
 
+    <!-- ========== PRESENTATION MODE - 15 SLIDES ========== -->
     <div class="presentation-content">
+        
+        <!-- SLIDE 1: Title -->
         <section class="pres-slide" id="pres-1" data-index="0">
-            <div class="pres-slide-number">1 / 9</div>
+            <div class="pres-slide-number">1 / 15</div>
             <div class="pres-slide-inner">
-                <h1 class="pres-title">AI for <span>Emergency Medicine</span> Consultants</h1>
-                <p class="pres-subtitle">Practical guidance on implementing AI to reduce administrative burden and support clinical decisions — while staying safe. All statistics verified with source URLs.</p>
-                <div class="pres-grid" style="margin-top: 3rem;">
+                <h1 class="pres-title">AI for <span>Medical</span> Consultants</h1>
+                <p class="pres-subtitle">Practical guidance on using AI to reduce administrative burden — safely and within governance. Focus: non-clinical applications you can start using today.</p>
+                <div class="pres-grid">
                     <div class="pres-stat">
-                        <div class="pres-stat-number">47min</div>
-                        <div class="pres-stat-label">Saved Per Shift</div>
-                        <div class="pres-stat-detail">TORTUS AI Trial (St George's)</div>
+                        <div class="pres-stat-number">49%</div>
+                        <div class="pres-stat-label">Of Day in EHR</div>
+                        <div class="pres-stat-detail">Only 27% face-to-face with patients (AMA 2023)</div>
                     </div>
                     <div class="pres-stat">
                         <div class="pres-stat-number">29%</div>
                         <div class="pres-stat-label">UK Doctors Using AI</div>
-                        <div class="pres-stat-detail">GMC Survey Oct 2024</div>
+                        <div class="pres-stat-detail">GMC Survey October 2024 (n=929)</div>
                     </div>
                     <div class="pres-stat">
-                        <div class="pres-stat-number">107</div>
-                        <div class="pres-stat-label">Stroke Units</div>
-                        <div class="pres-stat-detail">Using AI (NHS England 2025)</div>
+                        <div class="pres-stat-number">43min</div>
+                        <div class="pres-stat-label">Saved Daily</div>
+                        <div class="pres-stat-detail">NHS Copilot Trial 2025 (30,000 staff)</div>
                     </div>
+                </div>
+                <div class="pres-goal-box">
+                    <strong>Today's Goal:</strong> Leave with 3 things you can do this week to save time — with zero risk to patients or your career.
                 </div>
             </div>
         </section>
 
+        <!-- SLIDE 2: The One Rule -->
         <section class="pres-slide" id="pres-2" data-index="1">
-            <div class="pres-slide-number">2 / 9</div>
+            <div class="pres-slide-number">2 / 15</div>
             <div class="pres-slide-inner">
-                <h1 class="pres-title">The 3am <span>Wrist X-ray</span></h1>
-                <div class="pres-scenario">
-                    <h3>The Scene</h3>
-                    <p>Your FY2 is 8 hours into a night shift. 45-year-old FOOSH injury. The X-ray "looks normal" to them. They're about to discharge with a wrist sprain diagnosis...</p>
+                <h1 class="pres-title">The <span>One Rule</span> You Must Know</h1>
+                <div class="pres-warning-box">
+                    <h4>🚫 NEVER Put Patient Data Into Public AI Tools</h4>
+                    <p>ChatGPT, Claude, Gemini, Perplexity consumer versions — these are NOT approved for patient data. This includes names, NHS numbers, dates of birth, clinical details, addresses, or anything that could identify a patient.</p>
                 </div>
                 <div class="pres-grid-2">
-                    <div class="pres-card">
-                        <h3>🤖 What AI Does</h3>
-                        <p>AI fracture detection (Annalise, BoneView, RBfracture) flags a subtle scaphoid fracture. Meta-analysis shows <strong>9.5% average sensitivity improvement</strong> (95% CI: 6.8–12.1%).</p>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-accent);">NICE HTG739 recommends 4 technologies. Used in 50+ NHS Trusts.</p>
+                    <div class="pres-card green-border">
+                        <h3>✅ Safe to Use Today</h3>
+                        <ul class="pres-list">
+                            <li>Draft SOPs, guidelines, and policies</li>
+                            <li>Write business cases and proposals</li>
+                            <li>Create teaching materials</li>
+                            <li>Summarise meetings with NHS Copilot</li>
+                            <li>Analyse fully anonymised audit data</li>
+                            <li>Draft job descriptions</li>
+                            <li>Research general clinical topics</li>
+                        </ul>
                     </div>
-                    <div class="pres-card">
-                        <h3>👨‍⚕️ What You Do</h3>
-                        <p>Review the AI highlight. Make the clinical decision. The FY2 learns. The patient gets appropriate follow-up. A missed fracture avoided.</p>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-warning);">AI augments — it doesn't replace.</p>
+                    <div class="pres-card red-border">
+                        <h3>❌ Never Do This</h3>
+                        <ul class="pres-list">
+                            <li>Paste clinic letters or discharge summaries</li>
+                            <li>Upload patient notes or referrals</li>
+                            <li>Ask about specific patient cases</li>
+                            <li>Share identifiable data even "anonymised"</li>
+                            <li>Use AI for clinical decision-making</li>
+                            <li>Upload scanned patient documents</li>
+                            <li>Paste rotas with names and contacts</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="pres-warning-box">
-                    <h4>⚠️ The Critical Point</h4>
-                    <p>GMC Good Medical Practice 2024: you remain personally accountable for clinical decisions made using AI tools. AI technologies are explicitly included under medical device adverse incident reporting requirements.</p>
                 </div>
             </div>
         </section>
 
+        <!-- SLIDE 3: What is AI -->
         <section class="pres-slide" id="pres-3" data-index="2">
-            <div class="pres-slide-number">3 / 9</div>
+            <div class="pres-slide-number">3 / 15</div>
             <div class="pres-slide-inner">
-                <h1 class="pres-title">The <span>West Midlands</span> Challenge</h1>
-                <p class="pres-subtitle">Our region faces some of the most significant pressures in NHS Emergency Care.</p>
-                <div class="pres-grid" style="margin-top: 2rem;">
-                    <div class="pres-stat">
-                        <div class="pres-stat-number danger">400K+</div>
-                        <div class="pres-stat-label">Hours Lost to Handovers</div>
-                        <div class="pres-stat-detail">WMAS forecast 2025 (~£32M)</div>
+                <h1 class="pres-title">What <span>IS</span> AI, Actually?</h1>
+                <p class="pres-subtitle">A 2-minute primer for the busy consultant.</p>
+                <div class="pres-grid">
+                    <div class="pres-card">
+                        <h3>🧠 Large Language Models</h3>
+                        <p>AI trained on billions of documents. It predicts the most likely next word based on patterns. Think of it as <strong>autocomplete on steroids</strong> — exceptionally good at writing, summarising, and analysing text.</p>
+                        <p class="pres-card-footer">Examples: GPT-4, Claude, Gemini, Llama</p>
                     </div>
-                    <div class="pres-stat">
-                        <div class="pres-stat-number danger">56:37</div>
-                        <div class="pres-stat-label">Heartlands Handover</div>
-                        <div class="pres-stat-detail">Average minutes (Sept 2025)</div>
+                    <div class="pres-card">
+                        <h3>💬 Chatbots & Interfaces</h3>
+                        <p>ChatGPT, Claude, Copilot — these are <strong>user-friendly interfaces</strong> to interact with LLMs. You type a question (called a "prompt"), and they generate a response. Quality depends on how you ask.</p>
+                        <p class="pres-card-footer">Better prompts = better results</p>
                     </div>
-                    <div class="pres-stat">
-                        <div class="pres-stat-number danger">49%</div>
-                        <div class="pres-stat-label">Day in EHR</div>
-                        <div class="pres-stat-detail">Only 27% with patients</div>
+                    <div class="pres-card">
+                        <h3>🤖 Agentic AI (New!)</h3>
+                        <p>The next evolution: AI that can <strong>take actions</strong> on your behalf — clicking buttons, filling forms, navigating websites. Still emerging but powerful for admin tasks.</p>
+                        <p class="pres-card-footer">Examples: Comet, Operator, Computer Use</p>
                     </div>
                 </div>
-                <div class="pres-card" style="margin-top: 2rem;">
-                    <h3>Why This Matters for AI</h3>
-                    <p>For every hour of direct patient care, physicians spend approximately 2 hours on documentation. AI scribes demonstrated ability to halve documentation time at St George's. Scaling to 11,055 A&E clinicians could yield <strong>9,259 extra consultations daily</strong>.</p>
+                <div class="pres-insight-box">
+                    <h4>⚠️ The Critical Insight</h4>
+                    <p>AI doesn't "know" things like you do. It generates <strong>statistically plausible text</strong>. This means it can be confidently wrong ("hallucination"). It will invent citations and fabricate statistics. <strong>Always verify important facts.</strong></p>
                 </div>
             </div>
         </section>
 
+        <!-- SLIDE 4: NHS Copilot Introduction -->
         <section class="pres-slide" id="pres-4" data-index="3">
-            <div class="pres-slide-number">4 / 9</div>
+            <div class="pres-slide-number">4 / 15</div>
             <div class="pres-slide-inner">
-                <h1 class="pres-title">The <span>Governance</span> Framework</h1>
-                <p class="pres-subtitle">A simple decision tree for any AI use case.</p>
-                <div class="pres-flowchart">
-                    <div class="pres-flow-item green">
-                        <div class="pres-flow-color">✓</div>
-                        <div class="pres-flow-content">
-                            <h4>Personal Admin — Do Now</h4>
-                            <p>Summarising guidelines, drafting presentations, business cases, teaching materials. No patient data. Use Copilot, Claude, ChatGPT, Perplexity.</p>
-                        </div>
+                <h1 class="pres-title">NHS <span>Copilot</span> — Your First Tool</h1>
+                <p class="pres-subtitle">Free, secure, and available to most NHS.net users right now.</p>
+                <div class="pres-grid-2">
+                    <div class="pres-card">
+                        <h3>What Is It?</h3>
+                        <p>Microsoft Copilot is AI built into Microsoft 365. It can:</p>
+                        <ul class="pres-list-compact">
+                            <li>Summarise long documents and email chains</li>
+                            <li>Draft emails, letters, and reports</li>
+                            <li>Take meeting notes and track actions</li>
+                            <li>Analyse spreadsheet data without formulas</li>
+                            <li>Create presentations from documents</li>
+                        </ul>
                     </div>
-                    <div class="pres-flow-item orange">
-                        <div class="pres-flow-color">⚠</div>
-                        <div class="pres-flow-content">
-                            <h4>Clinical Documentation — With Approval</h4>
-                            <p>Ambient scribes, discharge summaries. Needs Trust DPIA + Caldicott sign-off + staff training. Example: Dragon Copilot (MHRA Class I), Heidi (DCB0129, DTAC, ISO 27001).</p>
-                        </div>
+                    <div class="pres-card green-border">
+                        <h3>Why Is It Safe for NHS?</h3>
+                        <p>NHS has a <strong>national DPIA</strong> for Copilot:</p>
+                        <ul class="pres-list-compact">
+                            <li>Data stays within NHS Microsoft tenant</li>
+                            <li>NOT used to train AI models</li>
+                            <li>Commercial Data Protection applies</li>
+                            <li>UK GDPR compliant</li>
+                        </ul>
+                        <p class="pres-card-highlight">Look for the <strong>Green Shield</strong> icon</p>
                     </div>
-                    <div class="pres-flow-item orange">
-                        <div class="pres-flow-color">⚠</div>
-                        <div class="pres-flow-content">
-                            <h4>Diagnostic Support — With Approval</h4>
-                            <p>Fracture AI, stroke imaging. Needs MHRA registration + DTAC + Trust procurement. JMIR 2025: 75% of digital tools lack DCB0129/0160 compliance.</p>
-                        </div>
-                    </div>
-                    <div class="pres-flow-item red">
-                        <div class="pres-flow-color">✗</div>
-                        <div class="pres-flow-content">
-                            <h4>Patient Data in Public AI — Never</h4>
-                            <p>ChatGPT, Claude, Gemini consumer versions with ANY patient info. Critical requirement: never input personal or confidential data. Potential indemnity issues.</p>
-                        </div>
-                    </div>
+                </div>
+                <div class="pres-stat-highlight">
+                    <div class="pres-stat-number">43 min</div>
+                    <div class="pres-stat-label">saved per staff member per day</div>
+                    <div class="pres-stat-detail">NHS Copilot Trial: 30,000+ staff across 90 organisations</div>
                 </div>
             </div>
         </section>
 
+        <!-- SLIDE 5: How to Access Copilot -->
         <section class="pres-slide" id="pres-5" data-index="4">
-            <div class="pres-slide-number">5 / 9</div>
+            <div class="pres-slide-number">5 / 15</div>
             <div class="pres-slide-inner">
-                <h1 class="pres-title">AI <span>Limitations</span> You Must Know</h1>
-                <p class="pres-subtitle">AI is powerful, but it fails in specific, predictable ways. Evidence-based risks.</p>
-                <div class="pres-grid-2" style="margin-top: 2rem;">
-                    <div class="pres-card">
-                        <h3>🎭 Hallucination (8-20%)</h3>
-                        <p>Studies estimate hallucination rates of 8-20% in clinical AI. LLM-generated notes showed 9.6% error rate vs 2.0% for physician notes. Documented cases include fabricated clinical summaries and fake PubMed IDs.</p>
-                    </div>
-                    <div class="pres-card">
-                        <h3>📅 Knowledge Cutoff</h3>
-                        <p>ChatGPT 5.2: Aug 2025. Gemini 3: Jan 2025. Claude 4.5 Opus: Mar-Aug 2025. LLMs may not know latest guidelines, new drugs, or recent recalls. Always cross-reference with current NICE guidance.</p>
-                    </div>
-                    <div class="pres-card">
-                        <h3>😊 Sycophancy Bias</h3>
-                        <p>npj Digital Medicine (Oct 2025): GPT models <strong>complied with incorrect instructions 100%</strong> of the time when users made false claims. Models "prioritise helpfulness over critical thinking" — dangerous in healthcare.</p>
-                    </div>
-                    <div class="pres-card">
-                        <h3>📊 Training Data Bias</h3>
-                        <p>Documented cases: Optum algorithm prioritised healthier white patients. Pulse oximetry overestimates saturation in non-white patients (<strong>3× more likely</strong> undetected hypoxemia in Black patients).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="pres-slide" id="pres-6" data-index="5">
-            <div class="pres-slide-number">6 / 9</div>
-            <div class="pres-slide-inner">
-                <h1 class="pres-title">Which <span>Platform</span> for What?</h1>
-                <p class="pres-subtitle">Quick guide to choosing the right AI tool — with NHS compliance status.</p>
-                <div class="pres-platform-grid" style="margin-top: 2rem;">
-                    <div class="pres-platform-card">
-                        <div class="pres-platform-logo copilot">M</div>
-                        <div class="pres-platform-info">
-                            <h4>NHS Copilot</h4>
-                            <div class="subtitle">Free for NHS.net — National DPIA</div>
-                            <p>Meeting summaries, email drafting, Excel. User data NOT used to retrain. 43 min/day saved.</p>
-                        </div>
-                    </div>
-                    <div class="pres-platform-card">
-                        <div class="pres-platform-logo notebooklm">N</div>
-                        <div class="pres-platform-info">
-                            <h4>NotebookLM</h4>
-                            <div class="subtitle">Grounded Responses Only</div>
-                            <p>Upload guidelines, get answers ONLY from those sources. Eliminates hallucination.</p>
-                        </div>
-                    </div>
-                    <div class="pres-platform-card">
-                        <div class="pres-platform-logo openevidence">O</div>
-                        <div class="pres-platform-info">
-                            <h4>OpenEvidence / IatroX</h4>
-                            <div class="subtitle">Evidence Synthesis</div>
-                            <p>OpenEvidence (US-centric). <strong>IatroX</strong> is the UK alternative grounded in NICE/CKS. Both cite sources.</p>
-                        </div>
-                    </div>
-                    <div class="pres-platform-card">
-                        <div class="pres-platform-logo heidi">H</div>
-                        <div class="pres-platform-info">
-                            <h4>Heidi Health</h4>
-                            <div class="subtitle">DCB0129 + DTAC + ISO 27001</div>
-                            <p>Ambient scribe. 2.3M+ consultations/week globally. Active pilot at Walsall Manor.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="pres-card" style="margin-top: 1.5rem; border: 2px solid var(--color-accent);">
-                    <h3>🧠 The "Clinical Second Brain"</h3>
-                    <p>Use AI as a "Senior Registrar" to bounce ideas off (Anaestheasier). Use NotebookLM to store your "External Cortex" of papers (EMCRIT). <strong>Never</strong> for patient data; <strong>Always</strong> for knowledge synthesis.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="pres-slide" id="pres-7" data-index="6">
-            <div class="pres-slide-number">7 / 9</div>
-            <div class="pres-slide-inner">
-                <h1 class="pres-title">Three <span>Worked Examples</span></h1>
-                <p class="pres-subtitle">Practical things you can teach your team to do tomorrow.</p>
-                <div class="pres-grid" style="margin-top: 2rem;">
-                    <div class="pres-card">
-                        <h3>1. The Meeting Summary</h3>
-                        <p><strong>Tool:</strong> NHS Copilot (Teams).</p>
-                        <p><strong>How:</strong> Click the Copilot icon in Teams sidebar. Check for Green Shield.</p>
-                        <p><strong>Prompt:</strong> "Summarise the last hour of this meeting. List all action points assigned to me."</p>
-                    </div>
-                    <div class="pres-card">
-                        <h3>2. The Induction Creator</h3>
-                        <p><strong>Tool:</strong> NotebookLM.</p>
-                        <p><strong>How:</strong> Upload department PDFs (Sickness policy, Rota, Handbook).</p>
-                        <p><strong>Prompt:</strong> "Create a 10-slide induction presentation for new FY2s. Focus on: How to call in sick, how to swap shifts, and code to the toilets."</p>
-                    </div>
-                    <div class="pres-card">
-                        <h3>3. The Gamified Guideline</h3>
-                        <p><strong>Tool:</strong> Claude / Gemini.</p>
-                        <p><strong>How:</strong> Paste in the Sepsis Six pathway.</p>
-                        <p><strong>Prompt:</strong> "Create a text-based adventure game HTML file to teach this pathway. If they miss Oxygen, game over."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="pres-slide" id="pres-8" data-index="7">
-            <div class="pres-slide-number">8 / 9</div>
-            <div class="pres-slide-inner">
-                <h1 class="pres-title">How to Get <span>AI Approved</span></h1>
-                <p class="pres-subtitle">The pathway from "I want to use AI" to "We're live".</p>
-                <div class="pres-steps" style="margin-top: 2rem;">
+                <h1 class="pres-title">How to <span>Access</span> Copilot</h1>
+                <p class="pres-subtitle">Step-by-step instructions you can follow right now.</p>
+                <div class="pres-steps">
                     <div class="pres-step green">
                         <div class="pres-step-num">1</div>
-                        <h4>Check DTAC Compliance First</h4>
-                        <p>NHS DTAC portal shows pre-assessed products. Mandatory for all digital health technologies entering NHS. Covers clinical safety, data protection, security.</p>
+                        <div class="pres-step-content">
+                            <h4>Open Microsoft Teams</h4>
+                            <p>Log in with your <strong>NHS.net account</strong>. Protection only applies with NHS credentials. Works in desktop app, web, or mobile.</p>
+                        </div>
                     </div>
-                    <div class="pres-step orange">
+                    <div class="pres-step green">
                         <div class="pres-step-num">2</div>
-                        <h4>Contact Digital Clinical Safety</h4>
-                        <p>DCB0129 applies to manufacturers; DCB0160 applies to NHS organisations deploying AI. Contact: england.digitalsafety@nhs.net.</p>
+                        <div class="pres-step-content">
+                            <h4>Find Copilot in the Sidebar</h4>
+                            <p>Look at the left sidebar for the Copilot icon. If not visible, click <strong>"..." (More apps)</strong>, search "Copilot", then <strong>Pin</strong> it.</p>
+                        </div>
                     </div>
-                    <div class="pres-step orange">
+                    <div class="pres-step green">
                         <div class="pres-step-num">3</div>
-                        <h4>Engage Caldicott Guardian</h4>
-                        <p>8 Caldicott Principles. Principle 8: Inform patients about how their data is used—including by AI. National Data Guardian: gov.uk/national-data-guardian</p>
+                        <div class="pres-step-content">
+                            <h4>Verify the Green Shield</h4>
+                            <p>Before typing, check for the <strong>Green Shield icon</strong>. This confirms Commercial Data Protection. <strong>If no shield, STOP</strong> — contact IT.</p>
+                        </div>
                     </div>
                     <div class="pres-step green">
                         <div class="pres-step-num">4</div>
-                        <h4>Follow HM Treasury Business Case Model</h4>
-                        <p>NHS business cases follow Green Book Five Case Model. AI can help draft but never input confidential data.</p>
+                        <div class="pres-step-content">
+                            <h4>Try Your First Prompt</h4>
+                            <p><em>"Summarise my unread emails from the last 24 hours"</em> or paste a long document and ask <em>"Give me the 5 key points."</em></p>
+                        </div>
                     </div>
                 </div>
-                <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--color-text-secondary); text-align: center;">⚠️ Different Trusts have different risk appetites. MHRA regulates AI as medical devices under UK MDR 2002. Most current AI is Class I (self-certification); new rules will upclassify most to Class IIa minimum by June 2028/2030.</p>
             </div>
         </section>
 
-        <section class="pres-slide" id="pres-9" data-index="8">
-            <div class="pres-slide-number">9 / 9</div>
+        <!-- SLIDE 6: Copilot in Meetings -->
+        <section class="pres-slide" id="pres-6" data-index="5">
+            <div class="pres-slide-number">6 / 15</div>
             <div class="pres-slide-inner">
-                <h1 class="pres-title">Start <span>Monday</span></h1>
-                <p class="pres-subtitle">Five things you can do this week with zero governance hurdles.</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem;">
-                    <div class="pres-action-card">
-                        <h4>1. Write an SOP</h4>
-                        <p>Use Claude/ChatGPT to draft a clinical guideline or update an existing one. Reference NICE/RCEM standards.</p>
+                <h1 class="pres-title">Copilot in <span>Meetings</span></h1>
+                <p class="pres-subtitle">Never take meeting notes again. This alone can transform your workflow.</p>
+                <div class="pres-grid">
+                    <div class="pres-card">
+                        <h3>📅 Before</h3>
+                        <p>Ensure <strong>transcription is enabled</strong> when starting/joining. The Copilot icon appears in the meeting toolbar.</p>
                     </div>
-                    <div class="pres-action-card">
-                        <h4>2. Analyse Audit Data</h4>
-                        <p>Paste anonymised audit results into AI. Get compliance calculations, themes, and report drafts.</p>
+                    <div class="pres-card">
+                        <h3>🎙️ During</h3>
+                        <p>Ask real-time questions: "What have we discussed?", "What did [person] say about [topic]?", "Summarise the last 10 minutes"</p>
                     </div>
-                    <div class="pres-action-card">
-                        <h4>3. Try NHS Copilot</h4>
-                        <p>Log into NHS.net. Summarise meeting recordings, draft emails, analyse spreadsheets.</p>
-                    </div>
-                    <div class="pres-action-card">
-                        <h4>4. Upload to NotebookLM</h4>
-                        <p>Upload RCEM guidelines. Get grounded, cited answers only from YOUR sources. No hallucination.</p>
-                    </div>
-                    <div class="pres-action-card">
-                        <h4>5. Draft a Business Case</h4>
-                        <p>Use Five Case Model prompt. AI structures; you add specifics. Never input confidential data.</p>
+                    <div class="pres-card">
+                        <h3>✅ After (The Magic)</h3>
+                        <p>Open meeting Recap. Ask: "What actions were assigned to me?", "Draft a follow-up email with decisions and owners"</p>
                     </div>
                 </div>
-                <div class="pres-prompt-example" style="margin-top: 2rem;">
-                    <div class="pres-prompt-label">Example: SOP Prompt</div>
-                    "Write a Standard Operating Procedure for [PROCEDURE] in an NHS Emergency Department. Include: Purpose, Scope, Responsibilities, Equipment, Step-by-step procedure, Safety considerations, Documentation requirements, References to NICE/RCEM guidelines."
+                <div class="pres-prompt-box">
+                    <div class="pres-prompt-label">Pro Tip: Meeting Follow-up Email</div>
+                    <code>"Draft a professional follow-up email summarising this meeting. Include: key decisions, action items with owners and deadlines, items requiring escalation. Under 300 words."</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: Data Protection -->
+        <section class="pres-slide" id="pres-7" data-index="6">
+            <div class="pres-slide-number">7 / 15</div>
+            <div class="pres-slide-inner">
+                <h1 class="pres-title">Data <span>Protection</span> — Traffic Light System</h1>
+                <p class="pres-subtitle">A simple framework for AI governance decisions.</p>
+                <div class="pres-traffic-light">
+                    <div class="pres-zone green">
+                        <div class="zone-marker">✓</div>
+                        <div class="zone-content">
+                            <h4>Green Zone — Use Now</h4>
+                            <p><strong>No patient data.</strong> SOPs, teaching, business cases, anonymised audit, meeting summaries. Any AI tool.</p>
+                        </div>
+                    </div>
+                    <div class="pres-zone amber">
+                        <div class="zone-marker">⚠</div>
+                        <div class="zone-content">
+                            <h4>Amber Zone — Trust Approval Required</h4>
+                            <p><strong>Patient data or clinical workflows.</strong> AI scribes, diagnostic support. Needs: DPIA, Caldicott, DTAC, DCB0129/0160.</p>
+                        </div>
+                    </div>
+                    <div class="pres-zone red">
+                        <div class="zone-marker">✗</div>
+                        <div class="zone-content">
+                            <h4>Red Zone — Never Allowed</h4>
+                            <p><strong>ANY patient data in public AI.</strong> ChatGPT, Claude, Gemini consumer versions. No exceptions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pres-caldicott-note">
+                    <strong>Caldicott Principle 8 (2020):</strong> "Inform patients about how their confidential information is used" — <strong>including AI</strong>.
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: Your Accountability -->
+        <section class="pres-slide" id="pres-8" data-index="7">
+            <div class="pres-slide-number">8 / 15</div>
+            <div class="pres-slide-inner">
+                <h1 class="pres-title">Your <span>Accountability</span></h1>
+                <p class="pres-subtitle">What GMC, MDU, and MPS say about AI.</p>
+                <div class="pres-grid-2">
+                    <div class="pres-card">
+                        <h3>GMC Good Medical Practice 2024</h3>
+                        <ul class="pres-list-compact">
+                            <li>You remain <strong>personally accountable</strong></li>
+                            <li>AI tools are classified as medical devices</li>
+                            <li>Yellow Card reporting applies</li>
+                            <li>Must maintain skills to work without AI</li>
+                        </ul>
+                    </div>
+                    <div class="pres-card">
+                        <h3>MDU & MPS Position</h3>
+                        <ul class="pres-list-compact">
+                            <li><strong>You remain liable</strong> for AI-assisted decisions</li>
+                            <li>Indemnity requires human oversight</li>
+                            <li>Must apply clinical judgment</li>
+                            <li>Document reasoning, not just AI output</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pres-warning-box">
+                    <h4>The Bottom Line</h4>
+                    <p>"I was just following what the AI said" is <strong>not a defence</strong>. You are responsible for verifying AI output and applying professional judgment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: Agentic AI -->
+        <section class="pres-slide" id="pres-9" data-index="8">
+            <div class="pres-slide-number">9 / 15</div>
+            <div class="pres-slide-inner">
+                <h1 class="pres-title"><span>Agentic</span> Browsers — AI That Acts</h1>
+                <p class="pres-subtitle">The next evolution: AI that controls your computer for you.</p>
+                <div class="pres-comparison">
+                    <div class="pres-compare-item">
+                        <h4>💬 Traditional Chatbots</h4>
+                        <p>You ask → AI gives you text</p>
+                        <div class="pres-compare-example">
+                            <strong>You:</strong> "Write an email"<br>
+                            <strong>AI:</strong> [generates text]<br>
+                            <strong>You:</strong> [copy, paste, send]
+                        </div>
+                    </div>
+                    <div class="pres-compare-arrow">→</div>
+                    <div class="pres-compare-item highlight">
+                        <h4>🤖 Agentic Browsers</h4>
+                        <p>You describe task → AI does it</p>
+                        <div class="pres-compare-example">
+                            <strong>You:</strong> "Decline tomorrow's meeting"<br>
+                            <strong>AI:</strong> [opens Outlook, clicks, types, sends]<br>
+                            <strong>You:</strong> [watch and approve]
+                        </div>
+                    </div>
+                </div>
+                <div class="pres-tools-row">
+                    <div class="pres-tool-mini">🌐 Comet Browser</div>
+                    <div class="pres-tool-mini">C Claude Computer Use</div>
+                    <div class="pres-tool-mini">O OpenAI Operator</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: Agentic Use Cases -->
+        <section class="pres-slide" id="pres-10" data-index="9">
+            <div class="pres-slide-number">10 / 15</div>
+            <div class="pres-slide-inner">
+                <h1 class="pres-title">Agentic AI: <span>Use Cases</span></h1>
+                <p class="pres-subtitle">Where this technology shines for medical consultants.</p>
+                <div class="pres-usecase-grid">
+                    <div class="pres-usecase">📋 Portfolio (Kaizen/Horus) — FEG entries, WPBAs, reflections</div>
+                    <div class="pres-usecase">📝 Study Leave — Form filling, navigation</div>
+                    <div class="pres-usecase">💷 Expense Claims — Receipts, categorisation</div>
+                    <div class="pres-usecase">🎓 CPD Logging — Activities, certificates</div>
+                    <div class="pres-usecase">📅 Course Registration — Multi-step sign-ups</div>
+                    <div class="pres-usecase">📊 Data Entry — Spreadsheet to web forms</div>
+                </div>
+                <div class="pres-warning-small">
+                    ⚠️ <strong>Never</strong> for patient data • <strong>Always</strong> review before submit • Check Trust policy
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 11: AI Limitations -->
+        <section class="pres-slide" id="pres-11" data-index="10">
+            <div class="pres-slide-number">11 / 15</div>
+            <div class="pres-slide-inner">
+                <h1 class="pres-title">AI <span>Limitations</span></h1>
+                <p class="pres-subtitle">AI fails in specific, predictable ways. Know these.</p>
+                <div class="pres-grid-2">
+                    <div class="pres-card">
+                        <h3>🎭 Hallucination (8-20%)</h3>
+                        <p>AI confidently states false information — fabricated citations, invented statistics, fictional guidelines.</p>
+                        <p class="pres-card-action">→ Always verify facts and citations</p>
+                    </div>
+                    <div class="pres-card">
+                        <h3>😊 Sycophancy Bias</h3>
+                        <p>AI tends to agree with you, even when wrong. Research shows 100% compliance with incorrect instructions.</p>
+                        <p class="pres-card-action">→ Ask AI to critique itself</p>
+                    </div>
+                    <div class="pres-card">
+                        <h3>📅 Knowledge Cutoff</h3>
+                        <p>AI training has fixed dates. Doesn't know recent guidelines, drug recalls, or new evidence.</p>
+                        <p class="pres-card-action">→ Check currency with NICE/BNF</p>
+                    </div>
+                    <div class="pres-card">
+                        <h3>📊 Training Data Bias</h3>
+                        <p>AI reflects biases in training. Documented cases of algorithms disadvantaging demographics.</p>
+                        <p class="pres-card-action">→ Apply clinical judgment</p>
+                    </div>
+                </div>
+                <div class="pres-golden-rule">
+                    <strong>🏆 Golden Rule:</strong> Treat AI like a confident junior doctor — often helpful, sometimes wrong, always needs supervision.
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 12: Writing Good Prompts -->
+        <section class="pres-slide" id="pres-12" data-index="11">
+            <div class="pres-slide-number">12 / 15</div>
+            <div class="pres-slide-inner">
+                <h1 class="pres-title">Writing <span>Good Prompts</span></h1>
+                <p class="pres-subtitle">The difference between useless and transformative output.</p>
+                <div class="pres-grid-2">
+                    <div class="pres-card red-border">
+                        <h3>❌ Weak Prompt</h3>
+                        <code class="pres-weak-prompt">"Write me a business case"</code>
+                        <p>Too vague. AI guesses context, format, audience. Generic output.</p>
+                    </div>
+                    <div class="pres-card green-border">
+                        <h3>✅ Strong Prompt</h3>
+                        <code class="pres-strong-prompt">"Write an NHS business case for a new Acute Medicine consultant using the Five Case Model. Include strategic fit, economic analysis, 3-year costs. For Trust Board. Max 2000 words."</code>
+                    </div>
+                </div>
+                <div class="pres-formula-box">
+                    <h4>The Prompt Formula</h4>
+                    <p><strong>Role</strong> + <strong>Task</strong> + <strong>Context</strong> + <strong>Format</strong> + <strong>Constraints</strong></p>
+                    <p class="pres-formula-example">"Act as a senior NHS manager [role]. Write a workforce paper [task] for our medical directorate [context]. Use sections with headings [format]. Under 1500 words, reference GIRFT [constraints]."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: Your Toolkit -->
+        <section class="pres-slide" id="pres-13" data-index="12">
+            <div class="pres-slide-number">13 / 15</div>
+            <div class="pres-slide-inner">
+                <h1 class="pres-title">Your <span>AI Toolkit</span></h1>
+                <p class="pres-subtitle">Which tool for which task.</p>
+                <div class="pres-toolkit-grid">
+                    <div class="pres-toolkit-item copilot">
+                        <span class="toolkit-logo">M</span>
+                        <div class="toolkit-info">
+                            <strong>NHS Copilot</strong>
+                            <span class="toolkit-tag">START HERE</span>
+                            <p>Meetings, emails, Excel, Word. Protected by national DPIA.</p>
+                        </div>
+                    </div>
+                    <div class="pres-toolkit-item notebooklm">
+                        <span class="toolkit-logo">N</span>
+                        <div class="toolkit-info">
+                            <strong>NotebookLM</strong>
+                            <span class="toolkit-tag">Grounded Answers</span>
+                            <p>Upload guidelines → answers ONLY from your sources. Zero hallucination.</p>
+                        </div>
+                    </div>
+                    <div class="pres-toolkit-item claude">
+                        <span class="toolkit-logo">C</span>
+                        <div class="toolkit-info">
+                            <strong>Claude</strong>
+                            <span class="toolkit-tag">Writing & Analysis</span>
+                            <p>Long documents, complex instructions, nuanced tasks.</p>
+                        </div>
+                    </div>
+                    <div class="pres-toolkit-item chatgpt">
+                        <span class="toolkit-logo">G</span>
+                        <div class="toolkit-info">
+                            <strong>ChatGPT</strong>
+                            <span class="toolkit-tag">Versatile</span>
+                            <p>General purpose, web browsing, image generation.</p>
+                        </div>
+                    </div>
+                    <div class="pres-toolkit-item perplexity">
+                        <span class="toolkit-logo">P</span>
+                        <div class="toolkit-info">
+                            <strong>Perplexity</strong>
+                            <span class="toolkit-tag">AI Search</span>
+                            <p>Research with citations. Like Google but synthesises answers.</p>
+                        </div>
+                    </div>
+                    <div class="pres-toolkit-item iatrox">
+                        <span class="toolkit-logo">I</span>
+                        <div class="toolkit-info">
+                            <strong>IatroX</strong>
+                            <span class="toolkit-tag">UK Clinical</span>
+                            <p>Grounded in NICE, CKS, BNF. UK-specific answers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 14: Prompts Preview -->
+        <section class="pres-slide" id="pres-14" data-index="13">
+            <div class="pres-slide-number">14 / 15</div>
+            <div class="pres-slide-inner">
+                <h1 class="pres-title">Ready-to-Use <span>Prompts</span></h1>
+                <p class="pres-subtitle">Copy these directly into AI tools. Full library on the website.</p>
+                <div class="pres-grid-2">
+                    <div class="pres-prompt-card">
+                        <h4>📋 Write an SOP</h4>
+                        <code>"Write a Standard Operating Procedure for [PROCEDURE] in an NHS [DEPARTMENT]. Include: Purpose, Scope, Responsibilities, Equipment, Step-by-step procedure, Safety, Documentation, References. ~1000 words."</code>
+                    </div>
+                    <div class="pres-prompt-card">
+                        <h4>💼 Business Case</h4>
+                        <code>"Draft an NHS business case for [PROPOSAL] using the Five Case Model: Strategic, Economic, Commercial, Financial, Management. For Trust Board. Include 3-year costs."</code>
+                    </div>
+                    <div class="pres-prompt-card">
+                        <h4>📊 Audit Analysis</h4>
+                        <code>"Analyse this audit data against [STANDARDS]. Provide: compliance rates with CI, key themes, root cause analysis, prioritised recommendations. [PASTE ANONYMISED DATA]"</code>
+                    </div>
+                    <div class="pres-prompt-card">
+                        <h4>🎓 Teaching Slides</h4>
+                        <code>"Create a teaching presentation on [TOPIC] for [AUDIENCE]. Include: learning objectives, key content, clinical examples, MCQ questions, references. [X] minutes duration."</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 15: Start This Week -->
+        <section class="pres-slide" id="pres-15" data-index="14">
+            <div class="pres-slide-number">15 / 15</div>
+            <div class="pres-slide-inner">
+                <h1 class="pres-title">Start <span>This Week</span></h1>
+                <p class="pres-subtitle">Five things with zero governance hurdles.</p>
+                <div class="pres-actions-grid">
+                    <div class="pres-action"><strong>1.</strong> Try NHS Copilot Today — Find it in Teams, check for Green Shield</div>
+                    <div class="pres-action"><strong>2.</strong> Draft a Document — That SOP or policy you've been putting off</div>
+                    <div class="pres-action"><strong>3.</strong> Build Your NotebookLM — Upload 5-10 guidelines you reference often</div>
+                    <div class="pres-action"><strong>4.</strong> Analyse Audit Data — Paste anonymised results, get instant analysis</div>
+                    <div class="pres-action"><strong>5.</strong> Create Teaching Materials — Turn guidelines into presentations</div>
+                </div>
+                <div class="pres-remember-box">
+                    <strong>Remember:</strong> All safe because <strong>no patient data</strong>. Keep patient-identifiable information out of AI tools, and you can explore freely.
+                </div>
+                <div class="pres-questions">
+                    <h2>Questions?</h2>
+                    <p>Website: <strong>wmebem.com/ai-toolkit</strong></p>
                 </div>
             </div>
         </section>
     </div>
 
+    <!-- ========== WEBSITE MODE ========== -->
     <div class="website-content">
+        
+        <!-- HERO SECTION -->
         <section class="hero" id="hero">
             <div class="hero-bg"></div>
             <div class="hero-content">
-                <div class="hero-badge"><span>West Midlands EM Education • Verified Evidence with Source URLs</span></div>
-                <h1>AI Toolkit for <span>Emergency Medicine</span> Consultants</h1>
-                <p class="hero-subtitle">Evidence-based guidance with verified statistics from the comprehensive NHS AI resource guide. All claims fact-checked with source URLs.</p>
+                <div class="hero-badge">West Midlands Medical Education • For All Medical Consultants</div>
+                <h1>AI Toolkit for <span>Medical</span> Consultants</h1>
+                <p class="hero-subtitle">Practical, evidence-based guidance on using AI to reduce administrative burden — safely and within governance. Focus on non-clinical applications you can start using today.</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">43 min</span>
+                        <span class="hero-stat-label">saved daily (NHS Copilot Trial)</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">29%</span>
+                        <span class="hero-stat-label">UK doctors already using AI</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">49%</span>
+                        <span class="hero-stat-label">of day spent in EHR</span>
+                    </div>
+                </div>
                 <div class="hero-cta">
-                    <a href="#walkthroughs" class="btn btn-primary">How-To Guides <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    <a href="#second-brain" class="btn btn-secondary">Clinical Second Brain</a>
-                    <a href="#start-here" class="btn btn-secondary">Quick Start</a>
+                    <a href="#copilot-guide" class="btn btn-primary">Start with Copilot</a>
+                    <a href="#data-protection" class="btn btn-secondary">Data Protection Guide</a>
+                    <a href="#prompts" class="btn btn-secondary">Prompts Library</a>
                 </div>
             </div>
         </section>
 
-        <section class="stats-section" id="stats">
+        <!-- THE ONE RULE -->
+        <section class="one-rule-section" id="one-rule">
+            <div class="one-rule-box">
+                <div class="one-rule-icon">🚫</div>
+                <h2>The One Rule: NEVER Put Patient Data Into Public AI</h2>
+                <p>ChatGPT, Claude, Gemini, Perplexity consumer versions are <strong>NOT approved</strong> for patient data. This includes names, NHS numbers, dates of birth, clinical details, addresses, or anything that could identify a patient directly or indirectly. Violation risks GDPR breach, GMC investigation, loss of indemnity, and patient harm.</p>
+                <a href="#data-protection" class="btn btn-secondary">Full Data Protection Guidance →</a>
+            </div>
+        </section>
+
+        <!-- COPILOT GUIDE SECTION -->
+        <section class="copilot-section" id="copilot-guide">
             <div class="section-header fade-in">
-                <h2>Verified Evidence for AI in Emergency Medicine</h2>
-                <p>All statistics verified with source URLs from the comprehensive resource guide</p>
+                <h2>Complete Guide to NHS Copilot</h2>
+                <p>Your first AI tool — free, secure, and available to most NHS.net users. This is where to start.</p>
             </div>
-            <div class="stats-grid">
-                <div class="stat-card fade-in">
-                    <div class="stat-number">9.5%</div>
-                    <div class="stat-label">Fracture Detection Improvement</div>
-                    <div class="stat-source">NICE HTG739 / Meta-analysis</div>
-                    <div class="stat-verified">✓ 95% CI: 6.8–12.1%</div>
+
+            <div class="copilot-intro fade-in">
+                <div class="intro-grid">
+                    <div class="intro-main">
+                        <h3>What is Microsoft Copilot?</h3>
+                        <p>Microsoft Copilot is artificial intelligence built directly into Microsoft 365 — the same Office tools you already use every day. It's not a separate application; it's an AI assistant that works within Teams, Outlook, Word, Excel, and PowerPoint.</p>
+                        <p>Think of it as having a highly capable administrative assistant who can:</p>
+                        <ul>
+                            <li><strong>Summarise</strong> — Long documents, email chains, meeting transcripts</li>
+                            <li><strong>Draft</strong> — Emails, reports, letters, presentations</li>
+                            <li><strong>Analyse</strong> — Spreadsheet data, trends, comparisons</li>
+                            <li><strong>Find</strong> — Information across your emails and files</li>
+                            <li><strong>Create</strong> — Presentations from documents, tables from text</li>
+                        </ul>
+                    </div>
+                    <div class="intro-sidebar">
+                        <div class="safety-box">
+                            <div class="safety-icon">🛡️</div>
+                            <h4>Why Is It Safe for NHS?</h4>
+                            <p>NHS England has completed a <strong>national Data Protection Impact Assessment (DPIA)</strong> for Copilot.</p>
+                            <ul>
+                                <li>Data stays within NHS Microsoft tenant</li>
+                                <li>NOT used to train AI models</li>
+                                <li>Commercial Data Protection active</li>
+                                <li>UK GDPR compliant</li>
+                            </ul>
+                            <p class="safety-highlight">Look for the <strong>Green Shield</strong> icon.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number">107</div>
-                    <div class="stat-label">Stroke Units Using AI</div>
-                    <div class="stat-source">NHS England 2025</div>
-                    <div class="stat-verified">✓ Brainomix 360 Stroke</div>
+            </div>
+
+            <div class="copilot-steps fade-in">
+                <h3>Step-by-Step: Accessing Copilot in Teams</h3>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>Open Microsoft Teams</h4>
+                        <p>Log in with your <strong>NHS.net account</strong>. This is essential — protection only applies with NHS credentials. Works in desktop app, web browser, or mobile.</p>
+                        <div class="step-warning">Critical: You MUST be signed in with @nhs.net account</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>Find Copilot in the Sidebar</h4>
+                        <p>Look at the left-hand sidebar for the Copilot icon (sparkle/C shape). If not visible, click <strong>"..." (More apps)</strong> at the bottom, search "Copilot", then right-click to <strong>Pin</strong> it.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>Verify the Green Shield</h4>
+                        <p>Before typing, look for the <strong>Green Shield icon</strong>. This confirms Commercial Data Protection is active. <strong>If no shield, STOP</strong> — contact IT immediately.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h4>Try Your First Prompts</h4>
+                        <p>Start simple: <em>"Summarise my unread emails from the last 24 hours"</em> or paste a long document and ask <em>"Give me the 5 key points."</em></p>
+                    </div>
                 </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number">47min</div>
-                    <div class="stat-label">Saved Per Shift</div>
-                    <div class="stat-source">TORTUS AI (St George's)</div>
-                    <div class="stat-verified">✓ 13.4% more patients seen</div>
+            </div>
+
+            <div class="copilot-meetings fade-in">
+                <h3>Copilot in Meetings — The Game Changer</h3>
+                <p class="section-intro">This is where Copilot becomes truly transformative. Never take meeting notes again.</p>
+                <div class="meetings-grid">
+                    <div class="meeting-phase">
+                        <span class="phase-icon">📅</span>
+                        <h4>Before the Meeting</h4>
+                        <p>When you start or join a Teams meeting, ensure <strong>transcription is enabled</strong>. The Copilot icon appears in the meeting toolbar.</p>
+                    </div>
+                    <div class="meeting-phase">
+                        <span class="phase-icon">🎙️</span>
+                        <h4>During the Meeting</h4>
+                        <p>Click the Copilot icon to open the side panel. Ask real-time questions:</p>
+                        <ul>
+                            <li>"What have we discussed so far?"</li>
+                            <li>"What did [person] say about [topic]?"</li>
+                            <li>"Summarise the last 10 minutes"</li>
+                        </ul>
+                    </div>
+                    <div class="meeting-phase">
+                        <span class="phase-icon">✅</span>
+                        <h4>After the Meeting</h4>
+                        <p>Open the meeting Recap from your calendar. Then ask Copilot:</p>
+                        <ul>
+                            <li>"What were the action items?"</li>
+                            <li>"What actions were assigned to me?"</li>
+                            <li>"Draft a follow-up email with decisions"</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number">29%</div>
-                    <div class="stat-label">UK Doctors Using AI</div>
-                    <div class="stat-source">GMC Survey Oct 2024</div>
-                    <div class="stat-verified">✓ 929 doctors surveyed</div>
+                <div class="meeting-prompt-example">
+                    <div class="prompt-label">Pro Tip: Meeting Follow-up Email</div>
+                    <code class="copyable">"Draft a professional follow-up email summarising this meeting. Include: key decisions made, action items with owners and deadlines, items requiring escalation. Keep under 300 words."</code>
                 </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number">2×</div>
-                    <div class="stat-label">Thrombectomy Rates</div>
-                    <div class="stat-source">Lancet Digital Health</div>
-                    <div class="stat-verified">✓ 2.3% to 4.6% at AI sites</div>
+            </div>
+
+            <div class="copilot-apps fade-in">
+                <h3>Copilot in Other Microsoft Apps</h3>
+                <div class="apps-grid">
+                    <div class="app-card">
+                        <span class="app-icon">📧</span>
+                        <h4>Outlook</h4>
+                        <p>Summarise long email threads, draft replies, change tone, coach your writing.</p>
+                        <code class="copyable">"Summarise this email thread and highlight any decisions or actions"</code>
+                    </div>
+                    <div class="app-card">
+                        <span class="app-icon">📄</span>
+                        <h4>Word</h4>
+                        <p>Draft documents, summarise content, rewrite sections, generate content.</p>
+                        <code class="copyable">"Rewrite this paragraph to be more concise and professional"</code>
+                    </div>
+                    <div class="app-card">
+                        <span class="app-icon">📊</span>
+                        <h4>Excel</h4>
+                        <p>Analyse data without formulas, create charts, build pivot tables.</p>
+                        <code class="copyable">"What are the trends in this data? Create a chart showing changes over time"</code>
+                    </div>
+                    <div class="app-card">
+                        <span class="app-icon">📽️</span>
+                        <h4>PowerPoint</h4>
+                        <p>Generate presentations, create slides from documents, improve visuals.</p>
+                        <code class="copyable">"Create a presentation from this Word document"</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copilot-troubleshooting fade-in">
+                <h3>Troubleshooting</h3>
+                <div class="troubleshoot-grid">
+                    <div class="troubleshoot-item">
+                        <h4>Can't find Copilot?</h4>
+                        <p>Click "..." (More apps) → Search "Copilot" → Pin it. If not found, contact IT about your licence.</p>
+                    </div>
+                    <div class="troubleshoot-item">
+                        <h4>No Green Shield?</h4>
+                        <p>Check you're signed in with @nhs.net. Sign out and back in. If issue persists, contact IT. Do NOT use without shield.</p>
+                    </div>
+                    <div class="troubleshoot-item">
+                        <h4>Can't access files?</h4>
+                        <p>Files must be in OneDrive/SharePoint, not local drives. Move files to OneDrive first.</p>
+                    </div>
+                    <div class="troubleshoot-item">
+                        <h4>Transcription not working?</h4>
+                        <p>Your organisation may need to enable it. Contact IT to check transcription is enabled for your account.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="walkthrough-section" id="walkthroughs" style="padding: 5rem 2rem; background: var(--color-bg-elevated);">
+        <!-- DATA PROTECTION SECTION -->
+        <section class="data-protection-section" id="data-protection">
             <div class="section-header fade-in">
-                <h2>Step-by-Step Walkthroughs</h2>
-                <p>Clear examples of how to actually access and use these tools today.</p>
-            </div>
-            
-            <div class="walkthrough-tabs fade-in" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem;">
-                <button class="walkthrough-tab active" onclick="showWalkthrough('copilot')">NHS Copilot</button>
-                <button class="walkthrough-tab" onclick="showWalkthrough('notebook')">Induction w/ NotebookLM</button>
-                <button class="walkthrough-tab" onclick="showWalkthrough('gamify')">Gamified Induction</button>
+                <h2>Data Protection & Governance</h2>
+                <p>Complete guidance on what's safe, what needs approval, and what's never allowed.</p>
             </div>
 
-            <div class="walkthrough-content fade-in" style="max-width: 1000px; margin: 0 auto;">
-                
-                <div class="walkthrough-card active" id="walk-copilot">
-                    <div class="walk-header">
-                        <div class="walk-icon copilot">M</div>
-                        <div>
-                            <h3>Getting Started with NHS Copilot</h3>
-                            <p>Free, secure, and available to most NHS.net users now.</p>
+            <div class="governance-framework fade-in">
+                <h3>The Traffic Light Framework</h3>
+                <div class="zones-container">
+                    <div class="zone-card green">
+                        <div class="zone-header">
+                            <span class="zone-icon">✓</span>
+                            <h4>Green Zone — Use Now</h4>
+                        </div>
+                        <div class="zone-body">
+                            <p class="zone-principle"><strong>No patient data involved.</strong> No approval needed.</p>
+                            <div class="zone-examples">
+                                <h5>Examples</h5>
+                                <ul>
+                                    <li>Drafting SOPs, guidelines, and policies</li>
+                                    <li>Writing business cases and proposals</li>
+                                    <li>Creating teaching materials and presentations</li>
+                                    <li>Meeting summaries (NHS Copilot)</li>
+                                    <li>Analysing fully anonymised aggregate audit data</li>
+                                    <li>Job descriptions and interview questions</li>
+                                    <li>General clinical topic research</li>
+                                </ul>
+                            </div>
+                            <p class="zone-tools"><strong>Tools:</strong> NHS Copilot, ChatGPT, Claude, Gemini, Perplexity, NotebookLM — any tool, as long as no patient data.</p>
                         </div>
                     </div>
-                    <div class="walk-steps">
-                        <div class="walk-step">
-                            <div class="step-num">1</div>
-                            <div class="step-details">
-                                <h4>Access via Teams</h4>
-                                <p>Open Microsoft Teams. Look at the left-hand sidebar or click the "..." (More apps) button. Search for <strong>"Copilot"</strong>. Pin it to your sidebar.</p>
+
+                    <div class="zone-card amber">
+                        <div class="zone-header">
+                            <span class="zone-icon">⚠</span>
+                            <h4>Amber Zone — Trust Approval Required</h4>
+                        </div>
+                        <div class="zone-body">
+                            <p class="zone-principle"><strong>Involves patient data or clinical workflows.</strong> Requires formal approval.</p>
+                            <div class="zone-examples">
+                                <h5>Examples</h5>
+                                <ul>
+                                    <li>AI clinical documentation (ambient scribes)</li>
+                                    <li>Diagnostic support tools (fracture AI, imaging)</li>
+                                    <li>AI-assisted triage or decision support</li>
+                                    <li>Any tool processing patient information</li>
+                                    <li>Workflow automation touching clinical systems</li>
+                                </ul>
+                            </div>
+                            <div class="zone-requirements">
+                                <h5>Requirements</h5>
+                                <ul>
+                                    <li>Data Protection Impact Assessment (DPIA)</li>
+                                    <li>Caldicott Guardian sign-off</li>
+                                    <li>DTAC compliance verification</li>
+                                    <li>DCB0129/0160 clinical safety standards</li>
+                                    <li>Staff training and competency assessment</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="walk-step">
-                            <div class="step-num">2</div>
-                            <div class="step-details">
-                                <h4>Verify Protection</h4>
-                                <p>Look for the <strong>Green Shield</strong> icon in the chat window. This confirms you have "Commercial Data Protection" — your data is not saved or used to train the model.</p>
-                            </div>
+                    </div>
+
+                    <div class="zone-card red">
+                        <div class="zone-header">
+                            <span class="zone-icon">✗</span>
+                            <h4>Red Zone — Never Allowed</h4>
                         </div>
-                        <div class="walk-step">
-                            <div class="step-num">3</div>
-                            <div class="step-details">
-                                <h4>Try This Prompt</h4>
-                                <p>Paste a long email chain into the chat and ask:</p>
-                                <div class="code-block">"Summarise this email chain into bullet points. Highlight any actions assigned to me and deadlines."</div>
+                        <div class="zone-body">
+                            <p class="zone-principle"><strong>ANY patient-identifiable data in public AI.</strong> No exceptions.</p>
+                            <div class="zone-examples">
+                                <h5>Never Do This</h5>
+                                <ul>
+                                    <li>Pasting clinic letters or discharge summaries into ChatGPT/Claude/Gemini</li>
+                                    <li>Uploading patient notes or scanned documents</li>
+                                    <li>Asking AI about specific patient cases</li>
+                                    <li>Sharing "anonymised" data that could be re-identified</li>
+                                    <li>Taking photos of patient notes and uploading</li>
+                                    <li>Copy-pasting from EPR systems into AI</li>
+                                </ul>
+                            </div>
+                            <div class="zone-consequences">
+                                <h5>Consequences</h5>
+                                <p>GDPR breach, GMC investigation, loss of indemnity, Trust disciplinary action, potential patient harm.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="walkthrough-card" id="walk-notebook">
-                    <div class="walk-header">
-                        <div class="walk-icon notebooklm">N</div>
-                        <div>
-                            <h3>Creating an Induction Pack with NotebookLM</h3>
-                            <p>Turn dry PDFs into an engaging presentation in minutes.</p>
+            <div class="caldicott-section fade-in">
+                <h3>The 8 Caldicott Principles</h3>
+                <p class="section-intro">These principles govern all use of patient-identifiable information, including AI.</p>
+                <div class="principles-grid">
+                    <div class="principle">
+                        <span class="principle-num">1</span>
+                        <p><strong>Justify the purpose</strong> for using confidential information</p>
+                    </div>
+                    <div class="principle">
+                        <span class="principle-num">2</span>
+                        <p><strong>Don't use</strong> personal confidential data unless absolutely necessary</p>
+                    </div>
+                    <div class="principle">
+                        <span class="principle-num">3</span>
+                        <p><strong>Use minimum</strong> necessary personal confidential data</p>
+                    </div>
+                    <div class="principle">
+                        <span class="principle-num">4</span>
+                        <p><strong>Access on need-to-know</strong> basis only</p>
+                    </div>
+                    <div class="principle">
+                        <span class="principle-num">5</span>
+                        <p><strong>Everyone must understand</strong> their responsibilities</p>
+                    </div>
+                    <div class="principle">
+                        <span class="principle-num">6</span>
+                        <p><strong>Comply with the law</strong></p>
+                    </div>
+                    <div class="principle">
+                        <span class="principle-num">7</span>
+                        <p><strong>Duty to share</strong> for care is as important as protecting confidentiality</p>
+                    </div>
+                    <div class="principle highlight">
+                        <span class="principle-num">8</span>
+                        <p><strong>Inform patients</strong> about how their data is used — <strong>including AI</strong> (added 2020)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accountability-section fade-in">
+                <h3>Your Professional Accountability</h3>
+                <div class="accountability-grid">
+                    <div class="acc-card">
+                        <h4>GMC Good Medical Practice 2024</h4>
+                        <ul>
+                            <li>You remain <strong>personally accountable</strong> for all decisions using AI</li>
+                            <li>AI tools classified as medical devices</li>
+                            <li>Yellow Card reporting applies to AI incidents</li>
+                            <li>Must maintain skills to work without AI</li>
+                        </ul>
+                        <a href="https://www.gmc-uk.org/professional-standards/good-medical-practice-2024" target="_blank" class="acc-link">Read GMC Guidance →</a>
+                    </div>
+                    <div class="acc-card">
+                        <h4>MDU & MPS Position</h4>
+                        <ul>
+                            <li><strong>You remain liable</strong> for AI-assisted decisions</li>
+                            <li>Indemnity coverage requires human oversight</li>
+                            <li>Must apply clinical judgment to AI outputs</li>
+                            <li>Document your reasoning, not just AI output</li>
+                        </ul>
+                        <a href="https://www.themdu.com/guidance-and-advice/guides/using-ai-in-primary-care" target="_blank" class="acc-link">Read MDU Guidance →</a>
+                    </div>
+                    <div class="acc-card">
+                        <h4>DTAC Requirements</h4>
+                        <ul>
+                            <li>Mandatory for all digital health technologies</li>
+                            <li>Covers clinical safety, data protection, security</li>
+                            <li>Check compliance before using any clinical AI</li>
+                            <li>DCB0129 (manufacturers) / DCB0160 (NHS deployment)</li>
+                        </ul>
+                        <a href="https://transform.england.nhs.uk/key-tools-and-info/digital-technology-assessment-criteria-dtac/" target="_blank" class="acc-link">Check DTAC Portal →</a>
+                    </div>
+                </div>
+                <div class="accountability-warning">
+                    <strong>The Bottom Line:</strong> "I was just following what the AI said" is not a defence. You are responsible for verifying AI output and applying professional judgment.
+                </div>
+            </div>
+
+            <div class="approval-process fade-in">
+                <h3>How to Get AI Approved at Your Trust</h3>
+                <p class="section-intro">If you want to implement an AI tool that processes patient data (Amber Zone), here's the pathway.</p>
+                <div class="approval-steps">
+                    <div class="approval-step">
+                        <div class="step-marker">1</div>
+                        <div class="step-content">
+                            <h4>Check DTAC Compliance First</h4>
+                            <p>Check the NHS DTAC Portal to see if the tool is already assessed. If not listed, vendor needs to complete assessment (can take months).</p>
                         </div>
                     </div>
-                    <div class="walk-steps">
-                        <div class="walk-step">
-                            <div class="step-num">1</div>
-                            <div class="step-details">
-                                <h4>Gather & Upload</h4>
-                                <p>Go to <strong>notebooklm.google.com</strong>. Create a "New Notebook". Click "Add Source" and upload your department's Sickness Policy PDF, Rota Rules PDF, and Induction Handbook.</p>
-                            </div>
+                    <div class="approval-step">
+                        <div class="step-marker">2</div>
+                        <div class="step-content">
+                            <h4>Contact Digital/IT Team</h4>
+                            <p>Your Trust has a process for technology requests. Contact CCIO or complete a Technology Request form.</p>
                         </div>
-                        <div class="walk-step">
-                            <div class="step-num">2</div>
-                            <div class="step-details">
-                                <h4>Generate the Outline</h4>
-                                <p>In the chat box, type:</p>
-                                <div class="code-block">"Act as a senior Emergency Medicine Consultant. Create a structured outline for a 15-minute induction presentation for new FY2 doctors based ONLY on these documents. Include slides for: Reporting Sickness, requesting leave, and key contacts."</div>
-                            </div>
+                    </div>
+                    <div class="approval-step">
+                        <div class="step-marker">3</div>
+                        <div class="step-content">
+                            <h4>Engage Clinical Safety Team</h4>
+                            <p>Your Clinical Safety Officer will assess risks. DCB0129 applies to manufacturers; DCB0160 applies to NHS deployment.</p>
                         </div>
-                        <div class="walk-step">
-                            <div class="step-num">3</div>
-                            <div class="step-details">
-                                <h4>Create the Slides</h4>
-                                <p>NotebookLM will generate the text. Copy the bullet points into PowerPoint. You can also ask it: <em>"Create a quiz with 5 questions based on the sickness policy to test their understanding."</em></p>
-                            </div>
+                    </div>
+                    <div class="approval-step">
+                        <div class="step-marker">4</div>
+                        <div class="step-content">
+                            <h4>Caldicott Guardian Review</h4>
+                            <p>For any tool processing patient data, your Caldicott Guardian must review and approve against the 8 Principles.</p>
+                        </div>
+                    </div>
+                    <div class="approval-step">
+                        <div class="step-marker">5</div>
+                        <div class="step-content">
+                            <h4>Complete DPIA</h4>
+                            <p>Data Protection Impact Assessment documents risks and mitigations. Your IG team will have a template.</p>
+                        </div>
+                    </div>
+                    <div class="approval-step">
+                        <div class="step-marker">6</div>
+                        <div class="step-content">
+                            <h4>Procurement & Implementation</h4>
+                            <p>Procurement, contract review, technical integration, staff training, go-live with monitoring plan.</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="walkthrough-card" id="walk-gamify">
-                    <div class="walk-header">
-                        <div class="walk-icon claude">C</div>
-                        <div>
-                            <h3>Gamified Induction App</h3>
-                            <p>Use Claude or Gemini to code a teaching tool for you.</p>
-                        </div>
-                    </div>
-                    <div class="walk-steps">
-                        <div class="walk-step">
-                            <div class="step-num">1</div>
-                            <div class="step-details">
-                                <h4>The Idea</h4>
-                                <p>Turn a boring guideline (e.g., Sepsis Six) into a text-based adventure game where the new doctor plays the role of the clinician.</p>
-                            </div>
-                        </div>
-                        <div class="walk-step">
-                            <div class="step-num">2</div>
-                            <div class="step-details">
-                                <h4>The Prompt (Copy This)</h4>
-                                <p>Use Claude.ai or Gemini Advanced:</p>
-                                <div class="code-block">"You are an expert web developer. Create a single-file HTML game to teach the 'Sepsis Six' pathway. It should be a text adventure where the player is a doctor in Resus with a septic patient. Give options for each step (e.g., 'Give Oxygen', 'Call Mom'). If they miss a step or choose wrong, game over. Style it like a retro 8-bit terminal with green text on black background."</div>
-                            </div>
-                        </div>
-                        <div class="walk-step">
-                            <div class="step-num">3</div>
-                            <div class="step-details">
-                                <h4>The Result</h4>
-                                <p>The AI will generate code. Click "Copy Code". Paste it into Notepad and save as <code>sepsis_game.html</code>. Double click to play. Hosting it is as simple as dropping that file onto a shared drive."</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="approval-timeline">
+                    <strong>Typical Timeline:</strong> Expect 3-12 months from request to go-live, depending on complexity and existing approvals.
                 </div>
-
             </div>
         </section>
 
-        <section class="second-brain-section" id="second-brain" style="padding: 5rem 2rem; background: var(--color-bg); border-top: 1px solid var(--color-border);">
+        <!-- AGENTIC BROWSERS SECTION -->
+        <section class="agentic-section" id="agentic">
             <div class="section-header fade-in">
-                <h2>The Clinical "Second Brain"</h2>
-                <p>How leading clinicians like Anaestheasier and EMCRIT use AI to extend their cognition.</p>
+                <h2>Agentic Browsers: AI That Acts For You</h2>
+                <p>The next evolution in AI — AI that can control your computer to complete tasks on your behalf.</p>
             </div>
-            
-            <div class="brain-grid fade-in" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-                
-                <div class="brain-card">
-                    <div class="brain-header">
-                        <span class="brain-icon">🗣️</span>
-                        <h3>The Sounding Board</h3>
+
+            <div class="agentic-explainer fade-in">
+                <h3>What Are Agentic Browsers?</h3>
+                <div class="agentic-comparison">
+                    <div class="comparison-box traditional">
+                        <h4>💬 Traditional Chatbots</h4>
+                        <p class="comparison-summary">You ask → AI gives you text → You act on it</p>
+                        <div class="comparison-example">
+                            <p><strong>You:</strong> "Write an email declining a meeting"</p>
+                            <p><strong>AI:</strong> "Here's a draft email..."</p>
+                            <p><strong>You:</strong> Copy, paste into Outlook, edit, send</p>
+                        </div>
                     </div>
-                    <p class="brain-source">Concept: <a href="https://www.anaestheasier.com/how-i-use-ai-on-intensive-care/" target="_blank">Anaestheasier</a></p>
-                    <p>Use AI as a "Senior Registrar" to bounce ideas off before calling the consultant on-call. It helps structure your thoughts.</p>
-                    <div class="brain-example">
-                        <strong>Try this (No Patient Data):</strong>
-                        <p>"I have a patient with [Condition X] and [Condition Y]. They are on [Drug A] and [Drug B]. I am worried about [Complication]. What are the key interactions I should check, and what are the subtle red flags for deterioration?"</p>
+                    <div class="comparison-arrow">→</div>
+                    <div class="comparison-box agentic">
+                        <h4>🤖 Agentic Browsers</h4>
+                        <p class="comparison-summary">You describe task → AI does it → You approve</p>
+                        <div class="comparison-example">
+                            <p><strong>You:</strong> "Decline tomorrow's 3pm meeting"</p>
+                            <p><strong>AI:</strong> [Opens Outlook, finds meeting, clicks Decline, types message, shows you]</p>
+                            <p><strong>You:</strong> Review and confirm</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="brain-card">
-                    <div class="brain-header">
-                        <span class="brain-icon">🧠</span>
-                        <h3>The External Cortex</h3>
-                    </div>
-                    <p class="brain-source">Concept: <a href="https://emcrit.org" target="_blank">EMCRIT / Josh Farkas</a></p>
-                    <p>We cannot memorise every paper. Use <strong>NotebookLM</strong> as your "Knowledge Locker". Upload PDFs of key papers, guidelines, and your own notes.</p>
-                    <div class="brain-example">
-                        <strong>Try this:</strong>
-                        <p>Upload the last 5 major papers on Neuroprognostication. Ask: "Based on these papers, what is the current consensus on the timing of MRI after cardiac arrest? cite the specific paper."</p>
-                    </div>
-                </div>
-
-                <div class="brain-card">
-                    <div class="brain-header">
-                        <span class="brain-icon">💊</span>
-                        <h3>The Interaction Checker</h3>
-                    </div>
-                    <p class="brain-source">Concept: Toxicology Adjunct</p>
-                    <p>AI is excellent at cross-referencing lists. Use it to check complex polypharmacy interactions that BNF checkers might miss (e.g., cumulative anticholinergic burden).</p>
-                    <div class="brain-example">
-                        <strong>Try this:</strong>
-                        <p>"A patient has taken an overdose of [List 5 drugs]. Explain the potential toxicodynamic interactions. Specifically, is there a risk of Serotonin Syndrome or QT prolongation with this combination?"</p>
-                    </div>
-                </div>
-
             </div>
-            <div class="takeaway-box fade-in" style="margin-top: 3rem;">
-                <h4>⚠️ The Golden Rule of the Second Brain</h4>
-                <p>AI is a tool for <strong>synthesis and recall</strong>, not a replacement for judgment. As Anaestheasier says: "No hallucination, guessing, or invention... if unsure, state that." Always verify critical information.</p>
+
+            <div class="agentic-tools fade-in">
+                <h3>Available Tools (January 2026)</h3>
+                <div class="agentic-tools-grid">
+                    <div class="agentic-tool-card">
+                        <div class="tool-header">
+                            <span class="tool-logo comet">🌐</span>
+                            <div class="tool-title">
+                                <h4>Comet Browser</h4>
+                                <span class="tool-status available">Available Now</span>
+                            </div>
+                        </div>
+                        <p>Purpose-built agentic browser for professionals. Specialises in form filling, data extraction, and repetitive web tasks.</p>
+                        <p class="tool-best">Best for: Portfolio systems, HR forms, expense claims</p>
+                    </div>
+                    <div class="agentic-tool-card">
+                        <div class="tool-header">
+                            <span class="tool-logo claude">C</span>
+                            <div class="tool-title">
+                                <h4>Claude Computer Use</h4>
+                                <span class="tool-status beta">Beta</span>
+                            </div>
+                        </div>
+                        <p>Anthropic's screen control feature. Can see your screen and control mouse/keyboard to complete tasks.</p>
+                        <p class="tool-best">Best for: Complex multi-application workflows</p>
+                    </div>
+                    <div class="agentic-tool-card">
+                        <div class="tool-header">
+                            <span class="tool-logo openai">O</span>
+                            <div class="tool-title">
+                                <h4>OpenAI Operator</h4>
+                                <span class="tool-status limited">Limited Release</span>
+                            </div>
+                        </div>
+                        <p>OpenAI's web task automation agent. Navigates websites and completes multi-step workflows.</p>
+                        <p class="tool-best">Best for: Web-based tasks, registrations, bookings</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agentic-usecases fade-in">
+                <h3>Best Use Cases for Medical Consultants</h3>
+                <div class="usecases-grid">
+                    <div class="usecase-card">
+                        <span class="usecase-icon">📋</span>
+                        <h4>Portfolio Documentation</h4>
+                        <p>Completing entries in Kaizen, Horus, Fourteen Fish. FEG entries, WPBAs, CBDs, reflections.</p>
+                        <span class="usecase-time">Saves 15-30 min per entry</span>
+                    </div>
+                    <div class="usecase-card">
+                        <span class="usecase-icon">📝</span>
+                        <h4>Study Leave Applications</h4>
+                        <p>Fill in repetitive fields across multiple forms. AI handles navigation; you review before submission.</p>
+                        <span class="usecase-time">Saves 15-20 min per application</span>
+                    </div>
+                    <div class="usecase-card">
+                        <span class="usecase-icon">💷</span>
+                        <h4>Expense Claims</h4>
+                        <p>Navigate expense systems, enter receipt details, categorise spending appropriately.</p>
+                        <span class="usecase-time">Saves 10-20 min per claim</span>
+                    </div>
+                    <div class="usecase-card">
+                        <span class="usecase-icon">🎓</span>
+                        <h4>CPD Logging</h4>
+                        <p>Log CPD activities, write reflections, upload certificates to Royal College portals.</p>
+                        <span class="usecase-time">Saves 5-10 min per entry</span>
+                    </div>
+                    <div class="usecase-card">
+                        <span class="usecase-icon">📅</span>
+                        <h4>Course Registrations</h4>
+                        <p>Register for conferences, courses, events. AI handles form-filling; you provide details.</p>
+                        <span class="usecase-time">Saves 10-15 min per registration</span>
+                    </div>
+                    <div class="usecase-card">
+                        <span class="usecase-icon">📊</span>
+                        <h4>Data Entry</h4>
+                        <p>Enter data into web systems from documents or spreadsheets. Particularly useful for repetitive tasks.</p>
+                        <span class="usecase-time">Varies by task volume</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agentic-example fade-in">
+                <h3>Worked Example: FEG Entry from Teams Meeting</h3>
+                <div class="example-timeline">
+                    <div class="timeline-step">
+                        <span class="timeline-marker">1</span>
+                        <div class="timeline-content">
+                            <h4>Hold FEG Meeting on Teams</h4>
+                            <p>Enable transcription. Copilot captures the conversation automatically.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <span class="timeline-marker">2</span>
+                        <div class="timeline-content">
+                            <h4>Get Summary from Copilot</h4>
+                            <p>"Summarise this FEG including: strengths, development areas, actions, timeline, concerns."</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <span class="timeline-marker">3</span>
+                        <div class="timeline-content">
+                            <h4>Review and Edit Summary</h4>
+                            <p>Check accuracy, edit errors, ensure appropriate tone for portfolio.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <span class="timeline-marker">4</span>
+                        <div class="timeline-content">
+                            <h4>Launch Agentic Browser</h4>
+                            <p>"Go to Kaizen, log in, find trainee [name], create new FEG entry for today."</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <span class="timeline-marker">5</span>
+                        <div class="timeline-content">
+                            <h4>Populate and Review</h4>
+                            <p>Paste summary, let AI fill fields. <strong>Review every field</strong> before submitting.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-comparison">
+                    <div class="comparison-item">
+                        <strong>Traditional Method</strong>
+                        <span class="time-value">25-40 minutes</span>
+                    </div>
+                    <div class="comparison-arrow">→</div>
+                    <div class="comparison-item highlight">
+                        <strong>With AI Assistance</strong>
+                        <span class="time-value">10-15 minutes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agentic-warnings fade-in">
+                <h3>⚠️ Important Limitations</h3>
+                <div class="warnings-grid">
+                    <div class="warning-card critical">
+                        <span class="warning-icon">🚫</span>
+                        <h4>Never for Patient Data</h4>
+                        <p>These are consumer tools without NHS governance. Never access EPR, clinical systems, or any patient information.</p>
+                    </div>
+                    <div class="warning-card">
+                        <span class="warning-icon">👀</span>
+                        <h4>Always Review Before Submit</h4>
+                        <p>AI makes mistakes. Review every field before submission. You remain accountable.</p>
+                    </div>
+                    <div class="warning-card">
+                        <span class="warning-icon">🔐</span>
+                        <h4>Credential Security</h4>
+                        <p>Be careful about account access. Log out of sensitive systems. Use on personal devices.</p>
+                    </div>
+                    <div class="warning-card">
+                        <span class="warning-icon">📋</span>
+                        <h4>Check Trust Policy</h4>
+                        <p>Your Trust may have policies on automation tools. Check with IT before using on Trust systems.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- TOOLS SECTION -->
+        <section class="tools-section" id="tools">
+            <div class="section-header fade-in">
+                <h2>Your Complete AI Toolkit</h2>
+                <p>Beyond Copilot — other tools for specific tasks. Each has strengths for particular use cases.</p>
+            </div>
+
+            <div class="tools-quickguide fade-in">
+                <h3>Quick Selection Guide</h3>
+                <div class="quickguide-grid">
+                    <div class="quickguide-item"><strong>Daily email/meetings?</strong> → NHS Copilot</div>
+                    <div class="quickguide-item"><strong>Grounded answers from guidelines?</strong> → NotebookLM</div>
+                    <div class="quickguide-item"><strong>Writing complex documents?</strong> → Claude</div>
+                    <div class="quickguide-item"><strong>General tasks + images?</strong> → ChatGPT</div>
+                    <div class="quickguide-item"><strong>Research with citations?</strong> → Perplexity</div>
+                    <div class="quickguide-item"><strong>UK clinical queries?</strong> → IatroX</div>
+                </div>
+            </div>
+
+            <div class="tools-detailed fade-in">
+                <div class="tool-detail-card">
+                    <div class="tool-detail-header">
+                        <span class="tool-logo-large notebooklm">N</span>
+                        <div class="tool-detail-title">
+                            <h3>NotebookLM</h3>
+                            <span class="tool-tag free">Free</span>
+                            <span class="tool-provider">Google</span>
+                        </div>
+                    </div>
+                    <div class="tool-detail-body">
+                        <h4>What It Does</h4>
+                        <p>Upload your own documents (PDFs, Google Docs, websites) and AI answers questions using <strong>ONLY your sources</strong>. Zero hallucination from external knowledge — every answer is grounded in and cited from your uploaded materials.</p>
+                        <h4>Best For</h4>
+                        <ul>
+                            <li><strong>Exam revision</strong> — Upload MRCP/FRCEM resources, ask questions, get cited answers</li>
+                            <li><strong>Guidelines synthesis</strong> — Upload NICE guidelines, query them conversationally</li>
+                            <li><strong>Literature review</strong> — Upload papers, ask for comparisons and summaries</li>
+                            <li><strong>"External brain"</strong> — Store guidelines you reference frequently</li>
+                        </ul>
+                        <h4>How to Use</h4>
+                        <ol>
+                            <li>Go to <a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a></li>
+                            <li>Create a new Notebook</li>
+                            <li>Click "Add Source" — upload PDFs, paste URLs, or add Google Docs</li>
+                            <li>Ask questions in the chat — answers cite your sources</li>
+                        </ol>
+                        <div class="tool-prompt-example">
+                            <code class="copyable">"Based on these NICE guidelines, what is the recommended first-line treatment for type 2 diabetes? Cite the specific recommendation number."</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-detail-card">
+                    <div class="tool-detail-header">
+                        <span class="tool-logo-large claude">C</span>
+                        <div class="tool-detail-title">
+                            <h3>Claude</h3>
+                            <span class="tool-tag free">Free Tier</span>
+                            <span class="tool-provider">Anthropic</span>
+                        </div>
+                    </div>
+                    <div class="tool-detail-body">
+                        <h4>What It Does</h4>
+                        <p>General-purpose AI assistant known for excellent writing quality, nuanced understanding, and ability to follow complex multi-step instructions. Particularly good at long documents and detailed analysis.</p>
+                        <h4>Best For</h4>
+                        <ul>
+                            <li><strong>Document writing</strong> — SOPs, policies, business cases, reports</li>
+                            <li><strong>Complex analysis</strong> — Multi-faceted questions requiring nuance</li>
+                            <li><strong>Teaching materials</strong> — Presentations, handouts, MCQs</li>
+                            <li><strong>Editing and refinement</strong> — Improving existing documents</li>
+                        </ul>
+                        <h4>How to Use</h4>
+                        <p>Go to <a href="https://claude.ai" target="_blank">claude.ai</a>, create a free account, start chatting. Be specific about what you need.</p>
+                        <div class="tool-prompt-example">
+                            <code class="copyable">"Write a Standard Operating Procedure for [procedure] in an NHS [department]. Include: Purpose, Scope, Responsibilities, Equipment, Step-by-step procedure, Safety, Documentation, References. ~1000 words."</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-detail-card">
+                    <div class="tool-detail-header">
+                        <span class="tool-logo-large chatgpt">G</span>
+                        <div class="tool-detail-title">
+                            <h3>ChatGPT</h3>
+                            <span class="tool-tag free">Free Tier</span>
+                            <span class="tool-provider">OpenAI</span>
+                        </div>
+                    </div>
+                    <div class="tool-detail-body">
+                        <h4>What It Does</h4>
+                        <p>The most widely-known AI chatbot. Very versatile — good at many tasks. Plus subscription adds web browsing, image generation (DALL-E), and advanced reasoning.</p>
+                        <h4>Best For</h4>
+                        <ul>
+                            <li><strong>General writing</strong> — Emails, letters, short documents</li>
+                            <li><strong>Brainstorming</strong> — Generating ideas and options</li>
+                            <li><strong>Image generation</strong> — Creating illustrations (DALL-E)</li>
+                            <li><strong>Code and technical tasks</strong> — Strong at programming</li>
+                        </ul>
+                        <h4>How to Use</h4>
+                        <p>Go to <a href="https://chat.openai.com" target="_blank">chat.openai.com</a>, create account, start chatting.</p>
+                        <div class="tool-prompt-example">
+                            <code class="copyable">"Create a professional poster for our department teaching session on [topic]. Include key learning points and make it visually engaging."</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-detail-card">
+                    <div class="tool-detail-header">
+                        <span class="tool-logo-large perplexity">P</span>
+                        <div class="tool-detail-title">
+                            <h3>Perplexity</h3>
+                            <span class="tool-tag free">Free Tier</span>
+                            <span class="tool-provider">Perplexity AI</span>
+                        </div>
+                    </div>
+                    <div class="tool-detail-body">
+                        <h4>What It Does</h4>
+                        <p>AI-powered search engine that searches the web and synthesises answers with numbered citations. Better than Google for complex research questions.</p>
+                        <h4>Best For</h4>
+                        <ul>
+                            <li><strong>Research questions</strong> — With proper citations</li>
+                            <li><strong>Current information</strong> — Searches live web</li>
+                            <li><strong>Fact-checking</strong> — Verify claims with sources</li>
+                            <li><strong>Literature searches</strong> — Academic mode available</li>
+                        </ul>
+                        <h4>How to Use</h4>
+                        <p>Go to <a href="https://perplexity.ai" target="_blank">perplexity.ai</a>, type your question. Click citation numbers to verify sources.</p>
+                        <div class="tool-prompt-example">
+                            <code class="copyable">"What is the current NICE guidance on anticoagulation in atrial fibrillation? When was it last updated?"</code>
+                        </div>
+                        <div class="tool-warning">⚠️ Always verify citations — some may be to low-quality sources</div>
+                    </div>
+                </div>
+
+                <div class="tool-detail-card">
+                    <div class="tool-detail-header">
+                        <span class="tool-logo-large iatrox">I</span>
+                        <div class="tool-detail-title">
+                            <h3>IatroX</h3>
+                            <span class="tool-tag free">Free for NHS</span>
+                            <span class="tool-provider">UK Clinical AI</span>
+                        </div>
+                    </div>
+                    <div class="tool-detail-body">
+                        <h4>What It Does</h4>
+                        <p>UK-specific clinical AI grounded in NICE guidelines, CKS (Clinical Knowledge Summaries), and UK formularies. Better than US-centric alternatives.</p>
+                        <h4>Best For</h4>
+                        <ul>
+                            <li><strong>NICE guidance queries</strong> — Specific UK recommendations</li>
+                            <li><strong>BNF/formulary questions</strong> — UK drug information</li>
+                            <li><strong>CKS summaries</strong> — Primary care guidelines</li>
+                            <li><strong>UK-specific clinical queries</strong> — NHS pathways</li>
+                        </ul>
+                        <div class="tool-important">
+                            <strong>⚠️ Use IatroX instead of OpenEvidence</strong> for UK practice. OpenEvidence is US-centric (FDA, US guidelines) and may give inappropriate answers for NHS context.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI LIMITATIONS -->
         <section class="limitations-section" id="limitations">
             <div class="section-header fade-in">
-                <h2>AI Limitations Every Clinician Must Know</h2>
-                <p>AI fails in specific, predictable ways. Understanding these helps you use AI safely.</p>
+                <h2>AI Limitations You Must Know</h2>
+                <p>AI fails in specific, predictable ways. Understanding these keeps you safe.</p>
             </div>
-            <div class="limitations-grid">
-                <div class="limitation-card fade-in">
-                    <div class="limitation-icon">🎭</div>
-                    <h4>Hallucination</h4>
-                    <p>Studies estimate hallucination rates of <strong>8-20%</strong> in clinical AI. LLM-generated notes showed 9.6% error rate versus 2.0% for physician notes. Documented cases include fabricated summaries and fake PubMed IDs.</p>
-                    <span class="limitation-stat">8-20% hallucination rate</span>
-                    <span class="limitation-source"><a href="https://www.annfammed.org/content/hidden-risk-ai-hallucinations-medical-practice" target="_blank">Source: Annals of Family Medicine →</a></span>
+
+            <div class="limitations-grid fade-in">
+                <div class="limitation-card">
+                    <div class="limitation-header">
+                        <span class="limitation-icon">🎭</span>
+                        <h3>Hallucination</h3>
+                        <span class="severity high">8-20% Rate</span>
+                    </div>
+                    <p>AI confidently states false information — fabricated citations, invented statistics, fictional guidelines. Studies show 8-20% hallucination rates even in medical contexts.</p>
+                    <div class="limitation-action"><strong>→ Always verify</strong> facts, citations, and statistics from primary sources</div>
                 </div>
-                <div class="limitation-card fade-in">
-                    <div class="limitation-icon">📅</div>
-                    <h4>Knowledge Cutoff</h4>
-                    <p>Current cutoffs: ChatGPT 5.2 (Aug 2025), Gemini 3 (Jan 2025), Claude 4.5 Opus (Mar-Aug 2025). LLMs may not know latest guidelines or recalled medications. <strong>Always cross-reference with NICE.</strong></p>
-                    <span class="limitation-stat">Models have training cutoffs</span>
+
+                <div class="limitation-card">
+                    <div class="limitation-header">
+                        <span class="limitation-icon">😊</span>
+                        <h3>Sycophancy Bias</h3>
+                        <span class="severity high">High Risk</span>
+                    </div>
+                    <p>AI tends to agree with you, even when you're wrong. Research shows 100% compliance with incorrect instructions when users made false claims.</p>
+                    <div class="limitation-action"><strong>→ Challenge outputs</strong> — Ask AI to critique itself</div>
                 </div>
-                <div class="limitation-card fade-in">
-                    <div class="limitation-icon">😊</div>
-                    <h4>Sycophancy Bias</h4>
-                    <p>npj Digital Medicine (Oct 2025): GPT models <strong>complied with incorrect instructions 100%</strong> of the time when users made false claims. "Prioritise helpfulness over critical thinking" — dangerous in healthcare.</p>
-                    <span class="limitation-stat">100% compliance with false claims</span>
-                    <span class="limitation-source"><a href="https://www.nature.com/articles/s41746-025-01790-0" target="_blank">Source: Nature Digital Medicine →</a></span>
+
+                <div class="limitation-card">
+                    <div class="limitation-header">
+                        <span class="limitation-icon">📅</span>
+                        <h3>Knowledge Cutoff</h3>
+                        <span class="severity medium">Medium Risk</span>
+                    </div>
+                    <p>AI training has fixed cutoff dates. It may not know recent guidelines, drug recalls, or new evidence. ChatGPT/Claude: ~Aug 2025.</p>
+                    <div class="limitation-action"><strong>→ Check currency</strong> with NICE/BNF directly</div>
                 </div>
-                <div class="limitation-card fade-in">
-                    <div class="limitation-icon">⚙️</div>
-                    <h4>DCB Compliance Gap</h4>
-                    <p>JMIR study (2025): Median compliance rate of <strong>25.6%</strong> across 14,747 digital health technology deployments in 178 NHS organisations — 75% lack DCB0129/0160 compliance.</p>
-                    <span class="limitation-stat">75% lack DCB compliance</span>
-                    <span class="limitation-source"><a href="https://www.jmir.org/2025/1/e80076" target="_blank">Source: JMIR 2025 →</a></span>
+
+                <div class="limitation-card">
+                    <div class="limitation-header">
+                        <span class="limitation-icon">📊</span>
+                        <h3>Training Data Bias</h3>
+                        <span class="severity medium">Medium Risk</span>
+                    </div>
+                    <p>AI reflects biases in training data. Documented cases of algorithms disadvantaging certain demographics. Pulse oximetry AI overestimates in non-white patients.</p>
+                    <div class="limitation-action"><strong>→ Apply clinical judgment</strong>, especially for diverse populations</div>
                 </div>
             </div>
-            <div class="takeaway-box fade-in">
-                <h4>The Golden Rule</h4>
-                <p>Treat AI output like a confident junior doctor's suggestion: often helpful, sometimes wrong, always requires verification. MDU and MPS confirm: you remain liable for AI-assisted decisions.</p>
+
+            <div class="golden-rule fade-in">
+                <h3>🏆 The Golden Rule</h3>
+                <p>Treat AI output like a <strong>confident junior doctor's suggestion</strong>:</p>
+                <ul>
+                    <li>Often helpful and saves you time</li>
+                    <li>Sometimes wrong in ways that aren't immediately obvious</li>
+                    <li>Always requires verification and supervision</li>
+                    <li>You remain accountable for the final decision</li>
+                </ul>
             </div>
         </section>
 
-        <section class="start-here-section" id="start-here">
+        <!-- PROMPTS LIBRARY SECTION -->
+        <section class="prompts-section" id="prompts">
             <div class="section-header fade-in">
-                <h2>Start Here: Your AI Quick Start Guide</h2>
-                <p>What you can do now, what needs approval, and what to avoid.</p>
+                <h2>Practical Prompts Library</h2>
+                <p>Copy these prompts directly into AI tools. No patient data, no governance hurdles. Click any code block to copy.</p>
             </div>
-            <div class="start-here-grid">
-                <div class="start-here-card green fade-in" data-step="1">
-                    <h4>Free Tools to Try Today</h4>
-                    <p>No governance requirements for non-patient tasks.</p>
-                    <ul class="action-list">
-                        <li>NHS Copilot (NHS.net - National DPIA)</li>
-                        <li>NotebookLM (Free, grounded answers)</li>
-                        <li>Perplexity (Citations included)</li>
-                        <li>Claude/ChatGPT (Free tiers)</li>
-                    </ul>
-                </div>
-                <div class="start-here-card green fade-in" data-step="2">
-                    <h4>What You Can Do This Week</h4>
-                    <p>Practical tasks with AI tools.</p>
-                    <ul class="action-list">
-                        <li>Write SOPs and clinical guidelines</li>
-                        <li>Analyse anonymised audit data</li>
-                        <li>Draft business cases (Five Case Model)</li>
-                        <li>Create teaching materials</li>
-                        <li>Generate QIP documentation</li>
-                    </ul>
-                </div>
-                <div class="start-here-card orange fade-in" data-step="3">
-                    <h4>Needs Trust Approval</h4>
-                    <p>Requires DPIA, Caldicott sign-off.</p>
-                    <ul class="action-list">
-                        <li>AI clinical documentation</li>
-                        <li>Diagnostic decision support</li>
-                        <li>Any tool with patient data</li>
-                        <li>Workflow automation</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
-        <section class="prompts-section" id="use-today" style="padding: 5rem 2rem; background: var(--color-bg); border-top: 1px solid var(--color-border);">
-            <div class="section-header fade-in">
-                <h2>Use AI Today: Practical Prompts Library</h2>
-                <p>Copy these prompts directly into ChatGPT, Claude, or Copilot. No patient data, no governance hurdles.</p>
-            </div>
-            <div style="max-width: 1400px; margin: 0 auto;">
-                <div class="prompt-category-tabs fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
-                    <button class="prompt-cat-tab active" onclick="showPromptCategory('sops')">SOPs & Guidelines</button>
-                    <button class="prompt-cat-tab" onclick="showPromptCategory('audit')">Audit & Data</button>
-                    <button class="prompt-cat-tab" onclick="showPromptCategory('management')">Management</button>
-                    <button class="prompt-cat-tab" onclick="showPromptCategory('education')">Education</button>
-                    <button class="prompt-cat-tab" onclick="showPromptCategory('career')">Career & Training</button>
-                    <button class="prompt-cat-tab" onclick="showPromptCategory('communication')">Communication</button>
+            <div class="prompts-container fade-in">
+                <div class="prompt-tabs">
+                    <button class="prompt-tab active" onclick="showPromptCategory('sops')">SOPs & Guidelines</button>
+                    <button class="prompt-tab" onclick="showPromptCategory('management')">Management</button>
+                    <button class="prompt-tab" onclick="showPromptCategory('education')">Education</button>
+                    <button class="prompt-tab" onclick="showPromptCategory('audit')">Audit & QI</button>
+                    <button class="prompt-tab" onclick="showPromptCategory('communication')">Communication</button>
                 </div>
 
+                <!-- SOPs & Guidelines -->
                 <div class="prompt-category active" id="prompts-sops">
-                    <div class="prompt-grid">
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📋</span><h4>Write a Clinical SOP</h4></div>
-                            <p class="prompt-description">Generate a structured standard operating procedure for any clinical process.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a Standard Operating Procedure for [PROCEDURE NAME] in an NHS Emergency Department. Include: Purpose, Scope, Responsibilities, Equipment needed, Step-by-step procedure, Safety considerations, Documentation requirements, References to relevant NICE/RCEM guidelines.</code></div>
+                    <div class="prompts-grid">
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📋</span>
+                                <h4>Write a Clinical SOP</h4>
+                            </div>
+                            <p>Generate a complete standard operating procedure for any process.</p>
+                            <code class="copyable">Write a Standard Operating Procedure for [PROCEDURE NAME] in an NHS [DEPARTMENT/SETTING].
+
+Include the following sections:
+1. Purpose and scope
+2. Responsibilities (who does what)
+3. Equipment/resources needed
+4. Step-by-step procedure (numbered)
+5. Safety considerations and precautions
+6. Documentation requirements
+7. References to relevant NICE/Royal College guidelines
+8. Version control and review date
+
+Format with clear headings. Approximately 1000-1500 words.</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🔄</span><h4>Update Existing Guidelines</h4></div>
-                            <p class="prompt-description">Modernise or adapt existing protocols to current evidence.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>I have an existing guideline for [TOPIC]. Please review and suggest updates based on: 1) Current NICE guidance, 2) Recent RCEM standards, 3) Best practice from Royal Colleges. Highlight what should change and why. Here is the current guideline: [PASTE TEXT]</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📝</span>
+                                <h4>Patient Information Leaflet</h4>
+                            </div>
+                            <p>Create accessible patient-facing materials in plain English.</p>
+                            <code class="copyable">Write a patient information leaflet about [CONDITION/PROCEDURE] for patients being discharged from [SETTING].
+
+Requirements:
+- Use plain English (reading age 11, no medical jargon)
+- Maximum 500 words
+- Include:
+  * What the condition/procedure is (simple explanation)
+  * What to expect in the next few days
+  * Warning signs that need urgent medical attention
+  * Self-care advice at home
+  * When and how to seek help
+- Use bullet points for key information
+- End with clear safety-netting advice</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📊</span><h4>Create a Clinical Pathway</h4></div>
-                            <p class="prompt-description">Design patient pathways with decision points.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a clinical pathway flowchart for [CONDITION] in the ED. Include: Triage criteria, Initial assessment steps, Investigation ordering criteria, Treatment decision points, Admission vs discharge criteria, Safety netting.</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">⚠️</span>
+                                <h4>Risk Assessment</h4>
+                            </div>
+                            <p>Generate risk assessments for processes or equipment.</p>
+                            <code class="copyable">Create a risk assessment for [PROCESS/EQUIPMENT/ACTIVITY] in an NHS [SETTING].
+
+Use a 5x5 risk matrix (Likelihood 1-5 × Severity 1-5).
+
+For each identified hazard, include:
+1. Hazard description
+2. Who might be harmed and how
+3. Current control measures in place
+4. Risk rating (L × S = Score)
+5. Additional control measures needed
+6. Residual risk rating after additional controls
+7. Person responsible
+8. Review date
+
+Format as a table. Identify at least 5 relevant hazards.</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📝</span><h4>Patient Information Leaflet</h4></div>
-                            <p class="prompt-description">Create accessible patient-facing materials.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a patient information leaflet about [CONDITION] for patients discharged from ED. Use plain English (reading age 11), include: What it is, Warning signs to return, Self-care advice, Contact numbers.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">⚠️</span><h4>Risk Assessment</h4></div>
-                            <p class="prompt-description">Generate risk assessments for new processes/equipment.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a risk assessment for [PROCESS] in an NHS ED. Use a 5x5 matrix. Include: Hazards, Who is harmed, Current controls, Risk rating, Additional controls, Residual risk.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🏥</span><h4>Departmental Policy</h4></div>
-                            <p class="prompt-description">Draft formal policies with governance structure.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Draft a policy for [TOPIC] in an NHS ED. Include: Policy statement, Scope, Roles, Procedure, Monitoring, Training, Equality impact, Version control.</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">🔄</span>
+                                <h4>Update Existing Guideline</h4>
+                            </div>
+                            <p>Review and modernise an existing protocol.</p>
+                            <code class="copyable">I have an existing clinical guideline for [TOPIC] that needs updating. Please:
+
+1. Review the attached/pasted guideline
+2. Identify areas that may be outdated
+3. Suggest updates based on:
+   - Current NICE guidance
+   - Recent Royal College standards
+   - Current best practice evidence
+4. Highlight what should change and why
+5. Note any new sections that should be added
+
+Here is the current guideline:
+[PASTE EXISTING GUIDELINE TEXT]</code>
                         </div>
                     </div>
                 </div>
 
-                <div class="prompt-category" id="prompts-audit">
-                    <div class="prompt-grid">
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📈</span><h4>Analyse Audit Data</h4></div>
-                            <p class="prompt-description">Get AI to interpret your anonymised audit results.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>I have audit data from [AUDIT TOPIC]. Please analyse and provide: 1) Summary statistics, 2) Comparison to standards (specify: RCEM/NICE targets), 3) Key findings, 4) Areas of good practice, 5) Recommended actions. Here is the anonymised data: [PASTE DATA]</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🎯</span><h4>Design an Audit</h4></div>
-                            <p class="prompt-description">Create audit methodology aligned to RCEM standards.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Design a clinical audit for [TOPIC]. Include: Audit title, Background, Aims, Standards (with NICE refs), Methodology, Sample size calculation, Data collection tool fields, Analysis plan.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📊</span><h4>Create Data Collection Tool</h4></div>
-                            <p class="prompt-description">Generate structured proformas for data collection.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a data collection proforma for auditing [TOPIC]. Include fields for: Demographics (anonymised), Clinical variables, Process measures, Outcome measures. Format as a table for Excel.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📉</span><h4>Interpret Run Charts</h4></div>
-                            <p class="prompt-description">Help interpret quality improvement data.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>I have [METRIC] data over time. Help me interpret using SPC principles: 1) Special cause variation? 2) Trends? 3) Suggested actions? Data: [PASTE DATA]</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📋</span><h4>Write Audit Report</h4></div>
-                            <p class="prompt-description">Structure your findings into a formal report.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a clinical audit report based on these findings: [PASTE FINDINGS]. Structure as: Executive summary, Background, Methodology, Results, Discussion, Recommendations, Action plan.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🔍</span><h4>Incident Theme Analysis</h4></div>
-                            <p class="prompt-description">Identify patterns across multiple incidents (PSIRF).</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Analyse these anonymised incident descriptions for themes. Identify: 1) Contributing factors, 2) System issues, 3) Recurring themes, 4) Learning points. [PASTE ANONYMISED TEXT]</code></div>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Management -->
                 <div class="prompt-category" id="prompts-management">
-                    <div class="prompt-grid">
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">💼</span><h4>Business Case (Five Case)</h4></div>
-                            <p class="prompt-description">Structure NHS business cases properly.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Draft an NHS business case for [PROPOSAL] using the Green Book Five Case Model. Include: Strategic Case, Economic Case, Commercial Case, Financial Case, Management Case.</code></div>
+                    <div class="prompts-grid">
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">💼</span>
+                                <h4>Business Case (Five Case Model)</h4>
+                            </div>
+                            <p>Structure NHS business cases using Treasury guidance.</p>
+                            <code class="copyable">Draft an NHS business case for [PROPOSAL] using the HM Treasury Green Book Five Case Model.
+
+Structure:
+1. EXECUTIVE SUMMARY (1 page max)
+
+2. STRATEGIC CASE
+   - Current situation and problem statement
+   - Strategic fit with Trust/ICS priorities
+   - Case for change
+   - Investment objectives
+
+3. ECONOMIC CASE
+   - Options considered (including do nothing)
+   - Costs and benefits of each option
+   - Preferred option with rationale
+
+4. COMMERCIAL CASE
+   - Procurement approach
+   - Market analysis
+
+5. FINANCIAL CASE
+   - Capital and revenue costs
+   - Funding sources
+   - Affordability assessment
+
+6. MANAGEMENT CASE
+   - Implementation plan
+   - Governance arrangements
+   - Risk management
+
+Total approximately 2000-3000 words.</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📅</span><h4>Rota Analysis</h4></div>
-                            <p class="prompt-description">Analyse staffing patterns and identify gaps.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Analyse this rota data for [STAFF GROUP]. Identify: 1) Coverage gaps, 2) WTR compliance issues, 3) Skill mix concerns. Here is the pattern: [PASTE]</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📊</span>
+                                <h4>Workforce Planning Paper</h4>
+                            </div>
+                            <p>Build the case for staffing changes.</p>
+                            <code class="copyable">Write a workforce planning paper for [DEPARTMENT/SERVICE].
+
+Include:
+1. Executive summary
+2. Current establishment (WTE by grade)
+3. Activity data and trends
+4. Gap analysis against:
+   - National standards (GIRFT, Royal College)
+   - Peer comparisons
+   - Safe staffing requirements
+5. Risk assessment of current position
+6. Options appraisal with pros/cons
+7. Preferred option with rationale
+8. Financial implications
+9. Recommendations
+
+Approximately 1500-2000 words.</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📝</span><h4>Job Description</h4></div>
-                            <p class="prompt-description">Create role descriptions for new posts.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a job description for a [ROLE TITLE] in an NHS ED. Include: Job title, Band, Reporting structure, Job summary, Key responsibilities, Person specification (essential/desirable). Align to Agenda for Change.</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📝</span>
+                                <h4>Job Description</h4>
+                            </div>
+                            <p>Create role descriptions for new posts.</p>
+                            <code class="copyable">Write a job description for a [ROLE TITLE] in an NHS [DEPARTMENT].
+
+Include:
+1. Job title and band/grade (specify: [BAND])
+2. Department and location
+3. Reporting structure
+4. Job summary (2-3 sentences)
+5. Key responsibilities:
+   - Clinical duties
+   - Leadership/management
+   - Education and training
+   - Quality improvement
+6. Person specification:
+   - Essential criteria
+   - Desirable criteria
+7. Working pattern
+
+Align to Agenda for Change and Royal College standards.</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🎤</span><h4>Interview Questions</h4></div>
-                            <p class="prompt-description">Generate competency-based interview questions.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create interview questions for [ROLE]. Include: Clinical scenarios, Leadership, Teaching, Values-based questions. Provide scoring guidance.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📊</span><h4>Workforce Planning</h4></div>
-                            <p class="prompt-description">Build the case for staffing changes.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a workforce planning paper for [DEPT]. Include: Current establishment, Activity data, Gap analysis against RCEM standards, Risk assessment, Options, Recommendations.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📈</span><h4>Performance Report</h4></div>
-                            <p class="prompt-description">Structure monthly/quarterly performance updates.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a monthly performance report template. Include: Executive summary, Key metrics (4hr, 12hr), Activity trends, Quality indicators, Workforce, Finance, Risks.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">⚡</span><h4>Service Improvement Proposal</h4></div>
-                            <p class="prompt-description">Structure proposals for operational changes.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a service improvement proposal for [CHANGE]. Include: Current state/problem, Proposed change, Evidence base, Expected benefits, Implementation plan, Risks and mitigations.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🔴</span><h4>Risk Register Entry</h4></div>
-                            <p class="prompt-description">Document risks in standard format.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a risk register entry for [RISK]. Include: ID, Description (cause-event-consequence), Owner, Current controls, Risk score (5x5), Mitigation actions.</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">🎤</span>
+                                <h4>Interview Questions</h4>
+                            </div>
+                            <p>Generate competency-based interview questions.</p>
+                            <code class="copyable">Create interview questions for a [ROLE] position in NHS [SETTING].
+
+Generate questions covering:
+1. Clinical competence (2-3 questions)
+2. Communication skills (2 questions)
+3. Leadership and teamwork (2 questions)
+4. Quality improvement (1-2 questions)
+5. Teaching and training (1-2 questions)
+6. Situational judgment (2 scenarios)
+
+For each question provide:
+- The question
+- What good answers should demonstrate
+- Follow-up probing questions
+- Scoring criteria (1-5 scale)
+
+Base on NHS Leadership Model and GMC domains.</code>
                         </div>
                     </div>
                 </div>
 
+                <!-- Education -->
                 <div class="prompt-category" id="prompts-education">
-                    <div class="prompt-grid">
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🎓</span><h4>Teaching Presentation</h4></div>
-                            <p class="prompt-description">Create structured teaching sessions.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a 30-minute teaching presentation on [TOPIC] for [AUDIENCE]. Include: Learning objectives, Key content points, Clinical cases, Interactive elements, Summary, MCQ questions.</code></div>
+                    <div class="prompts-grid">
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📽️</span>
+                                <h4>Teaching Presentation</h4>
+                            </div>
+                            <p>Structure educational presentations with learning objectives.</p>
+                            <code class="copyable">Create a teaching presentation outline on [TOPIC] for [AUDIENCE e.g., medical students, F1 doctors].
+
+Include:
+1. Title slide
+2. Learning objectives (3-5 SMART objectives using Bloom's taxonomy)
+3. Introduction/hook
+4. Main content:
+   - Key concept 1 with clinical relevance
+   - Key concept 2 with clinical relevance
+   - Key concept 3 with clinical relevance
+5. Clinical cases/examples
+6. Common pitfalls to avoid
+7. Summary/take-home messages
+8. MCQ questions for engagement (3-5)
+9. References
+
+Target duration: [X] minutes. Include speaker notes.</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🎭</span><h4>Simulation Scenario</h4></div>
-                            <p class="prompt-description">Generate realistic training scenarios.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a simulation scenario for [TOPIC] at [LEVEL]. Include: Overview, Learning objectives, Patient details, Initial presentation, Vital signs progression, Investigation results, Expected interventions, Debriefing points.</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">🎭</span>
+                                <h4>Simulation Scenario</h4>
+                            </div>
+                            <p>Design high-fidelity simulation training scenarios.</p>
+                            <code class="copyable">Design a simulation scenario for [CLINICAL SITUATION] aimed at [TARGET LEARNERS].
+
+Include:
+1. OVERVIEW
+   - Title and learning objectives
+   - Learner level and group size
+   - Duration and equipment needed
+
+2. CASE INFORMATION
+   - Patient demographics (fictional)
+   - Presenting complaint and history
+   - Initial observations
+   - Background medical history
+
+3. SCENARIO FLOW
+   - Starting state
+   - Expected actions and timeframes
+   - Triggers for deterioration/improvement
+   - Endpoints
+
+4. CONFEDERATE BRIEFS
+   - Nurse role
+   - Patient voice responses
+
+5. DEBRIEFING GUIDE
+   - Key learning points
+   - Common errors
+   - Suggested debrief questions</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">❓</span><h4>MCQ Bank</h4></div>
-                            <p class="prompt-description">Create assessment questions with rationales.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create 10 single best answer MCQs on [TOPIC] for FRCEM. Each question needs: Clinical stem, 5 options, Correct answer, Detailed explanation of why correct answer is right and distractors are wrong.</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">❓</span>
+                                <h4>MCQ Bank Generator</h4>
+                            </div>
+                            <p>Create high-quality assessment questions.</p>
+                            <code class="copyable">Create [NUMBER] multiple choice questions on [TOPIC] at [LEVEL: undergraduate/postgraduate].
+
+For each question:
+1. Clinical vignette stem (3-5 sentences)
+2. Lead-in question (single best answer)
+3. Five options (A-E) with one correct
+4. All distractors plausible but wrong
+5. Indicate the correct answer
+6. Detailed explanation:
+   - Why correct answer is correct
+   - Why each distractor is incorrect
+   - Key learning point
+   - Reference if applicable
+
+Test application of knowledge, not just recall.
+Difficulty: [Easy/Medium/Hard/Mixed]</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📚</span><h4>Guideline Summary</h4></div>
-                            <p class="prompt-description">Create digestible summaries of complex guidelines.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Summarise [GUIDELINE] for ED staff. Include: Key recommendations, What's new, Red flags, Algorithm, Common pitfalls. Cite specific recommendations.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🗣️</span><h4>OSCE Station</h4></div>
-                            <p class="prompt-description">Design practical assessment stations.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create an OSCE station for [SKILL]. Include: Candidate instructions, Actor brief, Mark scheme with criteria, Global rating scale, Time, Equipment needed.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📖</span><h4>Case-Based Discussion</h4></div>
-                            <p class="prompt-description">Structure educational case discussions.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a CBD template for [CASE]. Include: Anonymised summary, Discussion questions (reasoning, evidence, ethics), Model answers, Teaching points.</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📚</span>
+                                <h4>Guideline Summary for Teaching</h4>
+                            </div>
+                            <p>Condense guidelines into teachable content.</p>
+                            <code class="copyable">Summarise [NICE GUIDELINE/CLINICAL GUIDANCE] into a teaching resource for [AUDIENCE].
+
+Create:
+1. ONE-PAGE SUMMARY
+   - Key recommendations (bullet points)
+   - Red flags and safety-netting
+   - Important thresholds/values
+
+2. DECISION FLOWCHART
+   - Logical pathway through guideline
+   - Key decision points
+
+3. QUICK REFERENCE CARD
+   - Fit on one side of A5
+   - Most commonly needed information
+
+4. TEACHING POINTS
+   - What's new/changed
+   - Areas of common misunderstanding
+
+Note: I will verify against original guideline.</code>
                         </div>
                     </div>
                 </div>
 
-                <div class="prompt-category" id="prompts-career">
-                    <div class="prompt-grid">
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📄</span><h4>CV Review</h4></div>
-                            <p class="prompt-description">Get feedback on your medical CV.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Review my CV for a [ROLE] position. Suggest improvements for: Structure, Achievement-focused language, Quantifying impact, Gaps to address. Here is my CV: [PASTE TEXT]</code></div>
+                <!-- Audit & QI -->
+                <div class="prompt-category" id="prompts-audit">
+                    <div class="prompts-grid">
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📊</span>
+                                <h4>Audit Data Analysis</h4>
+                            </div>
+                            <p>Analyse and interpret audit results (anonymised data only).</p>
+                            <code class="copyable">Analyse this audit data and provide a comprehensive summary.
+
+Standards being audited against: [SPECIFY]
+Target compliance: [SPECIFY %]
+
+Please provide:
+1. RESULTS SUMMARY
+   - Overall compliance rate for each standard
+   - Sample size and data quality notes
+   - Key findings
+
+2. STATISTICAL ANALYSIS
+   - Percentages with 95% confidence intervals
+   - Comparison with previous cycle (if provided)
+
+3. KEY THEMES
+   - Common reasons for non-compliance
+   - Areas of good practice
+
+4. RECOMMENDATIONS
+   - Prioritised improvement actions
+   - Quick wins vs longer-term changes
+
+Here is the anonymised data:
+[PASTE DATA - NO PATIENT IDENTIFIERS]</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">✍️</span><h4>Supporting Statement</h4></div>
-                            <p class="prompt-description">Structure application supporting statements.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me structure a supporting statement for [POSITION]. Criteria: [LIST]. Help me identify STAR examples for each. My experience: [SUMMARY]</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">🔄</span>
+                                <h4>QI Project Proposal</h4>
+                            </div>
+                            <p>Structure improvement projects using IHI methodology.</p>
+                            <code class="copyable">Write a Quality Improvement project proposal for [PROBLEM] in [SETTING].
+
+Use Model for Improvement framework:
+
+1. AIM STATEMENT
+   - What are we trying to accomplish? (SMART)
+   - Target population and timeframe
+
+2. MEASURES
+   - Outcome measures (the goal)
+   - Process measures (are changes happening)
+   - Balancing measures (unintended consequences)
+
+3. CURRENT STATE ANALYSIS
+   - Baseline data
+   - Process mapping
+   - Root cause analysis (fishbone/5 whys)
+
+4. CHANGE IDEAS
+   - Evidence-based interventions
+   - Prioritised changes to test
+
+5. PDSA CYCLE PLAN
+   - First test of change
+   - Prediction
+
+6. PROJECT PLAN
+   - Timeline, team, resources
+
+7. SUSTAINABILITY PLAN</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🎯</span><h4>Appraisal Preparation</h4></div>
-                            <p class="prompt-description">Prepare for annual appraisal.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me prepare for medical appraisal. Help me reflect on: 1) Supporting information to gather, 2) Presenting CPD, 3) Structuring QI work, 4) Significant events, 5) PDP objectives.</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📄</span>
+                                <h4>Audit Report</h4>
+                            </div>
+                            <p>Write up audit findings professionally.</p>
+                            <code class="copyable">Write a clinical audit report based on this data and methodology.
+
+[Provide: Topic, standards, methodology, results data]
+
+Structure:
+1. TITLE PAGE - Audit title, authors, department, date
+
+2. EXECUTIVE SUMMARY - Key findings in 200 words
+
+3. INTRODUCTION - Background, aims, standards
+
+4. METHODOLOGY - Design, population, data collection
+
+5. RESULTS - Compliance with each standard, tables/figures
+
+6. DISCUSSION - Interpretation, comparison, limitations, root cause
+
+7. CONCLUSIONS AND RECOMMENDATIONS
+   - Prioritised action list
+   - Responsible persons and deadlines
+   - Re-audit plan
+
+8. REFERENCES AND APPENDICES</code>
                         </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📝</span><h4>Reference Writing</h4></div>
-                            <p class="prompt-description">Structure professional references.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me write a reference for [NAME] for [ROLE]. Cover: Clinical competence, Professionalism, Teamwork, Leadership. Key strengths observed: [LIST].</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🎓</span><h4>Training Application</h4></div>
-                            <p class="prompt-description">Prepare for specialty training applications.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me prepare for [SPECIALTY] application. Self-assessment criteria: [LIST]. Help me identify evidence and score myself.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🏆</span><h4>Award Application</h4></div>
-                            <p class="prompt-description">Structure nominations and applications.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me write a nomination for [AWARD]. Criteria: [LIST]. Structure a narrative that demonstrates impact, innovation, and evidence.</code></div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">🐟</span>
+                                <h4>Root Cause Analysis</h4>
+                            </div>
+                            <p>Structure systematic problem analysis.</p>
+                            <code class="copyable">Help me conduct a root cause analysis for [PROBLEM] in [SETTING].
+
+Provide:
+1. FISHBONE DIAGRAM STRUCTURE
+   Categories:
+   - People (staffing, training)
+   - Process (procedures, workflows)
+   - Equipment (availability, maintenance)
+   - Environment (space, workload, culture)
+   - External (guidelines, regulations)
+
+2. 5 WHYS ANALYSIS
+   - Drill down through each "why" level
+   - Identify true root causes
+
+3. CONTRIBUTING FACTORS
+   - Active failures
+   - Latent conditions
+
+4. RECOMMENDED INTERVENTIONS
+   - Addressing root causes
+   - Hierarchy of controls
+
+Here is the problem description:
+[DESCRIBE THE ISSUE]</code>
                         </div>
                     </div>
                 </div>
 
+                <!-- Communication -->
                 <div class="prompt-category" id="prompts-communication">
-                    <div class="prompt-grid">
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📧</span><h4>Professional Emails</h4></div>
-                            <p class="prompt-description">Draft effective professional communications.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Draft a professional email to [RECIPIENT] regarding [TOPIC]. It should be concise, include context, make a specific request, and maintain professional tone. Key points: [LIST]</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">😤</span><h4>Complaint Response</h4></div>
-                            <p class="prompt-description">Structure empathetic complaint responses.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Help me structure a response to a patient complaint about [GENERAL TOPIC]. Do not include patient details. Structure: Acknowledge concerns, Explain review (without admitting liability), Describe learning, Offer next steps.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📊</span><h4>Board Paper</h4></div>
-                            <p class="prompt-description">Format papers for governance committees.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Format this as an NHS Board paper: [CONTENT]. Sections: Executive summary, Purpose, Background, Position, Proposal, Finance, Risk, Recommendation.</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📢</span><h4>Staff Communication</h4></div>
-                            <p class="prompt-description">Craft clear messages for departmental updates.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Write a staff update about [CHANGE]. Explain 'why', what staff need to do, timeline, and support available. Tone: [TONE].</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">📰</span><h4>Newsletter</h4></div>
-                            <p class="prompt-description">Create engaging departmental updates.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a departmental newsletter. Sections: Welcome, Key updates, Staff achievements, Learning from incidents, Events. Items to include: [LIST].</code></div>
-                        </div>
-                        <div class="prompt-card fade-in">
-                            <div class="prompt-card-header"><span class="prompt-icon">🤝</span><h4>Stakeholder Brief</h4></div>
-                            <p class="prompt-description">Summarise complex issues for different audiences.</p>
-                            <div class="prompt-box"><div class="prompt-label">Copy this prompt:</div><code>Create a brief on [TOPIC] for [AUDIENCE]. Key messages, Background, Status, Ask, Timeline. Keep to one page.</code></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="agentic-section" id="agentic" style="padding: 5rem 2rem; background: var(--color-bg-elevated); border-top: 1px solid var(--color-border);">
-            <div class="section-header fade-in">
-                <h2>Agentic Browsers: AI That Controls Your Computer</h2>
-                <p>The next evolution in AI productivity.</p>
-            </div>
-            <div style="max-width: 1400px; margin: 0 auto;">
-                <div class="agentic-intro fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
-                    <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 20px; padding: 2rem;">
-                        <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.5rem; margin-bottom: 1rem;">🤖 What Are Agentic Browsers?</h3>
-                        <p style="color: var(--color-text-secondary);">Unlike chatbots, <strong>agentic browsers</strong> interact with websites: clicking buttons, filling forms, and navigating pages for you.</p>
-                    </div>
-                     <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 20px; padding: 2rem;">
-                        <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.5rem; margin-bottom: 1rem;">🌐 Comet Browser</h3>
-                        <p style="color: var(--color-text-secondary);">An agentic browser for professionals. Automates form filling, data extraction, and repetitive web tasks.</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-example fade-in" style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); border-radius: 24px; padding: 2.5rem; color: white; margin-bottom: 3rem;">
-                    <h3 style="font-family: 'Crimson Pro', Georgia, serif; font-size: 2rem; margin-bottom: 0.5rem;">Portfolio Automation: The FEG Example</h3>
-                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem;">
-                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem;"><h4>1. Record</h4><p>Record FEG meeting on Teams.</p></div>
-                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem;"><h4>2. Summarise</h4><p>Copilot generates meeting summary.</p></div>
-                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem;"><h4>3. Automate</h4><p>Agentic browser fills Kaizen form.</p></div>
-                        <div style="background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1.5rem;"><h4>4. Submit</h4><p>You review and sign off.</p></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="applications-section" id="applications">
-            <div class="section-header fade-in">
-                <h2>AI Applications by Category</h2>
-                <p>20 practical applications across clinical and administrative domains</p>
-            </div>
-            <div style="max-width: 1400px; margin: 0 auto;">
-                <div class="app-category fade-in">
-                    <div class="app-category-header">
-                        <div class="app-category-icon clinical">🏥</div>
-                        <h3 class="app-category-title">Clinical Applications</h3>
-                    </div>
-                    <div class="app-grid">
-                        <div class="app-card" onclick="openModal('fracture')">
-                            <h5>AI Fracture Detection</h5>
-                            <p>9.5% sensitivity improvement. NICE HTG739.</p>
-                            <span class="app-card-tag">Live in 50+ Trusts</span>
-                        </div>
-                        <div class="app-card" onclick="openModal('stroke')">
-                            <h5>Stroke Imaging AI</h5>
-                            <p>107 stroke units using Brainomix. 2x thrombectomy rates.</p>
-                            <span class="app-card-tag">Live</span>
-                        </div>
-                        <div class="app-card" onclick="openModal('scribes')">
-                            <h5>AI Clinical Scribes</h5>
-                            <p>TORTUS, Heidi, Dragon. Save ~47 mins/shift.</p>
-                            <span class="app-card-tag">Pilot Stage</span>
-                        </div>
-                        <div class="app-card" onclick="openModal('sepsis')">
-                            <h5>Sepsis Digital Alerts</h5>
-                            <p>70% reduction in progression. Nationally mandated.</p>
-                            <span class="app-card-tag">Mandated</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="app-category fade-in">
-                    <div class="app-category-header">
-                        <div class="app-category-icon admin">📋</div>
-                        <h3 class="app-category-title">Administrative Applications</h3>
-                    </div>
-                    <div class="app-grid">
-                        <div class="app-card" onclick="openModal('meetings')">
-                            <h5>Meeting Summarisation</h5>
-                            <p>NHS Copilot. 43 min/day saved.</p>
-                            <span class="app-card-tag">Free for NHS.net</span>
-                        </div>
-                        <div class="app-card" onclick="openModal('businesscase')">
-                            <h5>Business Case Drafting</h5>
-                            <p>Five Case Model structure drafting.</p>
-                            <span class="app-card-tag">Use Now</span>
-                        </div>
-                        <div class="app-card" onclick="openModal('sops')">
-                            <h5>SOPs & Guidelines</h5>
-                            <p>Generate or update clinical protocols.</p>
-                            <span class="app-card-tag">Use Now</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="implementations-section" id="implementations">
-            <div class="section-header fade-in">
-                <h2>UK Emergency Department AI Implementations</h2>
-            </div>
-            <div class="implementations-table fade-in">
-                <table>
-                    <thead><tr><th>Technology</th><th>Evidence</th><th>Status</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Stroke Imaging AI</strong></td><td>2× thrombectomy rates</td><td><span class="status-badge live">Live</span></td></tr>
-                        <tr><td><strong>AI Scribes</strong></td><td>47 min/shift saved</td><td><span class="status-badge pilot">Pilot</span></td></tr>
-                        <tr><td><strong>Fracture AI</strong></td><td>9.5% sensitivity gain</td><td><span class="status-badge live">Live</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="platforms-section" id="platforms">
-            <div class="section-header fade-in">
-                <h2>AI Platform Guide with Compliance Status</h2>
-                <p>10 platforms with verified NHS deployments and regulatory certifications</p>
-            </div>
-            <div class="platform-grid">
-                <div class="platform-card fade-in" style="border: 2px solid var(--color-primary-light);">
-                    <div class="platform-header">
-                        <div class="platform-logo openevidence">O</div>
-                        <div class="platform-info">
-                            <h3>OpenEvidence</h3>
-                            <span>Evidence Synthesis</span>
-                        </div>
-                    </div>
-                    <div class="platform-body">
-                        <p class="platform-description">"Super-fast librarian" synthesizing answers from peer-reviewed lit (NEJM, JAMA). Zero hallucination policy. <strong>Requires US license.</strong></p>
-                        <div class="platform-warning">
-                            <p><strong>⚠️ Warning for UK:</strong> US-centric (FDA). Use <strong>IatroX</strong> for UK/NICE grounded equivalent.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="platform-card fade-in">
-                    <div class="platform-header">
-                        <div class="platform-logo iatrox">I</div>
-                        <div class="platform-info">
-                            <h3>IatroX</h3>
-                            <span>UK Clinical Search</span>
-                        </div>
-                    </div>
-                    <div class="platform-body">
-                        <p class="platform-description">UK alternative to OpenEvidence. RAG-based AI grounded in NICE guidelines, CKS, and UK formularies. Free for NHS staff.</p>
-                        <div class="platform-use-cases">
-                            <h4>Best For</h4>
-                            <div class="use-case-tags">
-                                <span class="use-case-tag">NICE lookups</span>
-                                <span class="use-case-tag">UK formulary checks</span>
+                    <div class="prompts-grid">
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">✉️</span>
+                                <h4>Professional Email</h4>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                            <p>Draft emails for various professional contexts.</p>
+                            <code class="copyable">Write a professional email for the following situation:
 
-                <div class="platform-card fade-in">
-                    <div class="platform-header">
-                        <div class="platform-logo copilot">M</div>
-                        <div class="platform-info">
-                            <h3>NHS M365 Copilot</h3>
-                            <span>Free for NHS.net</span>
+Context: [DESCRIBE SITUATION]
+Recipient: [ROLE]
+Purpose: [INFORM/REQUEST/ESCALATE/THANK/DECLINE]
+Tone: [FORMAL/PROFESSIONAL-FRIENDLY/ASSERTIVE-BUT-DIPLOMATIC]
+
+Requirements:
+- Clear subject line
+- Appropriate greeting
+- Concise opening stating purpose
+- Key information (bullet points if multiple items)
+- Clear call to action
+- Professional sign-off
+- Maximum 200 words
+
+Additional context:
+[PROVIDE ANY RELEVANT BACKGROUND]</code>
                         </div>
-                    </div>
-                    <div class="platform-body">
-                        <p class="platform-description">Published national DPIA. 43 minutes saved per staff member per day (October 2025 trial).</p>
-                        <div class="platform-use-cases">
-                            <h4>Best For</h4>
-                            <div class="use-case-tags">
-                                <span class="use-case-tag">Meeting summaries</span>
-                                <span class="use-case-tag">Email drafting</span>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📋</span>
+                                <h4>Board Paper</h4>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                            <p>Structure papers for executive review.</p>
+                            <code class="copyable">Write a board paper on [TOPIC] for [COMMITTEE/BOARD].
 
-                <div class="platform-card fade-in">
-                    <div class="platform-header">
-                        <div class="platform-logo notebooklm">N</div>
-                        <div class="platform-info">
-                            <h3>NotebookLM</h3>
-                            <span>Grounded Answers Only</span>
+Standard NHS Board Paper Format:
+1. COVER SHEET
+   - Title, date, meeting
+   - Author and executive sponsor
+   - Purpose (For Approval/Discussion/Information)
+
+2. EXECUTIVE SUMMARY (max 300 words)
+
+3. BACKGROUND AND CONTEXT
+
+4. ANALYSIS / CURRENT POSITION
+
+5. RECOMMENDATIONS (clear, actionable, numbered)
+
+6. IMPLICATIONS
+   - Financial, Workforce, Quality, Legal, Equality
+
+7. RISKS
+
+8. NEXT STEPS
+
+9. APPENDICES
+
+Maximum 4 pages (excl appendices). Board-appropriate language.</code>
                         </div>
-                    </div>
-                    <div class="platform-body">
-                        <p class="platform-description">Google AI. Generates responses <strong>ONLY from uploaded sources</strong>. Eliminates hallucination from external knowledge.</p>
-                        <div class="platform-use-cases">
-                            <h4>Best For</h4>
-                            <div class="use-case-tags">
-                                <span class="use-case-tag">FRCEM revision</span>
-                                <span class="use-case-tag">Guideline synthesis</span>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">📜</span>
+                                <h4>Reference Letter</h4>
                             </div>
+                            <p>Draft professional references for colleagues.</p>
+                            <code class="copyable">Help me draft a reference letter for [NAME] applying for [POSITION] at [ORGANISATION].
+
+Information:
+- Current role: [ROLE]
+- Time working with me: [DURATION]
+- Key responsibilities: [LIST]
+- Strengths: [LIST]
+- Notable achievements: [LIST]
+
+Draft covering:
+1. My role and relationship to applicant
+2. Context of working relationship
+3. Key competencies demonstrated
+4. Specific examples of good practice
+5. Areas for continued development (balanced)
+6. Overall recommendation
+7. Availability for further discussion
+
+Tone: Supportive but honest
+Length: 400-500 words
+
+Note: I will verify accuracy before sending.</code>
+                        </div>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-icon">👥</span>
+                                <h4>Staff Communication</h4>
+                            </div>
+                            <p>Communicate changes and updates to teams.</p>
+                            <code class="copyable">Write a communication to staff about [CHANGE/UPDATE].
+
+Audience: [WHO]
+Channel: [EMAIL/NEWSLETTER/TEAM BRIEF]
+Tone: [INFORMATIVE/MOTIVATIONAL/SENSITIVE]
+
+Include:
+1. Clear headline/subject
+2. What is changing (specific)
+3. Why it's happening (context)
+4. When it takes effect
+5. How it affects the reader
+6. What they need to do
+7. Where to get support
+8. Acknowledgment of impact (if significant)
+9. Contact for questions
+
+Key messages:
+[LIST 2-3 KEY MESSAGES]
+
+Sensitivities:
+[ANY CONCERNS TO ADDRESS]</code>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="scenarios-section" id="scenarios">
+        <!-- START HERE SECTION -->
+        <section class="start-section" id="start">
             <div class="section-header fade-in">
-                <h2>Clinical Scenarios</h2>
-                <p>See how AI applies in real emergency medicine situations</p>
+                <h2>Start This Week</h2>
+                <p>Five things with zero governance hurdles, zero risk, and immediate benefit.</p>
             </div>
-            <div class="scenario-tabs fade-in">
-                <button class="scenario-tab active" onclick="showScenario('xray')">3am Wrist X-ray</button>
-                <button class="scenario-tab" onclick="showScenario('hallucination')">Hallucination Risk</button>
-            </div>
-            <div class="scenario-content fade-in">
-                <div class="scenario-panel active" id="scenario-xray">
-                    <div class="scenario-box">
-                        <h3>The 3am Wrist X-ray</h3>
-                        <p>Your FY2 is 8 hours into a night shift. 45-year-old FOOSH injury...</p>
-                        <div class="scenario-step"><h4>🤖 AI Detection</h4><p>AI fracture detection flags a subtle scaphoid fracture (9.5% sensitivity improvement).</p></div>
+
+            <div class="start-actions fade-in">
+                <div class="start-action">
+                    <span class="action-num">1</span>
+                    <div class="action-content">
+                        <h3>Try NHS Copilot Today</h3>
+                        <p>Open Microsoft Teams. Find Copilot in the sidebar. Check for the Green Shield. Ask: <em>"Summarise my unread emails from the last 24 hours."</em></p>
+                        <span class="action-time">⏱️ 5 minutes</span>
                     </div>
                 </div>
-                 <div class="scenario-panel" id="scenario-hallucination">
-                    <div class="scenario-box">
-                        <h3>When AI Gets It Wrong</h3>
-                        <p>You ask AI about a drug interaction. It confidently provides a fake PubMed citation.</p>
-                        <div class="scenario-step"><h4>✅ Always Verify</h4><p>Click every citation. Use tools like NotebookLM or IatroX that cite sources.</p></div>
+
+                <div class="start-action">
+                    <span class="action-num">2</span>
+                    <div class="action-content">
+                        <h3>Draft a Document You've Been Putting Off</h3>
+                        <p>That SOP, policy, or guideline? Use Claude or ChatGPT with the prompts above. Get a first draft in 10 minutes, then refine.</p>
+                        <span class="action-time">⏱️ 15-30 minutes</span>
                     </div>
                 </div>
+
+                <div class="start-action">
+                    <span class="action-num">3</span>
+                    <div class="action-content">
+                        <h3>Build Your NotebookLM</h3>
+                        <p>Go to notebooklm.google.com. Upload 5-10 guidelines you reference frequently. Ask questions — answers come only from your sources.</p>
+                        <span class="action-time">⏱️ 20 minutes setup</span>
+                    </div>
+                </div>
+
+                <div class="start-action">
+                    <span class="action-num">4</span>
+                    <div class="action-content">
+                        <h3>Analyse Some Audit Data</h3>
+                        <p>Take fully anonymised audit results. Paste into Claude or ChatGPT. Ask for compliance calculations, themes, and a draft report structure.</p>
+                        <span class="action-time">⏱️ 15 minutes</span>
+                    </div>
+                </div>
+
+                <div class="start-action">
+                    <span class="action-num">5</span>
+                    <div class="action-content">
+                        <h3>Create Teaching Materials</h3>
+                        <p>Turn a guideline into a teaching presentation. Generate MCQ questions with explanations. Create a simulation scenario for your next training session.</p>
+                        <span class="action-time">⏱️ 30 minutes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="start-reminder fade-in">
+                <h3>Remember the One Rule</h3>
+                <p>All of these activities are safe because <strong>none involve patient data</strong>. Keep patient-identifiable information out of AI tools, and you can explore freely.</p>
+                <a href="#data-protection" class="btn btn-secondary">Review Data Protection Guidelines →</a>
             </div>
         </section>
 
-        <section class="resources-section" id="resources">
-            <div class="section-header fade-in">
-                <h2>Key Resources & Source URLs</h2>
-            </div>
-            <div class="resources-grid">
-                <div class="resource-card fade-in">
-                    <h4>Regulatory & Governance</h4>
-                    <ul class="resource-list">
-                        <li><a href="https://www.gmc-uk.org/professional-standards/good-medical-practice-2024" target="_blank">GMC Good Medical Practice 2024</a></li>
-                        <li><a href="https://transform.england.nhs.uk/key-tools-and-info/digital-technology-assessment-criteria-dtac/" target="_blank">NHS DTAC Portal</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <footer>
+        <!-- FOOTER -->
+        <footer class="site-footer">
             <div class="footer-content">
-                <p>EM AI Toolkit — Updated with verified evidence from the comprehensive NHS AI resource guide</p>
-                <p>Built by <a href="https://wmebem.com" target="_blank">WMEBEM</a></p>
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                            <span>Medical AI Toolkit</span>
+                        </div>
+                        <p>Practical AI guidance for NHS medical consultants. Built by clinicians, for clinicians.</p>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Resources</h4>
+                            <a href="#copilot-guide">Copilot Guide</a>
+                            <a href="#data-protection">Data Protection</a>
+                            <a href="#agentic">Agentic Browsers</a>
+                            <a href="#tools">AI Tools</a>
+                            <a href="#prompts">Prompts Library</a>
+                        </div>
+                        <div class="footer-column">
+                            <h4>External Links</h4>
+                            <a href="https://www.gmc-uk.org/professional-standards/good-medical-practice-2024" target="_blank">GMC Good Medical Practice</a>
+                            <a href="https://transform.england.nhs.uk/key-tools-and-info/digital-technology-assessment-criteria-dtac/" target="_blank">NHS DTAC Portal</a>
+                            <a href="https://www.themdu.com/guidance-and-advice/guides/using-ai-in-primary-care" target="_blank">MDU AI Guidance</a>
+                            <a href="https://notebooklm.google.com" target="_blank">NotebookLM</a>
+                        </div>
+                        <div class="footer-column">
+                            <h4>WMEBEM</h4>
+                            <a href="https://wmebem.com" target="_blank">Main Website</a>
+                            <a href="https://wmebem.com/resources" target="_blank">Educational Resources</a>
+                            <a href="https://wmebem.com/contact" target="_blank">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2026 West Midlands Evidence Based Emergency Medicine. For educational purposes only.</p>
+                    <p class="footer-disclaimer">This resource provides general guidance. Always verify AI outputs, follow Trust policies, and apply professional judgment. Never enter patient-identifiable data into public AI tools.</p>
+                </div>
             </div>
         </footer>
-    </div>
-
-    <div class="quick-actions">
-        <button class="quick-action-btn secondary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-        </button>
-    </div>
-
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-        <div class="modal" onclick="event.stopPropagation()">
-            <div class="modal-header">
-                <h3 id="modalTitle">Application Details</h3>
-                <button class="modal-close" onclick="closeModal()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </button>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-        </div>
     </div>
 
     <script src="script.js"></script>
