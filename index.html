@@ -6,6 +6,17 @@
     <title>AI Toolkit for Medical Consultants | West Midlands</title>
     <meta name="description" content="Practical guidance on using AI to reduce administrative burden for NHS medical consultants — safely and within governance.">
     <meta name="keywords" content="NHS AI, Medical AI, Copilot, Clinical AI, Healthcare AI, Medical Consultants">
+    <meta name="author" content="West Midlands Evidence Based Emergency Medicine">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="AI Toolkit for Medical Consultants">
+    <meta property="og:description" content="Practical guidance on using AI to reduce administrative burden — safely and within governance.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2'><path d='M22 12h-4l-3 9L9 3l-3 9H2'/></svg>">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -19,19 +30,24 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             <span>Medical AI Toolkit</span>
         </a>
-        <nav class="site-nav">
+        <nav class="site-nav" id="siteNav">
             <a href="#copilot-guide">Copilot</a>
             <a href="#data-protection">Data Protection</a>
             <a href="#agentic">Agentic AI</a>
             <a href="#tools">Tools</a>
+            <a href="#limitations">Limitations</a>
             <a href="#prompts">Prompts</a>
         </nav>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <div class="header-actions">
             <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
                 <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
-            <a href="https://wmebem.com" target="_blank" class="btn btn-primary btn-sm">
+            <a href="https://wmebem.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
                 WMEBEM
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
             </a>
@@ -49,10 +65,10 @@
         </button>
     </div>
 
-    <div class="keyboard-hint visible">
-        <span>Use <kbd>←</kbd> <kbd>→</kbd> to navigate</span>
+    <div class="keyboard-hint" id="keyboardHint">
+        <span>Use <kbd>←</kbd> <kbd>→</kbd> to navigate slides</span>
         <span class="hint-separator">•</span>
-        <span>Click code blocks to copy</span>
+        <span>Press <kbd>Esc</kbd> to exit</span>
     </div>
 
     <!-- ========== PRESENTATION MODE - 15 SLIDES ========== -->
@@ -1201,7 +1217,7 @@
                         </ul>
                         <h4>How to Use</h4>
                         <ol>
-                            <li>Go to <a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a></li>
+                            <li>Go to <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer">notebooklm.google.com</a></li>
                             <li>Create a new Notebook</li>
                             <li>Click "Add Source" — upload PDFs, paste URLs, or add Google Docs</li>
                             <li>Ask questions in the chat — answers cite your sources</li>
@@ -1232,7 +1248,7 @@
                             <li><strong>Editing and refinement</strong> — Improving existing documents</li>
                         </ul>
                         <h4>How to Use</h4>
-                        <p>Go to <a href="https://claude.ai" target="_blank">claude.ai</a>, create a free account, start chatting. Be specific about what you need.</p>
+                        <p>Go to <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">claude.ai</a>, create a free account, start chatting. Be specific about what you need.</p>
                         <div class="tool-prompt-example">
                             <code class="copyable">"Write a Standard Operating Procedure for [procedure] in an NHS [department]. Include: Purpose, Scope, Responsibilities, Equipment, Step-by-step procedure, Safety, Documentation, References. ~1000 words."</code>
                         </div>
@@ -1259,7 +1275,7 @@
                             <li><strong>Code and technical tasks</strong> — Strong at programming</li>
                         </ul>
                         <h4>How to Use</h4>
-                        <p>Go to <a href="https://chat.openai.com" target="_blank">chat.openai.com</a>, create account, start chatting.</p>
+                        <p>Go to <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">chat.openai.com</a>, create account, start chatting.</p>
                         <div class="tool-prompt-example">
                             <code class="copyable">"Create a professional poster for our department teaching session on [topic]. Include key learning points and make it visually engaging."</code>
                         </div>
@@ -1286,7 +1302,7 @@
                             <li><strong>Literature searches</strong> — Academic mode available</li>
                         </ul>
                         <h4>How to Use</h4>
-                        <p>Go to <a href="https://perplexity.ai" target="_blank">perplexity.ai</a>, type your question. Click citation numbers to verify sources.</p>
+                        <p>Go to <a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer">perplexity.ai</a>, type your question. Click citation numbers to verify sources.</p>
                         <div class="tool-prompt-example">
                             <code class="copyable">"What is the current NICE guidance on anticoagulation in atrial fibrillation? When was it last updated?"</code>
                         </div>
@@ -1313,6 +1329,8 @@
                             <li><strong>CKS summaries</strong> — Primary care guidelines</li>
                             <li><strong>UK-specific clinical queries</strong> — NHS pathways</li>
                         </ul>
+                        <h4>How to Use</h4>
+                        <p>Go to <a href="https://iatrox.co.uk" target="_blank" rel="noopener noreferrer">iatrox.co.uk</a>, sign up with your NHS email for free access.</p>
                         <div class="tool-important">
                             <strong>⚠️ Use IatroX instead of OpenEvidence</strong> for UK practice. OpenEvidence is US-centric (FDA, US guidelines) and may give inappropriate answers for NHS context.
                         </div>
@@ -2078,22 +2096,23 @@ Sensitivities:
                         </div>
                         <div class="footer-column">
                             <h4>External Links</h4>
-                            <a href="https://www.gmc-uk.org/professional-standards/good-medical-practice-2024" target="_blank">GMC Good Medical Practice</a>
-                            <a href="https://transform.england.nhs.uk/key-tools-and-info/digital-technology-assessment-criteria-dtac/" target="_blank">NHS DTAC Portal</a>
-                            <a href="https://www.themdu.com/guidance-and-advice/guides/using-ai-in-primary-care" target="_blank">MDU AI Guidance</a>
-                            <a href="https://notebooklm.google.com" target="_blank">NotebookLM</a>
+                            <a href="https://www.gmc-uk.org/professional-standards/good-medical-practice-2024" target="_blank" rel="noopener noreferrer">GMC Good Medical Practice</a>
+                            <a href="https://transform.england.nhs.uk/key-tools-and-info/digital-technology-assessment-criteria-dtac/" target="_blank" rel="noopener noreferrer">NHS DTAC Portal</a>
+                            <a href="https://www.themdu.com/guidance-and-advice/guides/using-ai-in-primary-care" target="_blank" rel="noopener noreferrer">MDU AI Guidance</a>
+                            <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer">NotebookLM</a>
                         </div>
                         <div class="footer-column">
                             <h4>WMEBEM</h4>
-                            <a href="https://wmebem.com" target="_blank">Main Website</a>
-                            <a href="https://wmebem.com/resources" target="_blank">Educational Resources</a>
-                            <a href="https://wmebem.com/contact" target="_blank">Contact</a>
+                            <a href="https://wmebem.com" target="_blank" rel="noopener noreferrer">Main Website</a>
+                            <a href="https://wmebem.com/resources" target="_blank" rel="noopener noreferrer">Educational Resources</a>
+                            <a href="https://wmebem.com/contact" target="_blank" rel="noopener noreferrer">Contact</a>
                         </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
                     <p>© 2026 West Midlands Evidence Based Emergency Medicine. For educational purposes only.</p>
                     <p class="footer-disclaimer">This resource provides general guidance. Always verify AI outputs, follow Trust policies, and apply professional judgment. Never enter patient-identifiable data into public AI tools.</p>
+                    <p class="footer-updated">Last updated: January 2026</p>
                 </div>
             </div>
         </footer>
